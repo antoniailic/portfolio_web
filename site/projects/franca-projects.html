@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Franca Projects — Antonia Ilic Bromberg</title>
+  <meta name="description" content="Art direction, Instagram system and grid design for Franca Projects.">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/case.css">
+  <style>
+    :root { --bg-case: #f6f6f6; --band: #ececea; }
+    .sprite { position: relative; overflow: hidden; aspect-ratio: 442 / 554; }
+    .sprite img { position: absolute; top: 0; height: 100%; width: 209.15%; max-width: none; }
+    .sprite.a img { left: .09%; } .sprite.b img { left: -109.05%; }
+    .ab figure { display: flex; flex-direction: column; gap: var(--s-text); }
+    .ab figure:nth-child(1) { --c: 3 / 7; --m: 1 / 3; }
+    .ab figure:nth-child(2) { --c: 7 / 11; --m: 3 / 5; }
+    .compo { --c: 2 / 11; position: relative; aspect-ratio: 976 / 574; }
+    .compo > * { position: absolute; }
+    .compo .sprite { aspect-ratio: auto; }
+    .compo img.fill { width: 100%; height: 100%; object-fit: cover; }
+    .compo .line { height: 1.85px; }
+    .compo .line img { display: block; width: 100%; height: 1.85px; }
+    .compo .v { transform-origin: 0 0; transform: rotate(90deg); }
+    .pillars > div { --m: 1 / -1; display: flex; flex-direction: column; gap: 16px; }
+    .pillars > div > p { order: 1; } .pillars > div > p + p { order: 2; }
+    @media (min-width: 769px) { .pillars > div > p, .pillars > div > p + p { order: 4; } }
+    .pillars > div:nth-child(1) { --c: 1 / 5; } .pillars > div:nth-child(2) { --c: 5 / 9; } .pillars > div:nth-child(3) { --c: 9 / 13; }
+    .post { position: relative; overflow: hidden; background: #fff; aspect-ratio: 416 / 520; }
+    .post img { position: absolute; object-fit: cover; }
+    .post .work  { left: 23.8%; top: 18.65%; width: 76.22%; height: 81.31%; }
+    .post .inspo { left: 50%; top: calc(50% + 4.5px); width: 152.64%; height: 81.04%; max-width: none; transform: translate(-50%, -50%) rotate(-90deg); }
+    .post .mark, .cp .mark { left: 41.2%; top: 40.96%; width: 17.59%; height: 18.07%; }
+    .strip { display: flex; gap: 2px; }
+    .strip > * { flex: 1 1 0; min-width: 0; aspect-ratio: 261 / 326; position: relative; overflow: hidden; background: #fff; }
+    .strip img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .strip img.mid { inset: auto; left: 0; top: 17.88%; height: 64.05%; }
+    .strip.four > * { flex: 0 0 calc((100% - 8px) / 5); }
+    .carousels { display: flex; flex-direction: column; gap: var(--s-block); }
+    @media (max-width: 768px) {
+      .strip { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+      .strip::-webkit-scrollbar { display: none; }
+      .strip > *, .strip.four > * { flex: 0 0 88%; scroll-snap-align: start; }
+      /* 03 discarded: cuatro en fila */
+      .discard > img { --m: span 1 !important; }
+      /* 04 the grid: A y B a todo el ancho */
+      .ab figure:nth-child(1), .ab figure:nth-child(2) { --m: 1 / -1; }
+      .ab { row-gap: var(--s-block); }
+      /* 06 content pillars: texto sobre la imagen, en carrusel */
+      .pillars { display: flex; gap: 2px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-inline: var(--margin); scroll-padding-inline: var(--margin); }
+      .pillars::-webkit-scrollbar { display: none; }
+      .pillars > div { flex: 0 0 88%; scroll-snap-align: start; }
+      .pillars .post { order: 3; }
+      .pillars-dots { padding-inline: var(--margin); }
+    }
+    .compo .line { z-index: 2; }
+  </style>
+</head>
+<body class="case" data-project="franca-projects">
+  <nav class="case-nav g" aria-label="Main">
+    <a class="hand portfolio" href="../index.html" aria-label="Portfolio"></a>
+    <a class="name" href="../index.html">Antonia Ilic Bromberg</a>
+    <span class="links"><a class="hand about" href="../about.html" aria-label="About"></a><a class="hand contact" href="../contact.html" aria-label="Contact"></a></span>
+  </nav>
+
+  <header class="case-hero" style="--pos: 0% 43%">
+    <img src="../img/franca/massimo-sanvalentin-1.jpg" alt="Franca Projects — Massimo Dutti San Valentín">
+    <div class="case-band g"><h1 class="label tag"><span class="cat">[Art direction]</span><span>Franca Projects</span></h1></div>
+  </header>
+  <section class="ficha g">
+    <div><p>Client</p><p>Franca Projects</p></div>
+    <div><p>Studio</p><p>Wizards Only</p></div>
+    <div><p>Role</p><p>Art Direction, Instagram System, Grid Design</p></div>
+    <div><p>Year</p><p>2026</p></div>
+    <div><p>Channel</p><p>Instagram</p></div>
+  </section>
+  <main>
+  <section class="chapter ">
+    <div class="head g">
+      <h2 class="label">01  Intro</h2>
+      <p class="display">An ever-evolving archive</p>
+    </div>
+    <div class="pair g">
+      <div class="t"><p>Context</p><p>Franca Projects is a fashion production company, founded in January 2026. Their Instagram showcases the productions they work on for their clients. In October 2026 they began a monthly Social Creative Direction retainer with Wizards Only.</p></div>
+      <div class="t"><p>Challenge &amp; role</p><p>Franca wanted an aesthetic that leaned towards craft. Through a workshop with the team, we defined what craft meant for them: it had to feel human, but with extreme care so the system never interfered with their clients' images. I led the full structure of the account, from defining its visual language to the system behind every post.</p></div>
+    </div>
+  </section>
+  <section class="chapter ">
+    <div class="head g">
+      <h2 class="label">02  Defining craft</h2>
+      <div class="t"><p>Through a workshop with the team, we defined what craft meant for Franca. Franca is detail, nostalgia and cleanliness: editorial on paper, made to last, but current. It is not edgy, romantic or digital. They were drawn to offline collage, stamps, photographs of photographs, handwritten text and the play of different papers, and wary of images loaded with information.</p></div>
+    </div>
+    <div class="media g ">
+      <img src="../img/franca/workshop.jpg" alt="Workshop board" loading="lazy" style="--c: 2 / 12; --r: 1088 / 421; object-position: 50% 42%;">
+    </div>
+  </section>
+  <section class="chapter ">
+    <div class="head g">
+      <h2 class="label">03  Discarded explorations</h2>
+      <div class="t"><p>Early tests explored more literal expressions of craft. They always ended up dirtying work that needed to be shown clean. Discarding them clarified the line: the craft had to live in the structure, not on top of the images.</p></div>
+    </div>
+    <div class="media g discard">
+      <img src="../img/franca/discard-1.jpg" alt="Discarded craft exploration" loading="lazy" style="--c: 1 / 4; --m: 1 / 3; --r: 304 / 380;">
+      <img src="../img/franca/discard-2.jpg" alt="Discarded craft exploration" loading="lazy" style="--c: 4 / 7; --m: 3 / 5; --r: 304 / 380;">
+      <img src="../img/franca/discard-3.jpg" alt="Discarded craft exploration" loading="lazy" style="--c: 7 / 10; --m: 1 / 3; --r: 304 / 380;">
+      <img src="../img/franca/discard-4.jpg" alt="Discarded craft exploration" loading="lazy" style="--c: 10 / 13; --m: 3 / 5; --r: 304 / 380;">
+    </div>
+  </section>
+  <section class="chapter ">
+    <div class="head g">
+      <h2 class="label">04  The grid</h2>
+      <div class="t"><p>We didn't want paper to be the answer. My proposal was to work in the space between digital and print: laying out the feed on the page grid of an editorial magazine, built to show their work. Franca often brings magazines to their productions for their clients, so the solution grew out of their own way of working.</p></div>
+    </div>
+    <div class="pair g">
+      <div class="t"><p>I presented a grid for laying out images and building compositions. Each post is composed on it; then the grid is removed and the post stays clean, with white bands framing the images like the margins of a printed page.</p></div>
+      <div class="t"><p>Franca liked the idea of a system that would make them recognisable, but worried it could become boring, with the formula too obvious. So I presented two grids instead of one. Posts alternate between them: no single post reads as a template, but across the feed the structure comes through.</p></div>
+    </div>
+    <div class="ab g">
+      <figure><figcaption>A.</figcaption><div class="sprite a"><img src="../img/franca/grid-ab.jpg" alt="Grid A"></div></figure>
+      <figure><figcaption>B.</figcaption><div class="sprite b"><img src="../img/franca/grid-ab.jpg" alt="Grid B"></div></figure>
+    </div>
+  </section>
+  <section class="chapter ">
+    <div class="head g">
+      <h2 class="label">05  Composition</h2>
+      <div class="t"><p>Within the grid, I composed each post by deciding its structure, which images work together, where the contrasts sit and in what order they unfold. The system sets the rules; the composition is where art direction comes in.</p></div>
+    </div>
+    <div class="g">
+      <div class="compo" aria-label="Posts composed on grid A and grid B">
+        <div class="sprite b" style="left:53.06%; top:0; width:46.94%; height:100%"><img src="../img/franca/grid-ab.jpg" alt=""></div>
+        <img class="fill" src="../img/franca/leandra-19.jpg" alt="" style="left:67.84%; top:3.97%; width:30.09%; height:76.35%">
+        <div class="sprite a" style="left:0; top:0; width:46.94%; height:100%"><img src="../img/franca/grid-ab.jpg" alt=""></div>
+        <div class="sprite b" style="left:53.06%; top:0; width:46.94%; height:100%"><img src="../img/franca/grid-ab.jpg" alt=""></div>
+        <img class="fill" src="../img/franca/zara-girl.jpg" alt="" style="left:61.45%; top:4.15%; width:36.28%; height:46.07%">
+        <div class="line v" style="left:97.67%; top:.18%; width:58.6%"><img src="../img/franca/line-1.svg" alt=""></div>
+        <div class="line v" style="left:61.45%; top:.36%; width:58.6%"><img src="../img/franca/line-1.svg" alt=""></div>
+        <div class="line" style="left:53.49%; top:3.79%; width:46.4%"><img src="../img/franca/line-3.svg" alt=""></div>
+        <div class="line v" style="left:1.27%; top:.18%; width:58.07%"><img src="../img/franca/line-4.svg" alt=""></div>
+        <div class="line" style="left:.21%; top:2.17%; width:46.72%"><img src="../img/franca/line-2.svg" alt=""></div>
+        <img class="fill" src="../img/franca/img-3204.jpg" alt="" style="left:1.49%; top:2.17%; width:35.13%; height:79.63%">
+        <div class="line" style="left:.21%; top:81.95%; width:46.72%"><img src="../img/franca/line-2.svg" alt=""></div>
+      </div>
+    </div>
+  </section>
+  <section class="chapter ">
+    <div class="head g">
+      <h2 class="label">06  Content pillars</h2>
+    </div>
+    <div class="pillars g" data-carousel data-dots-class="pillars-dots">
+      <div><div class="post"><img class="work" src="../img/franca/sandra-handmade.jpg" alt="Massimo Dutti Handmade FW25 x Sandra" loading="lazy"></div><p>01  Work — 65%</p><p>Franca's projects do the talking. The feed shows two types: new productions and work from their catalogue. Every post is credited with what it is, the client, the title and the main contributors, and composed on grids A and B.</p></div>
+      <div><div class="post"><img class="inspo" src="../img/franca/inspo-79.jpg" alt="Inspiration post" loading="lazy"></div><p>02  Inspo — 25%</p><p>Behind the work, there's a lot of work. This pillar opens up Franca's inspo folders: essays, paintings, locations, objects, film stills. No commentary, just credits, and always a reference for past or future projects. I set these posts full-bleed, outside the grids, to set them apart.</p></div>
+      <div><div class="post"><img class="mark" src="../img/franca/fran-finat-mark.jpg" alt="Collaborator profile cover" loading="lazy"></div><p>03  Collaborators — 10%</p><p>A large part of Franca's job is connecting the right people at the right time for the right project. Showing their network of collaborators is the best way to show what they do best.</p></div>
+    </div>
+  </section>
+  <section class="chapter ">
+    <div class="head g">
+      <h2 class="label">07  Carousels</h2>
+    </div>
+    <div class="g carousels">
+      <div class="t"><div class="strip" data-carousel><div><img src="../img/franca/massimo-sanvalentin-1.jpg" alt="" loading="lazy"></div><div><img src="../img/franca/massimo-sanvalentin-2.jpg" alt="" loading="lazy"></div><div><img src="../img/franca/massimo-sanvalentin-3.jpg" alt="" loading="lazy"></div><div><img src="../img/franca/massimo-sanvalentin-4.jpg" alt="" loading="lazy"></div><div><img src="../img/franca/massimo-sanvalentin-5.jpg" alt="" loading="lazy"></div></div><p class="cap">Art Buying for Massimo Dutti — San Valentín special</p></div>
+      <div class="t"><div class="strip" data-carousel><div><img src="../img/franca/massimo-linen-1.jpg" alt="" loading="lazy"></div><div><img src="../img/franca/massimo-linen-2.jpg" alt="" loading="lazy"></div><div><img src="../img/franca/massimo-linen-3.jpg" alt="" loading="lazy"></div><div><img src="../img/franca/massimo-linen-4.jpg" alt="" loading="lazy"></div><div><img src="../img/franca/massimo-linen-5.jpg" alt="" loading="lazy"></div></div><p class="cap">Art Buying for Massimo Dutti — Menswear Linen Collection</p></div>
+      <div class="t"><div class="strip four" data-carousel><div><img class="mark" src="../img/franca/fran-finat-mark.jpg" alt="" style="position:absolute; inset:auto; left:41.2%; top:40.96%; width:17.59%; height:18.07%"></div><div><img src="../img/franca/fran-finat-77.jpg" alt=""><img src="../img/franca/fran-finat-80.jpg" alt=""></div><div><img class="mid" src="../img/franca/fran-finat-76.jpg" alt=""></div><div><img src="../img/franca/fran-finat-78.jpg" alt=""></div></div><p class="cap">Collaborator profile — Fran Finat, fashion photographer</p></div>
+    </div>
+  </section>
+  <section class="chapter ">
+    <div class="head g">
+      <h2 class="label">08  The Feed</h2>
+    </div>
+    <div class="media g tight feed3">
+      <img src="../img/franca/feed-1.jpg" alt="Franca Projects feed" loading="lazy" style="--m: span 4; --c: 1 / 5; --r: 434 / 543;">
+      <img src="../img/franca/feed-2.jpg" alt="Franca Projects feed" loading="lazy" style="--m: span 4; --c: 5 / 9; --r: 434 / 543;">
+      <img src="../img/franca/feed-3.jpg" alt="Franca Projects feed" loading="lazy" style="--m: span 4; --c: 9 / 13; --r: 434 / 543;">
+      <img src="../img/franca/feed-4.jpg" alt="Franca Projects feed" loading="lazy" style="--m: span 4; --c: 1 / 5; --r: 434 / 543;">
+      <img src="../img/franca/massimo-sanvalentin-1.jpg" alt="Franca Projects feed" loading="lazy" style="--m: span 4; --c: 5 / 9; --r: 434 / 543;">
+      <img src="../img/franca/feed-6.jpg" alt="Franca Projects feed" loading="lazy" style="--m: span 4; --c: 9 / 13; --r: 434 / 543;">
+      <img src="../img/franca/massimo-linen-1.jpg" alt="Franca Projects feed" loading="lazy" style="--m: span 4; --c: 1 / 5; --r: 434 / 543;">
+      <img src="../img/franca/feed-8.jpg" alt="Franca Projects feed" loading="lazy" style="--m: span 4; --c: 5 / 9; --r: 434 / 543;">
+      <img src="../img/franca/feed-9.jpg" alt="Franca Projects feed" loading="lazy" style="--m: span 4; --c: 9 / 13; --r: 434 / 543;">
+    </div>
+  </section>
+  <section class="chapter ">
+    <div class="head g">
+      <h2 class="label">09  Result &amp; Credits</h2>
+    </div>
+    <div class="credits g">
+      <div class="t" style="display:flex; flex-direction:column; gap:var(--s-text)"><p>An ongoing monthly retainer since October 2026.</p></div>
+      <dl>
+        <dt>Client</dt><dd>Franca Projects</dd>
+        <dt>Studio</dt><dd>Wizards Only, Barcelona</dd>
+        <dt>Art direction, Instagram system, grid design</dt><dd>Antonia Ilic Bromberg</dd>
+        <dt>Narrative</dt><dd>Jordi Martinez</dd>
+      </dl>
+    </div>
+  </section>
+  </main>
+  <footer class="case-next">
+    <a class="next-img" href="lebor-gabala.html" style="--pos: 0% 30%"><img src="../img/lebor/cover-noviembre.jpg" alt="" loading="lazy"></a>
+    <a class="next-title g" href="lebor-gabala.html"><span class="label tag"><span class="cat">[Art direction]</span><span>Lebor Gabala →</span></span></a>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

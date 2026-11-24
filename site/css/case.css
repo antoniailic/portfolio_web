@@ -1,0 +1,161 @@
+/* ==========================================================================
+   Plantilla de caso — todo cae en la retícula de 12 columnas (.g)
+   ========================================================================== */
+
+body.case { background: var(--bg-case); }
+
+/* --- Navegación manuscrita ------------------------------------------------- */
+.case-nav {
+  position: absolute; top: 0; left: 0; right: 0; z-index: 10;
+  padding-top: 19px; align-items: start;
+}
+.case-nav .hand {
+  display: block; background: #fff;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%; mask-size: 100% 100%;
+}
+.case-nav .portfolio { --c: 1 / 3; width: 49px; height: 15px; margin-top: 3px;
+  -webkit-mask-image: url("../img/ui/nav-portfolio.png"); mask-image: url("../img/ui/nav-portfolio.png"); }
+.case-nav .name { --c: 6 / 8; justify-self: center; white-space: nowrap; color: #fff; margin-top: 2px; }
+.case-nav .links { --c: 11 / 13; justify-self: end; display: flex; gap: 42px; }
+.case-nav .about { width: 46px; height: 15px;
+  -webkit-mask-image: url("../img/ui/nav-about.png"); mask-image: url("../img/ui/nav-about.png"); }
+.case-nav .contact { width: 66px; height: 13px;
+  -webkit-mask-image: url("../img/ui/nav-contact.png"); mask-image: url("../img/ui/nav-contact.png"); }
+.case-nav.dark .hand { background: #000; }
+.case-nav.dark .name { color: #000; }
+.case-nav [aria-current] { pointer-events: none; }
+@media (max-width: 768px) {
+  .case-nav .portfolio { --m: 1 / 3; }
+  .case-nav .name { display: none; }
+  .case-nav .links { --m: 3 / 5; gap: 20px; }
+}
+
+/* --- Portada + franja de apertura ----------------------------------------- */
+.case-hero {
+  position: relative; overflow: hidden; background: #000;
+  height: calc(100vw * 900 / 1440); max-height: 100svh; min-height: 520px;
+}
+.case-hero > img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: var(--pos, 50% 50%);
+}
+.case-band {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 96px;
+  background: var(--band); align-content: center;
+  transform: translateY(100%);
+  animation: band-up .9s cubic-bezier(.2,.7,.1,1) .35s forwards;
+}
+@keyframes band-up { to { transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .case-band { animation: none; transform: none; } }
+.tag { display: flex; gap: 16px; flex-wrap: wrap; }
+.tag .cat { text-indent: -.45em; }
+
+/* --- Ficha (5 datos en columnas fijas) ------------------------------------ */
+.ficha { padding-block: 40px 120px; row-gap: 24px; }
+.ficha > div { display: flex; flex-direction: column; gap: var(--s-text); }
+.ficha > div:nth-child(1) { --c: 1 / 3;  --m: 1 / 3; }
+.ficha > div:nth-child(2) { --c: 3 / 5;  --m: 3 / 5; }
+.ficha > div:nth-child(3) { --c: 5 / 8;  --m: 1 / 3; }
+.ficha > div:nth-child(4) { --c: 8 / 10; --m: 3 / 5; }
+.ficha > div:nth-child(5) { --c: 10 / 13; --m: 1 / -1; }
+
+/* --- Capítulos ------------------------------------------------------------ */
+.chapter { display: flex; flex-direction: column; gap: var(--s-block); padding-bottom: var(--s-section); }
+.chapter.top { padding-top: var(--s-section); }
+.head { row-gap: var(--s-head); }               /* encabezado + texto de entrada */
+.head > .label, .head > .label-low { --c: 1 / -1; }
+.head > .display { --c: 1 / 10; }
+.head > .t { --c: 1 / 6; }                      /* cuerpo: 5 columnas */
+.pair { row-gap: var(--s-head); }               /* dos textos: cols 1–5 y 7–11 */
+.pair > :nth-child(1) { --c: 1 / 6; }
+.pair > :nth-child(2) { --c: 7 / 12; }
+.pair > div { display: flex; flex-direction: column; gap: var(--s-text); }
+.t p + p { margin-top: var(--s-text); }
+.trio { row-gap: var(--s-head); }               /* tres textos: 4 columnas cada uno */
+.trio > :nth-child(1) { --c: 1 / 5; }
+.trio > :nth-child(2) { --c: 5 / 9; }
+.trio > :nth-child(3) { --c: 9 / 13; }
+
+/* Créditos: resultado en 1–5, tabla en 7–12 (etiqueta 7–8, nombre 9–12) */
+.credits { row-gap: var(--s-head); }
+.credits > .t { --c: 1 / 6; }
+.credits > dl { --c: 7 / 13; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); column-gap: var(--gutter); row-gap: 10px; margin: 0; }
+.credits dt { grid-column: 1 / 3; }
+.credits dd { grid-column: 3 / 7; margin: 0; }
+.credits.wide > dl { --c: 1 / 13; grid-template-columns: repeat(12, minmax(0, 1fr)); }
+.credits.wide dt { grid-column: 1 / 3; } .credits.wide dd { grid-column: 3 / 13; }
+
+/* --- Imágenes ------------------------------------------------------------- */
+.media { row-gap: var(--gutter); }
+.media img, .media video { width: 100%; height: auto; object-fit: cover; background: var(--ph); aspect-ratio: var(--r, auto); }
+.media.tight { column-gap: 4px; row-gap: 4px; }
+.media.bleed { padding-inline: 0; }
+.cap { margin-top: var(--s-text); }
+
+@media (max-width: 768px) {
+  .head > .display, .head > .t, .pair > *, .trio > *, .credits > .t, .credits > dl { --m: 1 / -1; }
+  .credits > dl { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .credits dt { grid-column: 1 / 2; } .credits dd { grid-column: 2 / 5; }
+  .credits.wide dt { grid-column: 1 / 2; } .credits.wide dd { grid-column: 2 / 5; }
+}
+
+/* --- Next ----------------------------------------------------------------- */
+.case-next .next-img { display: block; height: calc(100vw * 520 / 1440); min-height: 280px; overflow: hidden; background: #000; }
+.case-next .next-img img { width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50% 50%); }
+.case-next .next-title { padding-block: 64px; }
+.case-next .next-title .tag { --c: 1 / -1; justify-content: flex-end; }
+.case-next a:hover .tag span:last-child { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Imagen de Franca con margen blanco a la derecha: recorte del Figma (107.46%) */
+.case-hero > img[src*="massimo-sanvalentin-1"],
+.case-next .next-img img[src*="massimo-sanvalentin-1"],
+.banners img[src*="massimo-sanvalentin-1"] { width: 107.46%; max-width: none; right: auto; }
+
+/* --- Especímenes tipográficos (compartido) -------------------------------- */
+.spec { padding-block: 56px 64px; row-gap: 0; }
+.spec .rule { --c: 1 / -1; height: 1px; background: currentColor; opacity: .35; }
+.spec .caps { font-size: 11px; line-height: 1.3; letter-spacing: .12em; text-transform: uppercase; }
+.spec .caps.s { letter-spacing: .08em; }
+.spec .c1 { --c: 1 / 5; } .spec .c2 { --c: 5 / 9; } .spec .c3 { --c: 9 / 12; }
+.spec .big { --c: 1 / 9; }
+.spec .row1 { margin-top: 14px; }
+.spec .row2 { margin-top: 66px; }
+.spec .row3 { margin-top: 22px; }
+.spec .gap { margin-top: 48px; }
+@media (max-width: 768px) {
+  .spec .c1, .spec .c2, .spec .c3, .spec .big { --m: 1 / -1; margin-top: 16px; }
+  .spec .big { font-size: 48px !important; }
+}
+
+/* En bloques flex el espacio lo da el gap: sin margen extra entre párrafos */
+.pair > div p + p, .credits .t p + p { margin-top: 0; }
+.spec p { overflow-wrap: anywhere; }
+
+/* Feeds en mobile: tres columnas, como en Instagram */
+@media (max-width: 768px) {
+  .feed3 { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; column-gap: 2px !important; row-gap: 2px !important; }
+  .feed3 > * { grid-column: auto !important; }
+}
+
+/* Puntos de carrusel (solo mobile) */
+.dots { display: none; }
+@media (max-width: 768px) {
+  .dots { display: flex; justify-content: center; gap: 4px; margin-top: 12px; }
+  .dots span { width: 6px; height: 6px; border-radius: 50%; background: #c8c8c8; transition: background .2s; }
+  .dots span.on { background: #3897f0; }
+}
+
+/* Ficha y créditos en mobile: etiqueta en columnas 1–2, dato en 3–4, alineados */
+@media (max-width: 768px) {
+  .ficha { row-gap: 10px; }
+  .ficha > div:nth-child(n) { --m: 1 / -1; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: var(--gutter); }
+  .ficha > div > p:first-child { grid-column: 1 / 3; }
+  .ficha > div > p:last-child { grid-column: 3 / 5; }
+  .credits dt, .credits.wide dt { grid-column: 1 / 3; }
+  .credits dd, .credits.wide dd { grid-column: 3 / 5; }
+}
+
+/* Cursor flecha: tercio izquierdo = anterior, tercio derecho = siguiente */
+body.go-prev, body.go-prev * { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='20' viewBox='0 0 40 20'%3E%3Cpath d='M38 10H3M11 2 3 10l8 8' fill='none' stroke='%23fff' stroke-width='4'/%3E%3Cpath d='M38 10H3M11 2 3 10l8 8' fill='none' stroke='%23000' stroke-width='1.5'/%3E%3C/svg%3E") 3 10, w-resize; }
+body.go-next, body.go-next * { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='20' viewBox='0 0 40 20'%3E%3Cpath d='M2 10h35M29 2l8 8-8 8' fill='none' stroke='%23fff' stroke-width='4'/%3E%3Cpath d='M2 10h35M29 2l8 8-8 8' fill='none' stroke='%23000' stroke-width='1.5'/%3E%3C/svg%3E") 37 10, e-resize; }

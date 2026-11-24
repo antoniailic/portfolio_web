@@ -1,0 +1,117 @@
+/* ==========================================================================
+   antoniailicb.com — sistema base
+   Retícula: 12 columnas · 1440 px · margen 64 · gutter 32 · columna 80
+   La retícula es fluida: margen y gutter escalan con el ancho de pantalla,
+   así cada bloque cae siempre en sus columnas.
+   ========================================================================== */
+
+/* --- Tipografías (autoalojadas) ---------------------------------------------
+   Provisionales hasta tener licencias web:
+   · Inter  → en lugar de Unica77
+   · Xanh Mono → en lugar de PP Right Serif Mono                              */
+@font-face { font-family: "Inter"; src: url("../fonts/Inter-var.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("../fonts/Inter-Italic-var.woff2") format("woff2"); font-weight: 100 900; font-style: italic; font-display: swap; }
+@font-face { font-family: "Xanh Mono"; src: url("../fonts/XanhMono-Regular.woff2") format("woff2"); font-display: swap; }
+@font-face { font-family: "Xanh Mono"; src: url("../fonts/XanhMono-Italic.woff2") format("woff2"); font-style: italic; font-display: swap; }
+@font-face { font-family: "Sneaky"; src: url("../fonts/Sneaky-Times.woff2") format("woff2"); font-display: swap; }
+/* Especímenes de los casos */
+@font-face { font-family: "Cormorant Upright"; src: url("../fonts/CormorantUpright-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Cormorant Upright"; src: url("../fonts/CormorantUpright-SemiBold.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Roboto Mono"; src: url("../fonts/RobotoMono-var.woff2") format("woff2"); font-weight: 100 700; font-display: swap; }
+@font-face { font-family: "Geist"; src: url("../fonts/Geist-var.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Source Serif 4"; src: url("../fonts/SourceSerif4-var.woff2") format("woff2"); font-weight: 200 900; font-display: swap; }
+@font-face { font-family: "Source Serif 4"; src: url("../fonts/SourceSerif4-Italic-var.woff2") format("woff2"); font-weight: 200 900; font-style: italic; font-display: swap; }
+@font-face { font-family: "Mona Sans"; src: url("../fonts/MonaSans-var.woff2") format("woff2"); font-weight: 200 900; font-stretch: 75% 125%; font-display: swap; }
+
+/* --- Tokens ---------------------------------------------------------------- */
+:root {
+  /* Retícula: 64 / 32 sobre 1440, escalados */
+  --cols: 12;
+  --margin: calc(100vw * 64 / 1440);
+  --gutter: calc(100vw * 32 / 1440);
+
+  /* Color */
+  --ink: #000;
+  --bg-case: #f6f6f6;
+  --band: #ececea;
+  --ph: #dbdbd9;
+
+  /* Tipo */
+  --sans: "Inter", "Helvetica Neue", Arial, sans-serif;          /* → Unica77 */
+  --serif-mono: "Xanh Mono", "Courier New", monospace;            /* → PP Right Serif Mono */
+  --display: "Sneaky", "Times New Roman", Times, serif;
+
+  --fs-body: 13px;
+  --lh-body: 1.3;
+  --fs-display: 70px;
+
+  /* Espaciados — únicos para todas las landings */
+  --s-text: 12px;        /* etiqueta → texto, párrafo → párrafo */
+  --s-head: 40px;        /* encabezado de capítulo → contenido */
+  --s-block: 80px;       /* texto → imagen, imagen → imagen dentro de un capítulo */
+  --s-section: 140px;    /* capítulo → capítulo */
+}
+
+@media (min-width: 1441px) { :root { --fs-display: calc(100vw * 70 / 1440); } }
+@media (max-width: 1100px) { :root { --fs-display: 52px; --s-block: 64px; --s-section: 112px; } }
+@media (max-width: 768px) {
+  :root {
+    --cols: 4;
+    --margin: 20px;
+    --gutter: 12px;
+    --fs-display: 34px;
+    --s-head: 24px;
+    --s-block: 40px;
+    --s-section: 88px;
+  }
+}
+
+/* --- Reset mínimo ---------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--ink);
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+img, video { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, p, ol, ul, figure { margin: 0; padding: 0; font-weight: 400; font-size: inherit; }
+ol, ul { list-style: none; }
+
+/* --- Retícula --------------------------------------------------------------
+   .g = contenedor de 12 columnas. Cada hijo declara su tramo con --c
+   (desktop) y --m (mobile, 4 columnas). Por defecto ocupa todo el ancho.  */
+.g {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  column-gap: var(--gutter);
+  padding-inline: var(--margin);
+}
+.g > * { grid-column: var(--c, 1 / -1); min-width: 0; }
+@media (max-width: 768px) { .g > * { grid-column: var(--m, 1 / -1); } }
+.g.bleed { padding-inline: 0; }
+
+/* Ayuda visual: ?grid en la URL */
+.grid-overlay { position: fixed; inset: 0; z-index: 9999; pointer-events: none; display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr); column-gap: var(--gutter); padding-inline: var(--margin); }
+.grid-overlay > div { background: rgba(255, 0, 80, .08); }
+@media (max-width: 768px) { .grid-overlay > div:nth-child(n + 5) { display: none; } }
+
+/* --- Tipo ------------------------------------------------------------------ */
+.label {                      /* Portafolio/3 Etiqueta */
+  font-family: var(--serif-mono); font-size: 16px; line-height: 1.2;
+  letter-spacing: .07em; text-transform: uppercase; white-space: pre;
+}
+.label-low {                  /* Portafolio/3 Etiqueta bajas */
+  font-family: var(--serif-mono); font-size: 14px; line-height: 1.2;
+}
+.display {                    /* Portafolio/1 Título */
+  font-family: var(--display); font-size: var(--fs-display); line-height: 1.07;
+  letter-spacing: -.01em; font-feature-settings: "liga" 0, "onum" 1, "pnum" 1;
+}
+@media (max-width: 768px) { .label { white-space: pre-wrap; } }

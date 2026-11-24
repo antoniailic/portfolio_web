@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — Antonia Ilic Bromberg</title>
+  <meta name="description" content="Contact Antonia Ilic Bromberg — identity, editorial, branding, web and art direction projects.">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/case.css">
+  <style>
+    .contact-page { padding-block: 219px 160px; row-gap: 56px; }
+    .contact-page .display { --c: 1 / 10; }
+    .contact-page > p { --c: 1 / 8; }
+    .contact-page .data { --c: 1 / -1; display: grid; grid-template-columns: subgrid; }
+    .contact-page .data > div { display: flex; flex-direction: column; gap: var(--s-text); }
+    .contact-page .data > div:nth-child(1) { grid-column: 1 / 4; } .contact-page .data > div:nth-child(2) { grid-column: 4 / 7; } .contact-page .data > div:nth-child(3) { grid-column: 7 / 10; }
+    .contact-page .data a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    @media (max-width: 768px) { .contact-page { padding-top: 120px; row-gap: 32px; } .contact-page .data > div { grid-column: 1 / -1 !important; margin-bottom: 16px; } }
+  </style>
+</head>
+<body>
+  <nav class="case-nav g dark" aria-label="Main">
+    <a class="hand portfolio" href="index.html" aria-label="Portfolio"></a>
+    <a class="name" href="index.html">Antonia Ilic Bromberg</a>
+    <span class="links"><a class="hand about" href="about.html" aria-label="About"></a><a class="hand contact" href="contact.html" aria-label="Contact" aria-current="page"></a></span>
+  </nav>
+
+  <main class="contact-page g">
+    <h1 class="display">If you have a project, a collaboration, or an idea in development, contact me!</h1>
+    <p>I work on identity, editorial, branding, web, and art direction projects, participating in both the conceptual definition and the visual construction.</p>
+    <div class="data">
+      <div><p>Email</p><a href="mailto:antonia.ilic@gmail.com">antonia.ilic@gmail.com</a></div>
+      <div><p>Instagram</p><a href="https://www.instagram.com/bai__antonia" target="_blank" rel="noopener">@bai__antonia</a></div>
+      <div><p>Location</p><p>Barcelona, Spain</p></div>
+    </div>
+  </main>
+  <script src="js/main.js"></script>
+</body>
+</html>
