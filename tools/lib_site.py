@@ -158,4 +158,8 @@ def _split_paras(html_):
     return re.sub(r"<p([^>]*)>([^<]*\n\s*\n[^<]*)</p>", rep, html_)
 
 def write(slug, html_):
+    # Videos: no se descargan todos al abrir la página; main.js los carga y reproduce al acercarse
+    html_ = html_.replace(' autoplay preload="metadata"', ' data-auto preload="none"')
+    # Imágenes: decodificación sin bloquear el scroll
+    html_ = html_.replace(' loading="lazy"', ' loading="lazy" decoding="async"')
     open(f"{ROOT}/projects/{slug}.html", "w").write(_split_paras(html_))

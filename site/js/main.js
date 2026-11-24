@@ -318,3 +318,13 @@ document.querySelectorAll("p, h1, h3, li, dd, .display, .ttl").forEach(el => {
   }));
   addEventListener("pageshow", e => { if (e.persisted) document.querySelectorAll(".curtain").forEach(c => c.remove()); });
 })();
+
+/* Videos: se cargan y reproducen cuando están a punto de entrar en pantalla, y se pausan al salir */
+(function () {
+  const vids = document.querySelectorAll("video[data-auto]");
+  if (!vids.length) return;
+  const play = v => { if (v.preload !== "auto") { v.preload = "auto"; v.load(); } const p = v.play(); if (p) p.catch(() => {}); };
+  if (!("IntersectionObserver" in window)) { vids.forEach(play); return; }
+  const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? play(e.target) : e.target.pause()), { rootMargin: "1200px 0px" });
+  vids.forEach(v => io.observe(v));
+})();
