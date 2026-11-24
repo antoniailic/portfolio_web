@@ -110,5 +110,14 @@ def nxt(slug, img_, cat, name, pos="50% 50%"):
   </footer>
 '''
 
+def _split_paras(html_):
+    # Un salto doble dentro de un <p> se convierte en párrafos separados (espacio = --s-text)
+    import re
+    def rep(m):
+        attrs, body = m.group(1), m.group(2)
+        parts = [x.strip("\n") for x in re.split(r"\n\s*\n", body) if x.strip()]
+        return '<div class="t">' + "".join(f"<p{attrs}>{x}</p>" for x in parts) + "</div>"
+    return re.sub(r"<p([^>]*)>([^<]*\n\s*\n[^<]*)</p>", rep, html_)
+
 def write(slug, html_):
-    open(f"{ROOT}/projects/{slug}.html", "w").write(html_)
+    open(f"{ROOT}/projects/{slug}.html", "w").write(_split_paras(html_))

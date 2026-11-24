@@ -15,7 +15,7 @@ css = """    .sprite { position: relative; overflow: hidden; aspect-ratio: 442 /
     .compo .line { height: 1.85px; }
     .compo .line img { display: block; width: 100%; height: 1.85px; }
     .compo .v { transform-origin: 0 0; transform: rotate(90deg); }
-    .pillars > div { --m: 1 / -1; display: flex; flex-direction: column; gap: 16px; }
+    .pillars > div { --m: 1 / -1; display: flex; flex-direction: column; gap: var(--s-text); }
     .pillars > div > p { order: 1; } .pillars > div > p + p { order: 2; }
     @media (min-width: 769px) { .pillars > div > p, .pillars > div > p + p { order: 4; } }
     .pillars > div:nth-child(1) { --c: 1 / 5; } .pillars > div:nth-child(2) { --c: 5 / 9; } .pillars > div:nth-child(3) { --c: 9 / 13; }

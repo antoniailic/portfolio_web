@@ -11,7 +11,7 @@ css = """    .logo { position: relative; overflow: hidden; }
     .marks p { max-width: 528px; }
     .marks .main p { text-align: center; }
     .swatches { column-gap: var(--gutter); }
-    .swatches > div { display: flex; flex-direction: column; gap: 17px; }
+    .swatches > div { display: flex; flex-direction: column; gap: var(--s-text); }
     .swatches > div:not(:last-child) .chip { margin-right: calc(-1 * var(--gutter)); }
     .swatches .chip { aspect-ratio: auto; height: calc(100vw * 512 / 1440); min-height: 160px; }
     .swatches p { font-family: var(--serif-mono); font-size: 14px; line-height: 1.2; }
@@ -63,7 +63,8 @@ body += nxt("nebular", "nebular/nebular-2", "Editorial", "Nebular", "50% 50%")
 write("franciscandrea", page("francisc'andrea", "Brand identity for francisc'andrea, a floral design studio.", "franciscandrea", body, "#ffffff", css=css))
 
 # ================================ NEBULAR ===================================
-css = """    .lists { position: relative; height: 436px; }
+css = """    .lists { position: relative; }
+    @media (min-width: 769px) { .lists .artists { position: relative !important; } }
     .lists .artists { position: absolute; top: 0; text-align: center; white-space: nowrap;
       font-family: "Source Serif 4", serif; font-weight: 600; font-size: 50px; line-height: 1.15; letter-spacing: -.02em; }
     .lists .side { position: absolute; white-space: pre; }
@@ -96,7 +97,7 @@ def lists(artists, list_cols, side, side_cols, side_top):
     </div>'''
 def issue(label, artists, lc, side, sc, st, ed, cover, back, video, name):
     return chapter(head(label), lists(artists, lc, side, sc, st),
-        '    <div class="g" style="row-gap:24px"><p class="label-low">Editorial</p></div>\n' + trio(ed).replace('<div class="trio g">', '<div class="trio g" style="margin-top:calc(-1 * var(--s-block) + 24px)">'),
+        '    <div class="g" ><p class="label-low">Editorial</p></div>\n' + trio(ed).replace('<div class="trio g">', '<div class="trio g" style="margin-top:calc(var(--s-text) - var(--s-block))">'),
         f'''    <div class="covers g">
       <div class="cv"><img src="../{im("nebular/" + cover[0])}" alt="Nebular {name} — cover" style="{cover[1]}" loading="lazy"></div>
       <div class="cv"><img src="../{im("nebular/" + back[0])}" alt="Nebular {name} — back cover" style="{back[1]}" loading="lazy"></div>

@@ -10,14 +10,14 @@
   <style>
     :root { --bg-case: #ffffff; --band: #ffffff; }
     .campaign { row-gap: var(--gutter); }
-    .campaign > .info { --c: 1 / 4; display: flex; flex-direction: column; gap: 32px; }
+    .campaign > .info { --c: 1 / 4; display: flex; flex-direction: column; gap: var(--s-text); }
     .campaign > .info p { white-space: pre-line; }
     .campaign > .cells { --c: 4 / 13; display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: var(--gutter); }
     .cells img { grid-column: span 3; width: 100%; aspect-ratio: 304 / 457; object-fit: cover; background: var(--ph); }
     .cells img.w2 { grid-column: span 6; aspect-ratio: 640 / 457; }
     .cells img.w3 { grid-column: span 9; aspect-ratio: 976 / 457; }
     .cells img.w3.low { aspect-ratio: 976 / 378; }
-    .stats > div { display: flex; flex-direction: column; gap: 16px; }
+    .stats > div { display: flex; flex-direction: column; gap: var(--s-text); }
     .emails img { object-position: top; }
     @media (max-width: 768px) {
       .campaign > .info, .campaign > .cells { --m: 1 / -1; }
@@ -60,47 +60,21 @@
       <h2 class="label">02  Selected Campaigns</h2>
     </div>
     <div class="campaign g">
-      <div class="info"><p>Campaign 1 — Autumn
-
-Shot over three days in the south of Chile, between Puerto Varas, Puerto Montt and Cochamó. The challenge was organising everything from Santiago before travelling south for the shoot.</p><p>Responsibilities:
-
-Art Direction, Styling, Planning, Casting and Production in collaboration with the creative team.</p><p>Team:
-
-Creative Direction
-Camila Espinoza
-
-Art Direction
-Antonia Ilic, Fernanda González
-
-Photography
-Andrés Mora
-
-Video
-Rafael Núñez
-
-Models (Elite Models Chile)
+      <div class="info"><div class="t"><p>Campaign 1 — Autumn</p><p>Shot over three days in the south of Chile, between Puerto Varas, Puerto Montt and Cochamó. The challenge was organising everything from Santiago before travelling south for the shoot.</p></div><div class="t"><p>Responsibilities:</p><p>Art Direction, Styling, Planning, Casting and Production in collaboration with the creative team.</p></div><div class="t"><p>Team:</p><p>Creative Direction
+Camila Espinoza</p><p>Art Direction
+Antonia Ilic, Fernanda González</p><p>Photography
+Andrés Mora</p><p>Video
+Rafael Núñez</p><p>Models (Elite Models Chile)
 Martina Schneeberger
-Deco</p></div>
+Deco</p></div></div>
       <div class="cells"><img src="../img/wildlama/c1-01.jpg" alt="Wild Lama campaign" loading="lazy"><img src="../img/wildlama/c1-02.jpg" alt="Wild Lama campaign" loading="lazy"><img src="../img/wildlama/c1-03.jpg" alt="Wild Lama campaign" loading="lazy"><img src="../img/wildlama/c1-04.jpg" alt="Wild Lama campaign" loading="lazy"><img src="../img/wildlama/c1-05.jpg" alt="Wild Lama campaign" loading="lazy"><img src="../img/wildlama/c1-06.jpg" alt="Wild Lama campaign" loading="lazy"><img src="../img/wildlama/c1-07.jpg" alt="Wild Lama campaign" loading="lazy"><img class="w2" src="../img/wildlama/c1-08.jpg" alt="Wild Lama campaign" loading="lazy"><img src="../img/wildlama/c1-09.jpg" alt="Wild Lama campaign" loading="lazy"><img src="../img/wildlama/c1-10.jpg" alt="Wild Lama campaign" loading="lazy"><img src="../img/wildlama/c1-11.jpg" alt="Wild Lama campaign" loading="lazy"><img class="w3" src="../img/wildlama/c1-12.jpg" alt="Wild Lama campaign" loading="lazy"></div>
     </div>
     <div class="campaign g">
-      <div class="info"><p>Campaign 2 — Santiago
-
-A one-day shoot in Santiago across two locations: a warehouse that rents out props, then an abandoned house in a sanctuary on the hill.</p><p>Team:
-
-Creative Direction
-Camila Espinoza
-
-Art Direction
-Antonia Ilic, Fernanda González
-
-Photography
-Andrés Mora
-
-Video
-Rafael Núñez
-
-Models: We Love Models Chile</p></div>
+      <div class="info"><div class="t"><p>Campaign 2 — Santiago</p><p>A one-day shoot in Santiago across two locations: a warehouse that rents out props, then an abandoned house in a sanctuary on the hill.</p></div><div class="t"><p>Team:</p><p>Creative Direction
+Camila Espinoza</p><p>Art Direction
+Antonia Ilic, Fernanda González</p><p>Photography
+Andrés Mora</p><p>Video
+Rafael Núñez</p><p>Models: We Love Models Chile</p></div></div>
       <div class="cells"><img class="w3" src="../img/wildlama/c2-01.jpg" alt="Wild Lama campaign" loading="lazy" style="object-position:50% 31%"><img src="../img/wildlama/c2-02.jpg" alt="Wild Lama campaign" loading="lazy"><img src="../img/wildlama/c2-03.jpg" alt="Wild Lama campaign" loading="lazy"><img src="../img/wildlama/c2-04.jpg" alt="Wild Lama campaign" loading="lazy"><img class="w3 low" src="../img/wildlama/c2-05.jpg" alt="Wild Lama campaign" loading="lazy"><img src="../img/wildlama/c2-06.jpg" alt="Wild Lama campaign" loading="lazy"><img src="../img/wildlama/c2-07.jpg" alt="Wild Lama campaign" loading="lazy"><img src="../img/wildlama/c2-08.jpg" alt="Wild Lama campaign" loading="lazy"><img class="w2" src="../img/wildlama/c2-09.jpg" alt="Wild Lama campaign" loading="lazy"><img src="../img/wildlama/c2-10.jpg" alt="Wild Lama campaign" loading="lazy"></div>
     </div>
   </section>

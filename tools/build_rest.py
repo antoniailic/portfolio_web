@@ -3,14 +3,14 @@ from lib_site import *
 
 # =============================== WILD LAMA ==================================
 css = """    .campaign { row-gap: var(--gutter); }
-    .campaign > .info { --c: 1 / 4; display: flex; flex-direction: column; gap: 32px; }
+    .campaign > .info { --c: 1 / 4; display: flex; flex-direction: column; gap: var(--s-text); }
     .campaign > .info p { white-space: pre-line; }
     .campaign > .cells { --c: 4 / 13; display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: var(--gutter); }
     .cells img { grid-column: span 3; width: 100%; aspect-ratio: 304 / 457; object-fit: cover; background: var(--ph); }
     .cells img.w2 { grid-column: span 6; aspect-ratio: 640 / 457; }
     .cells img.w3 { grid-column: span 9; aspect-ratio: 976 / 457; }
     .cells img.w3.low { aspect-ratio: 976 / 378; }
-    .stats > div { display: flex; flex-direction: column; gap: 16px; }
+    .stats > div { display: flex; flex-direction: column; gap: var(--s-text); }
     .emails img { object-position: top; }
     @media (max-width: 768px) {
       .campaign > .info, .campaign > .cells { --m: 1 / -1; }
