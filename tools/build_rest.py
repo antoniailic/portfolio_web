@@ -24,6 +24,8 @@ css = """    .campaign { row-gap: var(--gutter); }
       /* sin huecos: las sueltas se juntan de a dos y las grandes van solas */
       .cells { grid-auto-flow: row dense; }
       .cells img[src*="c2-10"] { grid-column: span 2; }
+      /* las que van a todo el ancho tienen el mismo alto que las demás */
+      .cells img.w2, .cells img.w3, .cells img.w3.low, .cells img[src*="c2-10"] { aspect-ratio: 622 / 457; }
       /* Instagram: solo la 2 y la 3, una sobre otra */
       img[src*="wildlama/content-1"] { display: none; }
       img[src*="wildlama/content-2"], img[src*="wildlama/content-3"] { --m: 1 / -1 !important; }

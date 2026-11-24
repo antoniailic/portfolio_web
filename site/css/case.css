@@ -296,3 +296,28 @@ body[data-page] > main { flex: 1 0 auto; }
   /* Typefaces en mobile: sin el ejemplo alfabético */
   .spec .abc { display: none; }
 }
+
+/* ==========================================================================
+   MOBILE — portadas también en la HOME (mismo criterio que en las landings)
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Lebor: imagen ampliada y anclada a la izquierda: el texto de la foto queda fuera */
+  .banners img[src*="cover-noviembre"] { width: 150%; height: 150%; max-width: none; right: auto; bottom: auto; left: 0; top: 0; object-position: 0% 0% !important; }
+  /* francisc'andrea: mismo encuadre que la portada */
+  .banners img[src*="franciscandrea/cover"] { object-position: 50% 60% !important; }
+  /* Nebular: la composición del Figma (tres números sobre negro) */
+  .banners img[src*="nebular-composicion"], .case-hero > img[src*="nebular-composicion"],
+  .case-next .next-img img[src*="nebular-composicion"] { content: url("../img/nebular/nebular-hero-mb.jpg"); object-fit: contain; background: #000; }
+  .case-hero > img[src*="nebular-composicion"] { height: calc(100% - 96px); bottom: auto; object-position: 50% 0 !important; }
+  .case-next .next-img img[src*="nebular-composicion"] { height: calc(var(--hero-h) - 96px); }
+  /* Sanguaza y POTRA: imagen más chica, entera, sobre su color de fondo */
+  .banners img[src*="libro-centrado"], .banners img[src*="home-crop"] {
+    top: 50%; bottom: auto; height: auto; transform: translateY(-50%);
+    -webkit-mask-image: linear-gradient(transparent, #000 16%, #000 84%, transparent);
+            mask-image: linear-gradient(transparent, #000 16%, #000 84%, transparent); }
+  .banners img[src*="libro-centrado"] { aspect-ratio: 2400 / 1627; }
+  .banners img[src*="home-crop"] { aspect-ratio: 2400 / 1161; }
+  .home-stage { transition: background-color .6s ease; }
+  .home-stage:has(.banners img.on[src*="libro-centrado"]) { background-color: #3a55c6; }
+  .home-stage:has(.banners img.on[src*="home-crop"]) { background-color: #f6f6f6; }
+}

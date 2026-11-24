@@ -30,6 +30,14 @@ css = """    img.mb-only { display: none; }
       .swatches .chip { height: auto; min-height: 0; aspect-ratio: 3 / 2; }
       /* art direction: recorte de la composición hacia abajo (como en el Figma) */
       img.dk-only { display: none; } img.mb-only { display: block; }
+      /* Instagram today: una sobre otra, sin los íconos de arriba ni la barra de abajo, para que se lea como un solo feed */
+      .media:has(> img[src*="franciscandrea/instagram"]) { row-gap: 0; }
+      img[src*="franciscandrea/instagram"] { --m: 1 / -1 !important; --r: 1233 / 2101 !important; object-fit: cover; object-position: 50% 76%; }
+      /* specimen: más aire, sin el texto de muestra y "Diseño floral" más grande */
+      .fa-spec { padding-block: 64px !important; }
+      .fa-spec .sample { display: none; }
+      .fa-spec .big { font-size: 84px !important; line-height: .92 !important; margin-block: 24px 8px; }
+      .fa-spec .row2 + .row2, .fa-spec .c3.row2 { margin-top: 48px; }
     }"""
 sw = [("#ece1d5", "1 / 4", "Light neutral"), ("#a5a598", "4 / 6", "Light neutral"), ("#20201a", "6 / 9", "Dark"), ("#4b3f1b", "9 / 11", "Dark earth"), ("#4e1003", "11 / 12", "Wine"), ("#bd850a", "12 / 13", "Dry yellow")]
 swatches = "\n".join(f'      <div style="--c: {c}"><div class="chip" style="background:{h}"></div><p>{n}<br>{h.upper()}</p></div>' for h, c, n in sw)
@@ -37,7 +45,7 @@ spec_fa = f'''    <div class="spec g fa-spec">
       <div class="rule"></div>
       <p class="caps c1 row1">Type specimen</p><p class="caps c2 row1">Cormorant Upright — display</p><p class="caps c3 row1">Roboto Mono — text</p>
       <p class="corm big row2" style="font-size:calc(var(--fs-display) * 1.857); line-height:.9; letter-spacing:-.01em; font-weight:600">Diseño floral</p>
-      <div class="c3 row2" style="display:flex; flex-direction:column; gap:12px; --c: 9 / 12"><p style="font-size:14px; line-height:1.6">The project is born from the contemplation of the ephemeral: that instant when a flower reaches its highest point of beauty before fading.</p><p class="caps s">Roboto Mono Regular · 14 / 22</p><p style="font-size:11px; line-height:16px">Why Roboto Mono: it needed to be easy to master and available across platforms, since she would be creating her own content and wanted the system to be easy to apply.</p></div>
+      <div class="c3 row2" style="display:flex; flex-direction:column; gap:12px; --c: 9 / 12"><p class="sample" style="font-size:14px; line-height:1.6">The project is born from the contemplation of the ephemeral: that instant when a flower reaches its highest point of beauty before fading.</p><p class="caps s">Roboto Mono Regular · 14 / 22</p><p style="font-size:11px; line-height:16px">Why Roboto Mono: it needed to be easy to master and available across platforms, since she would be creating her own content and wanted the system to be easy to apply.</p></div>
       <p class="caps s c1 row3">Cormorant Upright semibold</p>
       <div class="rule gap"></div>
       <p class="corm c1 row3" style="--c: 1 / 9; font-size:26px; line-height:1.25">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ<br>abcdefghijklmnñopqrstuvwxyz 0123456789</p>
@@ -105,6 +113,12 @@ css = """    .lists { position: relative; }
       .lists .in > p.artists { width: 100% !important; white-space: nowrap; text-align: center !important; font-size: min(34px, 6.6vw); }
       /* "Seven artists…" centrado */
       .lists .side { align-self: center; }
+      /* más aire en torno a los nombres y a "Seven artists…" */
+      .lists, .lists .in { gap: 56px !important; }
+      .lists { padding-block: 32px; }
+      /* specimen: Otto (sustituta) más gruesa y Geist en Light, como en el Figma */
+      .neb-spec .otto { font-weight: 700; }
+      .neb-spec p:not(.caps):not(.otto) { font-weight: 300; }
     }
     @media (max-width: 1100px) {
       .lists { height: auto; display: flex; flex-direction: column; gap: 24px; }

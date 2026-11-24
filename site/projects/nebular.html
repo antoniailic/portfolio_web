@@ -43,6 +43,12 @@
       .lists .in > p.artists { width: 100% !important; white-space: nowrap; text-align: center !important; font-size: min(34px, 6.6vw); }
       /* "Seven artists…" centrado */
       .lists .side { align-self: center; }
+      /* más aire en torno a los nombres y a "Seven artists…" */
+      .lists, .lists .in { gap: 56px !important; }
+      .lists { padding-block: 32px; }
+      /* specimen: Otto (sustituta) más gruesa y Geist en Light, como en el Figma */
+      .neb-spec .otto { font-weight: 700; }
+      .neb-spec p:not(.caps):not(.otto) { font-weight: 300; }
     }
     @media (max-width: 1100px) {
       .lists { height: auto; display: flex; flex-direction: column; gap: 24px; }
