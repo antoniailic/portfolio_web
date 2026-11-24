@@ -233,7 +233,7 @@ about = f'''  <main class="about-page g">
       </section>
       <section class="exp">
         <h2 class="label">Experience</h2>
-{item("Wizards Only — Creative Designer", "Creative studio, Barcelona · Internship · 2026 – present", "Art direction support on shoots: moodboards, styling, visual references and creative supervision. Design of social content systems following each brand's identity. Video editing for Reels and Stories, and photo retouching for campaigns. Newsletter design and website updates. Clients include Franca Projects and Lebor Gabala.")}
+{item("Wizards Only — Creative Designer", "Creative studio, Barcelona · 2026 – present", "Art direction support on shoots: moodboards, styling, visual references and creative supervision. Design of social content systems following each brand's identity. Video editing for Reels and Stories, and photo retouching for campaigns. Newsletter design and website updates. Clients include Franca Projects and Lebor Gabala.")}
 {item("Wild Lama — Brand designer", "Sustainable lifestyle brand, Chile · March 2024 – August 2025", "Marketing strategy and brand positioning development. Art direction and fashion campaign production. Graphic design of digital and physical pieces.")}
 {item("Falabella Art Direction Team — Intern", "Major Latin American retail and department store chain · February 2023 – March 2024", "Design of graphic pieces for digital and physical media. Development of key visuals for campaigns. Fashion production assistance for shootings.")}
 {item("Falabella — Web designer", "Major Latin American retail and department store chain · April 2021 – March 2024", "Mailing design. Media strategy. Landing pages and key visuals. Campaign lead for select graphic campaigns.")}
