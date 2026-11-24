@@ -251,7 +251,7 @@ contact_css = """    .contact-page { padding-block: 160px; row-gap: 56px; } /* t
     .contact-page .data a:hover { text-decoration: underline; text-underline-offset: 3px; }
     @media (max-width: 768px) { .contact-page { padding-top: 96px; row-gap: 32px; } .contact-page .data > div { grid-column: 1 / -1 !important; margin-bottom: 16px; } }"""
 contact = '''  <main class="contact-page g">
-    <h1 class="display">If you have a project, a collaboration, or an idea in development, contact me!</h1>
+    <h1 class="display">If you have a project, a&nbsp;collaboration, or an idea in&nbsp;development, contact me!</h1>
     <p>I work on identity, editorial, branding, web, and art direction projects, participating in both the conceptual definition and the visual construction.</p>
     <div class="data">
       <div><p>Email</p><a href="mailto:antonia.ilic@gmail.com">antonia.ilic@gmail.com</a></div>
