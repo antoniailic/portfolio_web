@@ -18,6 +18,9 @@
     .cv .edu { grid-column: 1 / 5; } .cv .exp { grid-column: 6 / 11; }
     .cv .item { display: flex; flex-direction: column; gap: 4px; }
     .cv .item p:first-child { font-weight: 600; } /* lugar y puesto en negrita */
+    .cv .item ul { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+    .cv .item li { padding-left: 1em; text-indent: -1em; }
+    .cv .item li::before { content: "–"; display: inline-block; width: 1em; text-indent: 0; }
     @media (max-width: 768px) {
       .about-page { padding-top: 96px; }
       .about-page .display, .about-page .t { --m: 1 / -1; }
@@ -43,16 +46,16 @@
         <h2 class="label">Education</h2>
         <div class="item"><p>Elisava</p><p>Master's Degree in Editorial Design · September 2025 – July 2026</p></div>
         <div class="item"><p>University of the Arts London</p><p>Art Direction Course · 2022</p></div>
-        <div class="item"><p>Pontificia Universidad Católica de Chile</p><p>Degree in Integral Design · July 2015 – November 2020</p><p>Holistic, critical, and interdisciplinary design approach, with a focus on sustainability and social responsibility.</p></div>
+        <div class="item"><p>Pontificia Universidad Católica de Chile</p><p>Degree in Integral Design · July 2015 – November 2020</p><ul><li>Holistic, critical, and interdisciplinary design approach, with a focus on sustainability and social responsibility</li></ul></div>
       </section>
       <section class="exp">
         <h2 class="label">Experience</h2>
-        <div class="item"><p>Wizards Only — Creative Designer</p><p>Creative studio, Barcelona · Internship · 2026 – present</p><p>Art direction support on shoots: moodboards, styling, visual references and creative supervision. Design of social content systems following each brand's identity. Video editing for Reels and Stories, and photo retouching for campaigns. Newsletter design and website updates. Clients include Franca Projects and Lebor Gabala.</p></div>
-        <div class="item"><p>Wild Lama — Brand designer</p><p>Sustainable lifestyle brand, Chile · March 2024 – August 2025</p><p>Marketing strategy and brand positioning development. Art direction and fashion campaign production. Graphic design of digital and physical pieces.</p></div>
-        <div class="item"><p>Falabella Art Direction Team — Intern</p><p>Major Latin American retail and department store chain · February 2023 – March 2024</p><p>Design of graphic pieces for digital and physical media. Development of key visuals for campaigns. Fashion production assistance for shootings.</p></div>
-        <div class="item"><p>Falabella — Web designer</p><p>Major Latin American retail and department store chain · April 2021 – March 2024</p><p>Mailing design, media strategy, landing pages, key visuals, and campaign lead for select graphic campaigns.</p></div>
-        <div class="item"><p>Fundación Paiz de Guatemala, Bienal 22° — Graphic designer</p><p>Cultural foundation, contemporary art biennial · October 2019 – May 2021</p><p>Design of graphic pieces for digital media. Editorial design of the biennial catalogue. Editorial design of the biennial atlas. Web design.</p></div>
-        <div class="item"><p>Enrique Concha &amp; Co. — Intern</p><p>Interior design and architecture firm, Chile · January 2019</p><p>Design of the architecture and interior design projects portfolio.</p></div>
+        <div class="item"><p>Wizards Only — Creative Designer</p><p>Creative studio, Barcelona · Internship · 2026 – present</p><ul><li>Art direction support on shoots: moodboards, styling, visual references and creative supervision</li><li>Design of social content systems following each brand's identity</li><li>Video editing for Reels and Stories, and photo retouching for campaigns</li><li>Newsletter design and website updates</li><li>Clients include Franca Projects and Lebor Gabala</li></ul></div>
+        <div class="item"><p>Wild Lama — Brand designer</p><p>Sustainable lifestyle brand, Chile · March 2024 – August 2025</p><ul><li>Marketing strategy and brand positioning development</li><li>Art direction and fashion campaign production</li><li>Graphic design of digital and physical pieces</li></ul></div>
+        <div class="item"><p>Falabella Art Direction Team — Intern</p><p>Major Latin American retail and department store chain · February 2023 – March 2024</p><ul><li>Design of graphic pieces for digital and physical media</li><li>Development of key visuals for campaigns</li><li>Fashion production assistance for shootings</li></ul></div>
+        <div class="item"><p>Falabella — Web designer</p><p>Major Latin American retail and department store chain · April 2021 – March 2024</p><ul><li>Mailing design</li><li>Media strategy</li><li>Landing pages and key visuals</li><li>Campaign lead for select graphic campaigns</li></ul></div>
+        <div class="item"><p>Fundación Paiz de Guatemala, Bienal 22° — Graphic designer</p><p>Cultural foundation, contemporary art biennial · October 2019 – May 2021</p><ul><li>Design of graphic pieces for digital media</li><li>Editorial design of the biennial catalogue</li><li>Editorial design of the biennial atlas</li><li>Web design</li></ul></div>
+        <div class="item"><p>Enrique Concha &amp; Co. — Intern</p><p>Interior design and architecture firm, Chile · January 2019</p><ul><li>Design of the architecture and interior design projects portfolio</li></ul></div>
       </section>
     </div>
   </main>

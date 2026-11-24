@@ -177,7 +177,12 @@ def simple(fname, title, desc, body, css, current):
 '''
     open(f"{ROOT}/{fname}", "w").write(html_)
 def item(a, b, c=None):
-    x = f"<p>{c}</p>" if c else ""
+    # La descripción va en punteos: una frase por línea
+    import re as _re
+    x = ""
+    if c:
+        parts = [p.strip().rstrip(".") for p in _re.split(r"(?<=\.)\s+", c) if p.strip()]
+        x = "<ul>" + "".join(f"<li>{p}</li>" for p in parts) + "</ul>"
     return f'        <div class="item"><p>{a}</p><p>{b}</p>{x}</div>'
 about_css = """    .about-page { padding-block: 160px var(--s-section); row-gap: var(--s-head); }
     .about-page .display { --c: 1 / 9; }
@@ -189,6 +194,9 @@ about_css = """    .about-page { padding-block: 160px var(--s-section); row-gap:
     .cv .edu { grid-column: 1 / 5; } .cv .exp { grid-column: 6 / 11; }
     .cv .item { display: flex; flex-direction: column; gap: 4px; }
     .cv .item p:first-child { font-weight: 600; } /* lugar y puesto en negrita */
+    .cv .item ul { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+    .cv .item li { padding-left: 1em; text-indent: -1em; }
+    .cv .item li::before { content: "–"; display: inline-block; width: 1em; text-indent: 0; }
     @media (max-width: 768px) {
       .about-page { padding-top: 96px; }
       .about-page .display, .about-page .t { --m: 1 / -1; }
@@ -212,7 +220,7 @@ about = f'''  <main class="about-page g">
 {item("Wizards Only — Creative Designer", "Creative studio, Barcelona · Internship · 2026 – present", "Art direction support on shoots: moodboards, styling, visual references and creative supervision. Design of social content systems following each brand's identity. Video editing for Reels and Stories, and photo retouching for campaigns. Newsletter design and website updates. Clients include Franca Projects and Lebor Gabala.")}
 {item("Wild Lama — Brand designer", "Sustainable lifestyle brand, Chile · March 2024 – August 2025", "Marketing strategy and brand positioning development. Art direction and fashion campaign production. Graphic design of digital and physical pieces.")}
 {item("Falabella Art Direction Team — Intern", "Major Latin American retail and department store chain · February 2023 – March 2024", "Design of graphic pieces for digital and physical media. Development of key visuals for campaigns. Fashion production assistance for shootings.")}
-{item("Falabella — Web designer", "Major Latin American retail and department store chain · April 2021 – March 2024", "Mailing design, media strategy, landing pages, key visuals, and campaign lead for select graphic campaigns.")}
+{item("Falabella — Web designer", "Major Latin American retail and department store chain · April 2021 – March 2024", "Mailing design. Media strategy. Landing pages and key visuals. Campaign lead for select graphic campaigns.")}
 {item("Fundación Paiz de Guatemala, Bienal 22° — Graphic designer", "Cultural foundation, contemporary art biennial · October 2019 – May 2021", "Design of graphic pieces for digital media. Editorial design of the biennial catalogue. Editorial design of the biennial atlas. Web design.")}
 {item("Enrique Concha &amp; Co. — Intern", "Interior design and architecture firm, Chile · January 2019", "Design of the architecture and interior design projects portfolio.")}
       </section>
