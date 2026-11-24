@@ -110,9 +110,9 @@ css = """    .pillars5 > div { display: flex; flex-direction: column; gap: 12px;
     .po-spec { background: #cccaff; color: #331a2a; font-family: "Mona Sans", sans-serif; }
     .ppal { column-gap: 0; }
     .ppal > div { aspect-ratio: 288 / 480; position: relative; }
-    .ppal p { position: absolute; left: 9.15%; bottom: 20px; font-family: var(--serif-mono); font-size: 14px; }
+    .ppal p { position: absolute; left: 9.15%; bottom: 20px; }
     .phones img { object-fit: contain; }
-    @media (max-width: 768px) { .ppal > div { aspect-ratio: 1 / 2; } .ppal p { font-size: 10px; } }"""
+    @media (max-width: 768px) { .ppal > div { aspect-ratio: 1 / 2; } }"""
 pil = [("Finanzas", "finanzas"), ("Comunicación", "comunicacion"), ("Derechos", "derechos"), ("Creatividad", "creatividad"), ("Biomindset", "biomindset")]
 pillars = "\n".join(f'      <div style="--c: {2 + i * 2} / {4 + i * 2}; --m: span 2"><p class="label-low">{n}</p><img src="../{im("potra/obj-" + f)}" alt="" loading="lazy"></div>' for i, (n, f) in enumerate(pil))
 spec_po = '''    <div class="spec g po-spec">

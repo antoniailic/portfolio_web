@@ -14,7 +14,6 @@ css = """    .logo { position: relative; overflow: hidden; }
     .swatches > div { display: flex; flex-direction: column; gap: var(--s-text); }
     .swatches > div:not(:last-child) .chip { margin-right: calc(-1 * var(--gutter)); }
     .swatches .chip { aspect-ratio: auto; height: calc(100vw * 512 / 1440); min-height: 160px; }
-    .swatches p { font-family: var(--serif-mono); font-size: 14px; line-height: 1.2; }
     .fa-spec { background: #ece1d5; color: #20201a; font-family: "Roboto Mono", monospace; }
     .fa-spec .corm { font-family: "Cormorant Upright", serif; }
     @media (max-width: 768px) {
@@ -52,7 +51,7 @@ body += chapter(head("02  logo System design"), f'''    <div class="marks g">
 body += chapter(head("03  Applications", text=["Business cards, stationery, graphics and the flower presses themselves. Mockups until the final photos arrive."]),
     media([img(f"franciscandrea/application-{i}", f"{1 + (i - 1) * 4} / {5 + (i - 1) * 4}", "span 4", "467 / 702", "Application") for i in (1, 2, 3)], "bleed"),
     media([img("franciscandrea/stationery-1", "1 / 7", "1 / 3", "711 / 459", "Stationery"), img("franciscandrea/stationery-2", "7 / 13", "3 / 5", "711 / 459", "Stationery")], "bleed"))
-body += chapter(head("04  colors"), f'    <div class="swatches g">\n{swatches}\n    </div>')
+body += chapter(head("04  colors", text=["The colours were chosen as a complement to the flowers that will appear in the brand's content. They don't seek to compete with them."]), f'    <div class="swatches g">\n{swatches}\n    </div>')
 body += chapter(head("05  Art direction", text=["The art direction I set for the brand's visual world: colour, light and the way flowers are shown."]),
     media([img("franciscandrea/art-direction", "1 / -1", None, "1440 / 700", "Art direction")], "bleed"))
 body += chapter(head("06  Instagram today"), media([img("franciscandrea/instagram-1", "2 / 6", "1 / 3", "416 / 751", "francisc'andrea Instagram feed"), img("franciscandrea/instagram-2", "8 / 12", "3 / 5", "416 / 751", "francisc'andrea Instagram feed")]))
