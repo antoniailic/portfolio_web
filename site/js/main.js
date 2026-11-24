@@ -7,7 +7,7 @@ const PROJECTS = [
   { slug: "franciscandrea",  cat: "Brand identity", title: "francisc'andrea",  img: "img/franciscandrea/cover.jpg",          pos: "50% 40%" },
   { slug: "nebular",         cat: "Editorial",      title: "Nebular",          img: "img/nebular/nebular-2.jpg",             pos: "50% 50%" },
   { slug: "wild-lama",       cat: "Art direction",  title: "Wild Lama",        img: "img/wildlama/wl-25-q1-525.jpg",         pos: "50% 14.7%" },
-  { slug: "sanguaza",        cat: "Editorial",      title: "Una pizca de sangre y un vaso de sanguaza", img: "img/sanguaza/libro-post-2.jpg", pos: "95% 50%" },
+  { slug: "sanguaza",        cat: "Editorial",      title: "Una pizca de sangre y un vaso de sanguaza", img: "img/sanguaza/libro-centrado.jpg", pos: "50% 45%" },
   { slug: "potra",           cat: "Web design",     title: "POTRA",            img: "img/potra/home.jpg",                    pos: "50% 50%" },
 ];
 

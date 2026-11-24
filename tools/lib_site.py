@@ -87,6 +87,9 @@ def img(path, c, m=None, r=None, alt="", pos=None, extra_style="", cls=""):
 
 def media(items, cls="", style=""):
     st = f' style="{style}"' if style else ""
+    # Una sola imagen o video que no ocupa todo el ancho: módulo "solo", con blanco alrededor al centrarlo en pantalla
+    if len(items) == 1 and "bleed" not in cls and "--c: 1 / -1" not in items[0] and "--c:1 / -1" not in items[0]:
+        cls = (cls + " solo").strip()
     return f'    <div class="media g {cls}"{st}>\n' + "\n".join(items) + '\n    </div>'
 
 def chapter(*blocks, top=False, cls="", style=""):

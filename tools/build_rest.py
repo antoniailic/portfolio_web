@@ -63,7 +63,7 @@ body += chapter(head("04  Content strategy", "Storytelling-based marketing strat
 body += chapter(head("05  Email marketing", text=["Email campaigns in Klaviyo maintained a ROAS above 20 across key launches."]),
     media([img(f"wildlama/email-{i}", f"{1 + (i - 1) * 4} / {5 + (i - 1) * 4}", ["1 / 3", "3 / 5", "1 / 3"][i - 1], r, "Email campaign") for i, r in ((1, "346 / 1672"), (2, "346 / 1739"), (3, "346 / 1783"))], "emails", "align-items:start"))
 body += "  </main>\n"
-body += nxt("sanguaza", "sanguaza/libro-post-2", "Editorial", "Una pizca de sangre y un vaso de sanguaza", "60% 50%")
+body += nxt("sanguaza", "sanguaza/libro-centrado", "Editorial", "Una pizca de sangre y un vaso de sanguaza", "50% 45%")
 write("wild-lama", page("Wild Lama", "Art direction, campaigns, content strategy and email marketing for Wild Lama.", "wild-lama", body, "#ffffff", css=css))
 
 # ================================ SANGUAZA ==================================
@@ -81,7 +81,7 @@ spec_sg = '''    <div class="spec g sg-spec">
       <p class="row3" style="--c: 1 / 9; font-size:26px; line-height:1.25; font-weight:300">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ<br>abcdefghijklmnñopqrstuvwxyz 0123456789</p>
       <p class="c3 row3" style="font-size:12px; line-height:1.5">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ abcdefghijklmnñopqrstuvwxyz 0123456789 &amp; ¿? ¡! —</p>
     </div>'''
-body = hero("sanguaza/libro-post-2", "A Pinch of Blood and a Glass of Sanguaza — the book", "Editorial", "Una pizca de sangre y un vaso de sanguaza", "95% 50%")
+body = hero("sanguaza/libro-centrado", "A Pinch of Blood and a Glass of Sanguaza — the book", "Editorial", "Una pizca de sangre y un vaso de sanguaza", "50% 45%")
 body += ficha([("Title", "A Pinch of Blood and a Glass of Sanguaza"), ("Context", "Master's Degree in Editorial Design, ELISAVA"), ("Year", "September 2025 – June 2026"), ("Editorial direction, art direction &amp; design", "Antonia Ilic Bromberg &amp; Francesca Garre Buscaglia"), ("Printing", "Tecnoart, Barcelona")])
 body += "  <main>\n"
 body += chapter(head("01  Intro", "Across history, the one thing we have consistently maintained is the need to create rituals that bring us together as a society."),
@@ -90,14 +90,14 @@ body += chapter(head("01  Intro", "Across history, the one thing we have consist
 body += chapter(head("02  The book"),
     pair(("The architecture of ritual", ["The graphic concept reflects the \"architecture of ritual\" through the rhythm of the book. Drawing on Arnold van Gennep's structure of rites of passage, the reading flow alternates between continuity and interruption, translating the process of separation, transformation, and reintegration into the editorial experience."]),
          ("Four reading levels", ["The book is structured through four reading levels. The editorial voice guides the reader through chapter introductions, while the essays provide the theoretical framework. Poems and silver-printed images offer an experiential reading of ritual, interrupting the academic discourse with a more intimate, symbolic, and emotional perspective. Like ritual experiences, whose memories often remain fragmented and elusive, the images move away from literal representation to evoke what cannot be fully explained."])),
-    media(['      <video src="../img/sanguaza/book.mp4" poster="../img/sanguaza/book.jpg" muted loop playsinline autoplay preload="metadata" aria-label="The book" style="--c: 4 / 10; --m: 1 / -1; --r: 1080 / 1350"></video>']))
+    media(['      <video src="../img/sanguaza/libro-post-video.mp4" poster="../img/sanguaza/libro-post-video.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Pages of the book being turned" style="--c: 5 / 9; --m: 1 / -1; --r: 1080 / 1350"></video>']))
 body += chapter(head("03  the ink", text=["The images of rituals are printed in silver ink. Some rituals are so intense that they are hard to remember clearly: like ritual experiences, whose memories often remain fragmented and elusive, the silver images move away from literal representation to open a less structured, almost dreamlike space, evoking what cannot be fully explained. The poems do the same at certain moments of the book."]),
     media([img("sanguaza/libro-post-brillo", "5 / 9", "1 / -1", "464 / 580", "Silver ink printed image")]))
 body += f'''  <section class="paper">
 {head("04  the paper", extra='      <p style="--c: 1 / 7">Curious Matter Adiron Blue, 270 g/m² (Arjowiggins).</p>')}
   </section>
 '''
-body += chapter(head("05  Typeface"), spec_sg, media(['      <video src="../img/sanguaza/libro-post-video.mp4" poster="../img/sanguaza/libro-post-video.jpg" muted loop playsinline autoplay preload="metadata" aria-label="The book" style="--c: 5 / 9; --m: 1 / -1; --r: 1080 / 1350"></video>']), top=True)
+body += chapter(head("05  Typeface"), spec_sg, top=True)
 body += chapter(head("06  Credits"), credits(None, None, [("Editorial direction, art direction &amp; design", "Antonia Ilic Bromberg, Francesca Garre Buscaglia"), ("Research &amp; archives", "Antonia Ilic Bromberg, Francesca Garre Buscaglia"), ("Typeface", "Source Serif 4, by Frank Grießhammer"), ("Paper", "Munken Print Cream 80 g/m², Curious Matter Adiron Blue 270 g/m²"), ("Printing", "Tecnoart, Barcelona, 2026"), ("Acknowledgements", "Pol Nadal (Studiopol), Josep Román (Affaire), Laura Meseguer, Ane Guerra, María Dolores Soriano, Marc Panero")], wide=True))
 body += "  </main>\n"
 body += nxt("potra", "potra/home", "Web design", "POTRA", "50% 50%")

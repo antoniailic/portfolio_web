@@ -177,3 +177,5 @@ body.go-prev, body.go-prev *, body.go-next, body.go-next * { cursor: none; }
 @media (max-width: 768px) { .spec { padding-block: 40px; } }
 /* Specimens sin color propio (mismo fondo que la página): sin aire interior extra */
 .neb-spec, .sg-spec { padding-block: 0; }
+/* Imagen o video solo: al quedar centrado en pantalla, todo alrededor es fondo */
+.media.solo { min-height: calc(100svh - 2 * var(--s-block)); align-content: center; }
