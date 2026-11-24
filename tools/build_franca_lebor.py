@@ -157,6 +157,6 @@ body += chapter(head("06  On set"), media([img("lebor/onset-7537", "3 / 6", "1 /
 body += chapter(head("07  Result &amp; Credits"), credits(None, "A modular system for vertical formats that alternates full-bleed editorial imagery, colour-treated statements and lookbook line-ups. AW26 content rolling out on Lebor Gabala's Instagram from November 2026.",
     [("Client", "Lebor Gabala"), ("Studio", "Wizards Only, Barcelona"), ("Content plan, social graphics, shoot assistance", "Antonia Ilic Bromberg"), ("Photography", "Nereis Ferrer"), ("Creative production", "Alba Mitchell")]))
 body += "  </main>\n"
-body += nxt("franciscandrea", "franciscandrea/photo-2026-06-24", "Brand identity", "francisc'andrea", "50% 48%")
+body += nxt("franciscandrea", "franciscandrea/cover", "Brand identity", "francisc'andrea", "50% 40%")
 write("lebor-gabala", page("Lebor Gabala — AW26", "AW26 art direction, content plan and social graphics for Lebor Gabala.", "lebor-gabala", body, "#fdfbf9", css=css))
 print("ok")

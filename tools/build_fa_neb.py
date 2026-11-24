@@ -47,16 +47,17 @@ body += chapter(head("02  logo System design"), f'''    <div class="marks g">
       <div class="var">{logo("franciscandrea/monogram", 208, 264, "left:-25.42%; top:.79%; width:125.35%; height:98.48%")}<p>Monogram (fcá). The petal, or apostrophe, becomes the core of our isotypes: first as a subtle monogram that keeps the name readable in code.</p></div>
       <div class="var">{logo("franciscandrea/minimal-mark", 162, 246, "left:-60.1%; top:-2.81%; width:159.91%; height:105.69%")}<p>Minimal mark. As an even more abstract form, where the initial (f) and the petal-apostrophe are enough to evoke the entire visual and conceptual universe of the brand.</p></div>
     </div>''')
-body += chapter(head("03  The elements"), media([img("franciscandrea/element-flower", "1 / 4", "1 / 3", "1 / 1", "Pressed flower element"), img("franciscandrea/dsc07748", "7 / 12", "3 / 5", "528 / 396", "Petal element")]))
-body += chapter(head("04  Applications", text=["Business cards, stationery, graphics and the flower presses themselves. Mockups until the final photos arrive."]),
+# 03 The elements (flores sueltas) fuera por ahora: Antonia hará una animación con ellas.
+# body += chapter(head("03  The elements"), media([img("franciscandrea/element-flower", "1 / 4", "1 / 3", "1 / 1", "Pressed flower element"), img("franciscandrea/dsc07748", "7 / 12", "3 / 5", "528 / 396", "Petal element")]))
+body += chapter(head("03  Applications", text=["Business cards, stationery, graphics and the flower presses themselves. Mockups until the final photos arrive."]),
     media([img(f"franciscandrea/application-{i}", f"{1 + (i - 1) * 4} / {5 + (i - 1) * 4}", "span 4", "467 / 702", "Application") for i in (1, 2, 3)], "bleed"),
     media([img("franciscandrea/stationery-1", "1 / 7", "1 / 3", "711 / 459", "Stationery"), img("franciscandrea/stationery-2", "7 / 13", "3 / 5", "711 / 459", "Stationery")], "bleed"))
-body += chapter(head("05  colors"), f'    <div class="swatches g">\n{swatches}\n    </div>')
-body += chapter(head("06  Art direction", text=["The art direction I set for the brand's visual world: colour, light and the way flowers are shown."]),
+body += chapter(head("04  colors"), f'    <div class="swatches g">\n{swatches}\n    </div>')
+body += chapter(head("05  Art direction", text=["The art direction I set for the brand's visual world: colour, light and the way flowers are shown."]),
     media([img("franciscandrea/art-direction", "1 / -1", None, "1440 / 700", "Art direction")], "bleed"))
-body += chapter(head("07  Instagram today"), media([img("franciscandrea/instagram-1", "2 / 6", "1 / 3", "416 / 751", "francisc'andrea Instagram feed"), img("franciscandrea/instagram-2", "8 / 12", "3 / 5", "416 / 751", "francisc'andrea Instagram feed")]))
-body += chapter(head("08  Typeface", low=None, extra='      <p>Cormorant Upright · Roboto Mono</p>').replace('row-gap: var(--s-head)', ''), spec_fa)
-body += chapter(head("09  Result &amp; Credits"), credits("Result", "The identity is in use across business cards, stationery, graphics and the flower presses themselves, carrying the brand onto the product. Website currently in development.",
+body += chapter(head("06  Instagram today"), media([img("franciscandrea/instagram-1", "2 / 6", "1 / 3", "416 / 751", "francisc'andrea Instagram feed"), img("franciscandrea/instagram-2", "8 / 12", "3 / 5", "416 / 751", "francisc'andrea Instagram feed")]))
+body += chapter(head("07  Typeface", low=None, extra='      <p>Cormorant Upright · Roboto Mono</p>').replace('row-gap: var(--s-head)', ''), spec_fa)
+body += chapter(head("08  Result &amp; Credits"), credits("Result", "The identity is in use across business cards, stationery, graphics and the flower presses themselves, carrying the brand onto the product. Website currently in development.",
     [("Client", "francisc'andrea"), ("Brand identity", "Antonia Ilic Bromberg"), ("Year", "2025")]))
 body += "  </main>\n"
 body += nxt("nebular", "nebular/nebular-2", "Editorial", "Nebular", "50% 50%")
