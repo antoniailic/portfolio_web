@@ -125,7 +125,7 @@ css = """    .story-row { row-gap: var(--gutter); }
     .story-row > img:nth-of-type(3) { --c: 7 / 9; --m: 1 / 3; }
     .stories { display: flex; flex-direction: column; gap: var(--s-block); }
     .lg-feed { column-gap: 6px; row-gap: 6px; background: #fff; }"""
-feed = ["feed-craft-01", "feed-17", "feed-16", "feed-craft-04", "feed-14", "feed-03", "feed-12", None, "feed-10", "feed-09", "feed-08", "feed-05", "feed-06", "feed-04", "feed-4b", "feed-07", "feed-02", "feed-11"]
+feed = ["feed-craft-01", "feed-17", "feed-16", "feed-craft-04", "feed-14", "feed-03", "feed-12", "feed-noviembre-08", "feed-10", "feed-09", "feed-08", "feed-05", "feed-06", "feed-04", "feed-4b", "feed-07", "feed-02", "feed-11"]
 cells = []
 for i, f in enumerate(feed):
     c = f"{1 + (i % 3) * 4} / {5 + (i % 3) * 4}"
