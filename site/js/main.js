@@ -2,8 +2,8 @@
 
 // Orden de los casos (home, índice y "next").
 const PROJECTS = [
-  { slug: "franca-projects", cat: "Art direction",  title: "Franca Projects",  img: "img/franca/massimo-sanvalentin-1.jpg", pos: "50% 43%" },
-  { slug: "lebor-gabala",    cat: "Art direction",  title: "Lebor Gabala",     img: "img/lebor/cover-noviembre.jpg",        pos: "0% 4.5%" },
+  { slug: "franca-projects", cat: "Art direction",  title: "Franca Projects",  img: "img/franca/massimo-sanvalentin-1.jpg", pos: "0% 43%" },
+  { slug: "lebor-gabala",    cat: "Art direction",  title: "Lebor Gabala",     img: "img/lebor/cover-noviembre.jpg",        pos: "0% 4.6%" },
   { slug: "franciscandrea",  cat: "Brand identity", title: "francisc'andrea",  img: "img/franciscandrea/cover.jpg",          pos: "50% 40%", foot: "#fff" },
   { slug: "nebular",         cat: "Editorial",      title: "Nebular",          img: "img/nebular/nebular-composicion.jpg",             pos: "50% 50%" },
   { slug: "wild-lama",       cat: "Art direction",  title: "Wild Lama",        img: "img/wildlama/wl-25-q1-525.jpg",         pos: "50% 14.7%" },
@@ -68,10 +68,20 @@ if (home) {
   show(0);
   // clic en la imagen (cualquier zona que no sea un enlace) abre el proyecto que se está mostrando
   home.style.cursor = "pointer";
+  // al entrar a un proyecto: se desvanece todo menos la imagen (mismo recorte que la portada) y recién ahí cambia de página
+  const enter = href => {
+    if (document.body.classList.contains("entering")) return;
+    document.body.classList.add("entering");
+    setTimeout(() => { location.href = href; }, matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 320);
+  };
   home.addEventListener("click", e => {
-    if (e.target.closest("a, button")) return;
-    location.href = `projects/${PROJECTS[current].slug}.html`;
+    if (e.defaultPrevented) return;                  // mobile: el primer toque solo cambia la imagen
+    const a = e.target.closest("a");
+    if (a && !a.closest(".index")) return;            // menú: navegación normal
+    e.preventDefault();
+    enter(a ? a.href : `projects/${PROJECTS[current].slug}.html`);
   });
+  addEventListener("pageshow", e => { if (e.persisted) document.body.classList.remove("entering"); });
 
   document.addEventListener("keydown", e => {
     if (e.key === "ArrowRight") show(current + 1);
