@@ -91,13 +91,55 @@ const slug = document.body.dataset.project;
 const idx = PROJECTS.findIndex(p => p.slug === slug);
 if (idx > -1 && matchMedia("(hover: hover) and (pointer: fine)").matches) {
   const go = d => { location.href = `${PROJECTS[(idx + d + PROJECTS.length) % PROJECTS.length].slug}.html`; };
-  const skip = el => el.closest("a, button, input, textarea, select, video, nav, [data-carousel], .site-nav");
+  const skip = el => el.closest("a, button, input, textarea, select, nav, [data-carousel], .site-nav");
   const side = e => e.clientX < innerWidth / 3 ? -1 : e.clientX > innerWidth * 2 / 3 ? 1 : 0;
+  // Flecha propia: blanca sobre fondo oscuro, negra sobre fondo claro
+  const arrow = document.createElement("div");
+  arrow.className = "nav-arrow";
+  arrow.innerHTML = '<svg width="14" height="20" viewBox="0 0 14 20"><path d="m4 3 7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>';
+  document.body.appendChild(arrow);
+  const px = document.createElement("canvas"); px.width = px.height = 1;
+  const pctx = px.getContext("2d", { willReadFrequently: true });
+  const lum = (r, g, b) => (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+  const parseRGB = c => { const m = c.match(/[\d.]+/g); return m ? m.map(Number) : null; };
+  function sampleMedia(el, x, y) {
+    const nw = el.naturalWidth || el.videoWidth, nh = el.naturalHeight || el.videoHeight;
+    if (!nw || !nh) return null;
+    const r = el.getBoundingClientRect(), cs = getComputedStyle(el);
+    let sx, sy;
+    if (cs.objectFit === "cover" || cs.objectFit === "contain") {
+      const k = (cs.objectFit === "cover" ? Math.max : Math.min)(r.width / nw, r.height / nh);
+      const [px0, py0] = cs.objectPosition.split(" ").map(v => parseFloat(v) / 100);
+      const ox = (r.width - nw * k) * (isNaN(px0) ? .5 : px0), oy = (r.height - nh * k) * (isNaN(py0) ? .5 : py0);
+      sx = (x - r.left - ox) / k; sy = (y - r.top - oy) / k;
+    } else { sx = (x - r.left) * nw / r.width; sy = (y - r.top) * nh / r.height; }
+    if (sx < 0 || sy < 0 || sx >= nw || sy >= nh) return null;
+    try { pctx.drawImage(el, sx, sy, 1, 1, 0, 0, 1, 1); const d = pctx.getImageData(0, 0, 1, 1).data; return d[3] > 20 ? lum(d[0], d[1], d[2]) : null; }
+    catch (_) { return null; }
+  }
+  function brightnessAt(x, y) {
+    for (const el of document.elementsFromPoint(x, y)) {
+      if (el === arrow || arrow.contains(el)) continue;
+      if (el.matches("img, video")) { const l = sampleMedia(el, x, y); if (l !== null) return l; continue; }
+      const c = parseRGB(getComputedStyle(el).backgroundColor);
+      if (c && (c[3] === undefined || c[3] > .5)) return lum(c[0], c[1], c[2]);
+    }
+    return 1;
+  }
+  let pend = null;
   document.addEventListener("mousemove", e => {
     const s = skip(e.target) ? 0 : side(e);
     document.body.classList.toggle("go-prev", s === -1);
     document.body.classList.toggle("go-next", s === 1);
+    arrow.classList.toggle("on", s !== 0);
+    arrow.classList.toggle("prev", s === -1);
+    arrow.style.transform = `translate(${e.clientX - 7}px, ${e.clientY - 10}px)`;
+    if (s && !pend) pend = requestAnimationFrame(() => {
+      pend = null;
+      arrow.style.color = brightnessAt(e.clientX, e.clientY) < .5 ? "#fff" : "#000";
+    });
   }, { passive: true });
+  document.addEventListener("mouseleave", () => arrow.classList.remove("on"));
   document.addEventListener("click", e => {
     if (skip(e.target) || getSelection().toString()) return;
     const s = side(e); if (s) go(s);
