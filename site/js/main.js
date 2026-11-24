@@ -227,6 +227,15 @@ document.querySelectorAll("p, h1, h3, li, dd, .display, .ttl").forEach(el => {
   const href = banner.href;
   // precarga la página siguiente para que el cambio sea inmediato
   const pre = document.createElement("link"); pre.rel = "prefetch"; pre.href = href; document.head.appendChild(pre);
+  // franja con el título de la landing siguiente: se lee de esa página para que suba dentro de la transición
+  let band = null;
+  fetch(href).then(r => r.text()).then(t => {
+    const d = new DOMParser().parseFromString(t, "text/html");
+    const b = d.querySelector(".case-band"); if (!b) return;
+    const bg = (t.match(/--bg-case:\s*([^;]+);/) || [])[1];
+    const col = (t.match(/body\.case\s*\{\s*color:\s*([^;]+);/) || [])[1];
+    band = { html: b.outerHTML, bg, col };
+  }).catch(() => {});
   let busy = false;
   foot.querySelectorAll("a").forEach(a => a.addEventListener("click", e => {
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
@@ -239,7 +248,13 @@ document.querySelectorAll("p, h1, h3, li, dd, .display, .ttl").forEach(el => {
     fly.className = "case-hero hero-fly";
     fly.style.setProperty("--pos", banner.style.getPropertyValue("--pos"));
     const c = document.createElement("img"); c.src = img.currentSrc || img.src; c.alt = "";
-    fly.appendChild(c); document.body.appendChild(fly);
+    fly.appendChild(c);
+    if (band) {
+      fly.insertAdjacentHTML("beforeend", band.html);
+      if (band.bg) fly.style.setProperty("--bg-case", band.bg);
+      fly.style.color = band.col || getComputedStyle(document.body).color;
+    }
+    document.body.appendChild(fly);
     const h = fly.getBoundingClientRect().height;
     const y = r.top + r.height / 2 - h / 2;            // la copia arranca alineada con la imagen de la franja
     const cut = (h - r.height) / 2;
@@ -253,9 +268,10 @@ document.querySelectorAll("p, h1, h3, li, dd, .display, .ttl").forEach(el => {
       document.body.classList.add("leaving");
       fly.style.transform = "translateY(0)";
       fly.style.clipPath = "inset(0px 0 0px 0)";
+      fly.classList.add("up");
     });
     let done = false;
-    const end = () => { if (!done) { done = true; go(); } };
+    const end = () => { if (!done) { done = true; if (band) { try { sessionStorage.setItem("fromNext", "1"); } catch (e) {} } go(); } };
     fly.addEventListener("transitionend", ev => { if (ev.propertyName === "transform") setTimeout(end, 60); });
     setTimeout(end, 1300);
   }));

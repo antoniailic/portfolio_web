@@ -32,6 +32,7 @@ def page(title, desc, slug, body, bg="#f6f6f6", band=None, color=None, css=""):
   <meta name="description" content="{desc}">
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/case.css">
+  <script>try{{if(sessionStorage.getItem("fromNext")){{document.documentElement.classList.add("from-next");sessionStorage.removeItem("fromNext")}}}}catch(e){{}}</script>
   <style>
     {root}{col}
 {css}
