@@ -85,29 +85,28 @@ body += "  <main>\n"
 body += chapter(head("01  Intro", "An ever-evolving archive"),
     pair(("Context", ["Franca Projects is a fashion production company, founded in January 2026. Their Instagram showcases the productions they work on for their clients. In October 2026 they began a monthly Social Creative Direction retainer with Wizards Only."]),
          ("Challenge &amp; role", ["Franca wanted an aesthetic that leaned towards craft. Through a workshop with the team, we defined what craft meant for them: it had to feel human, but with extreme care so the system never interfered with their clients' images. I led the full structure of the account, from defining its visual language to the system behind every post."])))
-body += chapter(head("02  Defining craft", text=["Through a workshop with the team, we defined what craft meant for Franca. Franca is detail, nostalgia and cleanliness: editorial on paper, made to last, but current. It is not edgy, romantic or digital. They were drawn to offline collage, stamps, photographs of photographs, handwritten text and the play of different papers, and wary of images loaded with information."]),
-    media([img("franca/workshop", "2 / 12", None, "1088 / 421", "Workshop board", "50% 42%")]))
-body += chapter(head("03  Discarded explorations", text=["Early tests explored more literal expressions of craft. They always ended up dirtying work that needed to be shown clean. Discarding them clarified the line: the craft had to live in the structure, not on top of the images."]),
+# 02 Defining craft fuera: no exponer el proceso del estudio (la intro del challenge ya lo explica)
+body += chapter(head("02  Discarded explorations", text=["Early tests explored more literal expressions of craft. They always ended up dirtying work that needed to be shown clean. Discarding them clarified the line: the craft had to live in the structure, not on top of the images."]),
     media(discard, "discard"))
-body += chapter(head("04  The grid", text=["We didn't want paper to be the answer. My proposal was to work in the space between digital and print: laying out the feed on the page grid of an editorial magazine, built to show their work. Franca often brings magazines to their productions for their clients, so the solution grew out of their own way of working."]),
+body += chapter(head("03  The grid", text=["We didn't want paper to be the answer. My proposal was to work in the space between digital and print: laying out the feed on the page grid of an editorial magazine, built to show their work. Franca often brings magazines to their productions for their clients, so the solution grew out of their own way of working."]),
     pair(("", ["I presented a grid for laying out images and building compositions. Each post is composed on it; then the grid is removed and the post stays clean, with white bands framing the images like the margins of a printed page."]),
          ("", ["Franca liked the idea of a system that would make them recognisable, but worried it could become boring, with the formula too obvious. So I presented two grids instead of one. Posts alternate between them: no single post reads as a template, but across the feed the structure comes through."])).replace("<p></p>", ""),
     f'''    <div class="ab g">
       <figure><figcaption>A.</figcaption><div class="sprite a"><img src="{L}grid-ab.jpg" alt="Grid A"></div></figure>
       <figure><figcaption>B.</figcaption><div class="sprite b"><img src="{L}grid-ab.jpg" alt="Grid B"></div></figure>
     </div>''')
-body += chapter(head("05  Composition", text=["Within the grid, I composed each post by deciding its structure, which images work together, where the contrasts sit and in what order they unfold. The system sets the rules; the composition is where art direction comes in."]), compo)
-body += chapter(head("06  Content pillars"), f'''    <div class="pillars g" data-carousel data-dots-class="pillars-dots">
+body += chapter(head("04  Composition", text=["Within the grid, I composed each post by deciding its structure, which images work together, where the contrasts sit and in what order they unfold. The system sets the rules; the composition is where art direction comes in."]), compo)
+body += chapter(head("05  Content pillars"), f'''    <div class="pillars g" data-carousel data-dots-class="pillars-dots">
       <div><div class="post"><img class="work" src="../{im("franca/sandra-handmade")}" alt="Massimo Dutti Handmade FW25 x Sandra" loading="lazy"></div><p>01  Work — 65%</p><p>Franca's projects do the talking. The feed shows two types: new productions and work from their catalogue. Every post is credited with what it is, the client, the title and the main contributors, and composed on grids A and B.</p></div>
       <div><div class="post"><img class="inspo" src="../{im("franca/inspo-79")}" alt="Inspiration post" loading="lazy"></div><p>02  Inspo — 25%</p><p>Behind the work, there's a lot of work. This pillar opens up Franca's inspo folders: essays, paintings, locations, objects, film stills. No commentary, just credits, and always a reference for past or future projects. I set these posts full-bleed, outside the grids, to set them apart.</p></div>
       <div><div class="post"><img class="mark" src="../{im("franca/fran-finat-mark")}" alt="Collaborator profile cover" loading="lazy"></div><p>03  Collaborators — 10%</p><p>A large part of Franca's job is connecting the right people at the right time for the right project. Showing their network of collaborators is the best way to show what they do best.</p></div>
     </div>''')
-body += chapter(head("07  Carousels"), '    <div class="g carousels">\n' + "\n".join([
+body += chapter(head("06  Carousels"), '    <div class="g carousels">\n' + "\n".join([
     strip([f"massimo-sanvalentin-{i}" for i in range(1, 6)], "Art Buying for Massimo Dutti — San Valentín special"),
     strip([f"massimo-linen-{i}" for i in range(1, 6)], "Art Buying for Massimo Dutti — Menswear Linen Collection"),
     finat]) + "\n    </div>")
-body += chapter(head("08  The Feed"), media(feed_imgs, "tight feed3"))
-body += chapter(head("09  Result &amp; Credits"), credits(None, "An ongoing monthly retainer since October 2026.",
+body += chapter(head("07  The Feed"), media(feed_imgs, "tight feed3"))
+body += chapter(head("08  Result &amp; Credits"), credits(None, "An ongoing monthly retainer since October 2026.",
     [("Client", "Franca Projects"), ("Studio", "Wizards Only, Barcelona"), ("Art direction, Instagram system, grid design", "Antonia Ilic Bromberg"), ("Narrative", "Jordi Martinez")]))
 body += "  </main>\n"
 body += nxt("lebor-gabala", "lebor/cover-noviembre", "Art direction", "Lebor Gabala", "0% 30%")
