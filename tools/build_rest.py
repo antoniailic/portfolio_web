@@ -242,14 +242,14 @@ about = f'''  <main class="about-page g">
     </div>
   </main>'''
 simple("about.html", "About", "Antonia Ilic Bromberg — designer with a holistic and editorial approach. Education and experience.", about, about_css, "about")
-contact_css = """    .contact-page { padding-block: 219px 160px; row-gap: 56px; }
+contact_css = """    .contact-page { padding-block: 160px; row-gap: 56px; } /* título a la misma altura que en About */
     .contact-page .display { --c: 1 / 10; }
     .contact-page > p { --c: 1 / 8; }
     .contact-page .data { --c: 1 / -1; display: grid; grid-template-columns: subgrid; }
     .contact-page .data > div { display: flex; flex-direction: column; gap: var(--s-text); }
     .contact-page .data > div:nth-child(1) { grid-column: 1 / 4; } .contact-page .data > div:nth-child(2) { grid-column: 4 / 7; } .contact-page .data > div:nth-child(3) { grid-column: 7 / 10; }
     .contact-page .data a:hover { text-decoration: underline; text-underline-offset: 3px; }
-    @media (max-width: 768px) { .contact-page { padding-top: 120px; row-gap: 32px; } .contact-page .data > div { grid-column: 1 / -1 !important; margin-bottom: 16px; } }"""
+    @media (max-width: 768px) { .contact-page { padding-top: 96px; row-gap: 32px; } .contact-page .data > div { grid-column: 1 / -1 !important; margin-bottom: 16px; } }"""
 contact = '''  <main class="contact-page g">
     <h1 class="display">If you have a project, a collaboration, or an idea in development, contact me!</h1>
     <p>I work on identity, editorial, branding, web, and art direction projects, participating in both the conceptual definition and the visual construction.</p>
