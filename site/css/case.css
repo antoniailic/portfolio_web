@@ -208,18 +208,19 @@ body:not([data-project="nebular"]):not([data-project="sanguaza"]) .chapter > .he
 
 /* Banner "siguiente" como ventana corta: se ve solo una franja de la imagen, con el
    "Next" encima, para que se lea como enlace y no como parte del proyecto.
-   Al hacer clic la ventana crece hasta la altura de la portada y luego sube. */
+   La imagen dentro de la ventana ya tiene el tamaño y recorte de la portada siguiente:
+   la ventana solo la recorta, así al abrirse la imagen no cambia de escala. */
+:root { --hero-h: max(520px, min(calc(100vw * 900 / 1440), 100svh)); }
 .case-next { min-height: 0; padding-bottom: 64px; }
 .case-next .next-title { padding-block: 64px 12px; }
-.case-next .next-img { height: calc(100vw * 320 / 1440); min-height: 200px; transition: height .6s cubic-bezier(.4, 0, .2, 1); }
-.case-next .next-img.open { height: min(calc(100vw * 900 / 1440), 100svh); min-height: 520px; }
-.case-next.opening { padding-bottom: 100svh; }
+.case-next .next-img { position: relative; height: calc(100vw * 320 / 1440); min-height: 200px; max-height: none; overflow: hidden; }
+.case-next .next-img img { position: absolute; inset: auto 0 auto 0; top: 50%; width: 100%; height: var(--hero-h);
+  transform: translateY(-50%); transition: transform 1.2s cubic-bezier(.2, .7, .1, 1); }
+.case-next .next-img:hover img { transform: translateY(-50%) scale(1.015); }
 @media (max-width: 768px) { .case-next .next-title { padding-block: 40px 12px; } .case-next { padding-bottom: 40px; } }
 
-/* Prueba: menú en texto normal en lugar de manuscrito (mismo estilo que el nombre).
-   Para volver al manuscrito, borrar este bloque. */
-.case-nav .hand { -webkit-mask-image: none !important; mask-image: none !important; background-color: transparent !important;
-  width: auto; height: auto; margin-top: 2px; color: #fff; white-space: nowrap; transition: color .3s; }
-.case-nav .hand::before { content: attr(aria-label); }
-.case-nav.dark .hand { color: #000; }
-.case-nav [aria-current]::before { text-decoration: underline; text-underline-offset: 3px; }
+/* Transición: una copia fija de la portada se abre desde la franja hasta ocupar su lugar
+   (recorte + desplazamiento con la misma curva) mientras el resto de la página se desvanece. */
+.hero-fly { position: fixed !important; top: 0; left: 0; right: 0; z-index: 2000; margin: 0; will-change: transform, clip-path;
+  transition: transform .9s cubic-bezier(.76, 0, .24, 1), clip-path .9s cubic-bezier(.76, 0, .24, 1); }
+body.leaving > *:not(.hero-fly) { opacity: 0; transition: opacity .6s ease .15s; }

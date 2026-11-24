@@ -214,28 +214,47 @@ document.querySelectorAll("p, h1, h3, li, dd, .display, .ttl").forEach(el => {
   last.nodeValue = last.nodeValue.replace(/[ \t]+(\S+\s*)$/, " $1");
 });
 
-/* Banner "siguiente": antes de cambiar de página sube el banner hasta arriba,
-   donde coincide con la portada de la landing siguiente (misma imagen y recorte). */
+/* Banner "siguiente": la franja se abre hasta ser la portada de la landing siguiente
+   (misma imagen y recorte) y recién ahí cambia de página. */
 (function () {
   const foot = document.querySelector(".case-next");
   if (!foot) return;
   const banner = foot.querySelector(".next-img");
+  const img = banner.querySelector("img");
+  const href = banner.href;
+  // precarga la página siguiente para que el cambio sea inmediato
+  const pre = document.createElement("link"); pre.rel = "prefetch"; pre.href = href; document.head.appendChild(pre);
+  let busy = false;
   foot.querySelectorAll("a").forEach(a => a.addEventListener("click", e => {
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
     e.preventDefault();
-    const href = a.href;
-    const top = banner.getBoundingClientRect().top + window.scrollY;
-    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let gone = false;
-    const go = () => { if (!gone) { gone = true; location.href = href; } };
-    if (reduce) return go();
-    foot.classList.add("opening"); banner.classList.add("open");
-    window.scrollTo({ top, behavior: "smooth" });
-    // cambia de página cuando la ventana ya creció y llegó arriba
-    const full = () => banner.getBoundingClientRect().height >= Math.max(520, Math.min(innerHeight, innerWidth * 900 / 1440)) - 2;
-    const tick = () => (full() && Math.abs(window.scrollY - top) < 2) ? go() : requestAnimationFrame(tick);
-    requestAnimationFrame(tick);
-    setTimeout(() => { window.scrollTo(0, top); go(); }, 1500);
+    if (busy) return; busy = true;
+    const go = () => { location.href = href; };
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return go();
+    const r = banner.getBoundingClientRect();
+    const fly = document.createElement("div");
+    fly.className = "case-hero hero-fly";
+    fly.style.setProperty("--pos", banner.style.getPropertyValue("--pos"));
+    const c = document.createElement("img"); c.src = img.currentSrc || img.src; c.alt = "";
+    fly.appendChild(c); document.body.appendChild(fly);
+    const h = fly.getBoundingClientRect().height;
+    const y = r.top + r.height / 2 - h / 2;            // la copia arranca alineada con la imagen de la franja
+    const cut = (h - r.height) / 2;
+    fly.style.transition = "none";
+    fly.style.transform = `translateY(${y}px)`;
+    fly.style.clipPath = `inset(${cut}px 0 ${cut}px 0)`;
+    banner.style.visibility = "hidden";
+    fly.getBoundingClientRect();                        // fija el estado inicial
+    fly.style.transition = "";
+    requestAnimationFrame(() => {
+      document.body.classList.add("leaving");
+      fly.style.transform = "translateY(0)";
+      fly.style.clipPath = "inset(0px 0 0px 0)";
+    });
+    let done = false;
+    const end = () => { if (!done) { done = true; go(); } };
+    fly.addEventListener("transitionend", ev => { if (ev.propertyName === "transform") setTimeout(end, 60); });
+    setTimeout(end, 1300);
   }));
   addEventListener("pageshow", e => { if (e.persisted) location.reload(); });
 })();
