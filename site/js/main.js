@@ -184,3 +184,12 @@ if (idx > -1 && matchMedia("(hover: hover) and (pointer: fine)").matches) {
     if (e.key === "ArrowLeft") go(-1);
   });
 }
+
+// Viudas: une las dos últimas palabras de cada párrafo (respaldo para navegadores sin text-wrap: pretty)
+document.querySelectorAll("p, h1, h3, li, dd, .display, .ttl").forEach(el => {
+  if (el.closest(".artists, .spec .caps, .case-nav")) return;
+  const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+  let last = null; while (w.nextNode()) if (w.currentNode.nodeValue.trim()) last = w.currentNode;
+  if (!last || el.textContent.trim().split(/\s+/).length < 4) return;
+  last.nodeValue = last.nodeValue.replace(/[ \t]+(\S+\s*)$/, " $1");
+});

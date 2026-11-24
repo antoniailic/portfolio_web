@@ -115,3 +115,6 @@ ol, ul { list-style: none; }
   letter-spacing: -.01em; font-feature-settings: "liga" 0, "onum" 1, "pnum" 1;
 }
 @media (max-width: 768px) { .label { white-space: pre-wrap; } }
+
+/* Nunca una palabra sola en la última línea */
+p, h1, h2, h3, li, dd, .display { text-wrap: pretty; }
