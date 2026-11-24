@@ -199,12 +199,12 @@ def item(a, b, c=None):
     ctx, _, date = b.rpartition(" · ")
     b_html = f"<p>{ctx}</p><p>{date}</p>" if ctx else f"<p>{b}</p>"
     return f'        <div class="item"><p>{a}</p>{b_html}{x}</div>'
-about_css = """    .about-page { padding-block: 160px var(--s-section); row-gap: var(--s-head); }
+about_css = """    .about-page { padding-block: 160px var(--s-section); row-gap: var(--s-head); grid-template-rows: auto 1fr; align-items: start; } /* el texto va justo bajo el título; el alto extra del retrato queda abajo */
     .about-page .display { --c: 1 / 9; }
     .about-page .display span { display: block; white-space: nowrap; } /* siempre en 2 líneas, cortadas como las definió Antonia */
     .about-page .portrait { --c: 10 / 13; --m: 1 / 3; grid-row: 1 / 3; width: 100%; aspect-ratio: 325 / 444; object-fit: cover; }
     .about-page .t { --c: 1 / 6; }
-    .cv { --c: 1 / -1; display: grid; grid-template-columns: subgrid; margin-top: calc(160px - var(--s-head)); row-gap: 28px; }
+    .cv { --c: 1 / -1; display: grid; grid-template-columns: subgrid; margin-top: calc(120px - var(--s-head)); row-gap: 28px; }
     .cv section { display: flex; flex-direction: column; gap: 24px; }
     .cv .edu { grid-column: 1 / 5; } .cv .exp { grid-column: 6 / 11; }
     .cv .item { display: flex; flex-direction: column; gap: 4px; }
