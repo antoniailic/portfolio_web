@@ -38,7 +38,7 @@ def logo(path, w, h, s):
 body = hero("franciscandrea/cover", "francisc'andrea", "Brand identity", "francisc'andrea", "50% 40%")
 body += ficha([("Client", "francisc'andrea"), ("Type", "Client commission"), ("Role", "Brand Identity"), ("Year", "2025"), ("Scope", "Logotype, mark system, typography, stationery, product application")])
 body += "  <main>\n"
-body += chapter(head("01  Intro", "Just as a pressed flower may seem fragile, it can also contain a powerful presence, suspended in time."),
+body += chapter(head("01  Intro", "Just as a pressed flower may seem fragile, it can also contain a powerful presence, suspended in time.", dc="1 / -1"),
     pair(("Concept", ["The project is born from the contemplation of the ephemeral: that instant when a flower reaches its highest point of beauty before fading. Right there, we decided to stop time."]),
          ("Visual language", ["The visual language also responds to this duality. The identity of francisc'andrea is built from contrast: a typography that moves between the light and the firm, reflecting the very essence of our creations."])))
 body += chapter(head("02  logo System design"), f'''    <div class="marks g">
@@ -49,14 +49,13 @@ body += chapter(head("02  logo System design"), f'''    <div class="marks g">
 # 03 The elements (flores sueltas) fuera por ahora: Antonia hará una animación con ellas.
 # body += chapter(head("03  The elements"), media([img("franciscandrea/element-flower", "1 / 4", "1 / 3", "1 / 1", "Pressed flower element"), img("franciscandrea/dsc07748", "7 / 12", "3 / 5", "528 / 396", "Petal element")]))
 body += chapter(head("03  Applications", text=["Business cards, stationery, graphics and the flower presses themselves. Mockups until the final photos arrive."]),
-    media([img(f"franciscandrea/application-{i}", f"{1 + (i - 1) * 4} / {5 + (i - 1) * 4}", "span 4", "467 / 702", "Application") for i in (1, 2, 3)], "bleed"),
-    media([img("franciscandrea/stationery-1", "1 / 7", "1 / 3", "711 / 459", "Stationery"), img("franciscandrea/stationery-2", "7 / 13", "3 / 5", "711 / 459", "Stationery")], "bleed"))
+    media([img(f"franciscandrea/application-{i}", f"{1 + (i - 1) * 4} / {5 + (i - 1) * 4}", "span 4", "467 / 702", "Application") for i in (1, 2, 3)], "bleed"))  # tarjetas fuera: Antonia las sube luego como "on set"
 body += chapter(head("04  colors", text=["The colours were chosen as a complement to the flowers that will appear in the brand's content. They don't seek to compete with them."]), f'    <div class="swatches g">\n{swatches}\n    </div>')
 body += chapter(head("05  Art direction", text=["The art direction I set for the brand's visual world: colour, light and the way flowers are shown."]),
     media([img("franciscandrea/art-direction", "1 / -1", None, "1440 / 700", "Art direction")], "bleed"))
 body += chapter(head("06  Instagram today"), media([img("franciscandrea/instagram-1", "2 / 6", "1 / 3", "416 / 751", "francisc'andrea Instagram feed"), img("franciscandrea/instagram-2", "8 / 12", "3 / 5", "416 / 751", "francisc'andrea Instagram feed")]))
 body += chapter(head("07  Typeface", low=None, extra='      <p>Cormorant Upright · Roboto Mono</p>').replace('row-gap: var(--s-head)', ''), spec_fa)
-body += chapter(head("08  Result &amp; Credits"), credits("Result", "The identity is in use across business cards, stationery, graphics and the flower presses themselves, carrying the brand onto the product. Website currently in development.",
+body += chapter(head("08  Result &amp; Credits"), credits(None, "The identity is in use across business cards, stationery, graphics and the flower presses themselves, carrying the brand onto the product. Website currently in development.",
     [("Client", "francisc'andrea"), ("Brand identity", "Antonia Ilic Bromberg"), ("Year", "2025")]))
 body += "  </main>\n"
 body += nxt("nebular", "nebular/nebular-composicion", "Editorial", "Nebular", "50% 50%")
@@ -72,7 +71,7 @@ css = """    .lists { position: relative; }
     @media (min-width: 769px) { .lists .artists { position: relative !important; } }
     .lists .artists { position: absolute; top: 0; text-align: center; white-space: nowrap;
       font-family: "Source Serif 4", serif; font-weight: 600; font-size: 50px; line-height: 1.15; letter-spacing: -.02em; }
-    .lists .side { position: absolute; white-space: pre; top: 50% !important; transform: translateY(-50%); } /* centrado con la lista de nombres */
+    .lists .side { position: absolute; white-space: pre; top: 50% !important; transform: translate(-50%, -50%); } /* centrado en el espacio negro libre, a la altura de la lista */
     .lists .side em { font-family: "Source Serif 4", serif; font-style: italic; font-size: 14px; }
     .issue-a .artists { --x: 7; }
     .covers { row-gap: var(--s-block); }
@@ -98,12 +97,12 @@ def lists(artists, list_cols, side, side_cols, side_top):
     return f'''    <div class="g">
       <div class="lists" style="--c: 1 / -1"><div class="in">
         <p class="artists" style="left: calc({list_cols[0]} * (100% + var(--gutter)) / 12); width: calc({list_cols[1]} * (100% + var(--gutter)) / 12 - var(--gutter))">{a}</p>
-        <p class="side" style="left: calc({side_cols} * (100% + var(--gutter)) / 12); top:{side_top}px">{side}</p>
+        <p class="side" style="left: calc({(side_cols[0] + side_cols[1]) / 2} * (100% + var(--gutter)) / 12 - var(--gutter) / 2)">{side}</p>
       </div></div>
     </div>'''
 def issue(label, artists, lc, side, sc, st, ed, cover, back, video, name):
     return chapter(head(label), lists(artists, lc, side, sc, st),
-        '    <div class="g" ><p class="label-low">Editorial</p></div>\n' + trio(ed).replace('<div class="trio g">', '<div class="trio g" style="margin-top:calc(var(--s-text) - var(--s-block))">'),
+        '    <div class="g" ><p style="--c: 1 / -1">Editorial</p></div>\n' + trio(ed).replace('<div class="trio g">', '<div class="trio g" style="margin-top:calc(var(--s-text) - var(--s-block))">'),
         f'''    <div class="covers g">
       <div class="cv"><img src="../{im("nebular/" + cover[0])}" alt="Nebular {name} — cover" style="{cover[1]}" loading="lazy"></div>
       <div class="cv"><img src="../{im("nebular/" + back[0])}" alt="Nebular {name} — back cover" style="{back[1]}" loading="lazy"></div>
@@ -127,19 +126,19 @@ body += chapter(head("01  Intro", "Emotional Cartography of Art", low=None,
 body += chapter(media([f'      <video src="../img/nebular/gif-{n}.mp4" poster="../img/nebular/gif-{n}.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Nebular {t}" style="--c: {1 + i * 4} / {5 + i * 4}; --m: span 4; --r: 480 / 810"></video>' for i, (n, t) in enumerate([("exile", "Nº1 Exile"), ("grief", "Nº2 Grief"), ("body", "Nº3 Body")])], "bleed gifs"),
     head("", text=["Each issue is built around a shared tension connected to a deceased artist, whose legacy serves as the narrative core that links a range of contemporary artists.", "Rather than focusing on the final outcome, we understand creation as a process of transformation and as a way of giving form to the invisible. The magazine explores how experiences such as grief, exile, and bodily trauma transcend time, connecting people through art."]).replace('<h2 class="label"></h2>\n', ''))
 body += issue("02  Issue 1 — Exile", ["Ana Mendieta", "Shirin Neshat", "Cristina Peri Rossi", "Ariane Mnouchkine", "Tala Madani", "Larissa Sansour", "Laura El-Tantawy"], (6, 6),
-    "      Seven artists,\nseven ways\n         to navigate <em>exile</em>.", 2, 150,
+    "      Seven artists,\nseven ways\n         to navigate <em>exile</em>.", (0, 6), 150,
     ["There is a word for the place you can no longer return to, but there is no word for the moment you realize that place has ceased to exist. Not the physical place, but the place as you once knew it, with your body inside it, with the person you were when it still belonged to you. Exile begins long before departure, and often it does not end with return, if return ever comes. What remains is an identity shaped in the space between two places, neither of them entirely your own.",
      "<p>Ana Mendieta’s work begins with the Cuban soil she left behind as a child, and to which she returned decades later to press her body against it, as if physical contact could recover something that time and distance had dissolved. Her Siluetas are not metaphors; they are the literal record of that attempt.</p><p>The fact that the body disappears and only the trace remains expresses something words cannot fully capture about what it means to belong to a place that no longer belongs to you.</p>",
      "From her work, we bring together artists who know that territory from within. Their practices speak of identities shaped through rupture, of languages that are lost and transformed, and of bodies that carry within them the history of the places that formed them. Exile is not only political or geographical; it is also what happens when a version of yourself is left on the other side of something you can no longer cross. It is a friction we have not been able to resolve, nor do we intend to, but one that we can expose and confront through art and community."],
     ("exile-cover", "left:-92.14%; top:-11.78%; width:282.87%; height:127.91%"), ("exile-back", "left:-2.64%; top:0; width:105.52%; height:102.1%"), "pages-exile", "Nº1 Exile")
 body += issue("03  Issue 2 — Grief", ["Käthe Kollwitz", "Nan Goldin", "Sarah Sudhoff", "Björk", "Graciela Iturbide", "Joan Jonas", "Charlotte Wells"], (0, 5),
-    "Seven artists,\n               seven ways\nto navigate <em>grief.</em>", 9, 60,
+    "Seven artists,\n               seven ways\nto navigate <em>grief.</em>", (5, 12), 60,
     ["Some losses leave an emptiness; others completely reshape the way the body, memory, and images continue to exist. Grief does not always arrive as a single, recognizable moment. Sometimes it slowly settles into the way we look, remember, and inhabit the world after an absence.",
      "In this issue, we approach grief from different perspectives. We are interested in how this experience reshapes identity and transforms the act of making. Käthe Kollwitz’s work opens this conversation. After losing her son Peter during the First World War, her practice became darker and profoundly human. Her prints and sculptures do not depict war through heroism, but through those who remain after loss: mothers, exhausted bodies, and embraces trying to hold on to something that is no longer there.",
      "From her work, we bring together artists who approach that same territory through different artistic languages. Their works speak of absence, memory, and relationships that endure even after disappearance. Some transform grief into image, others into sound, archive, gesture, or ritual. Art emerges in the space left by loss, giving it a form through which it can be seen."],
     ("grief-cover", "left:-92.17%; top:-16.29%; width:285.77%; height:129.22%"), ("grief-back", "left:1.92%; top:3.85%; width:96.16%; height:96.15%"), "pages-grief", "Nº2 Grief")
 body += issue("04  Issue 3 — Body", ["Francesca Woodman", "Wangechi Mutu", "Mari Katayama", "Tracey Emin", "Adrian Ghenie", "Siân Davey", "Anne De Keersmaeker"], (6, 6),
-    "      Seven artists,\nseven ways\n             to inhabit the <em>body</em>.", 0, 150,
+    "      Seven artists,\nseven ways\n             to inhabit the <em>body</em>.", (0, 6), 150,
     ["The skin is the body's most sensitive organ, and it seems deeply unfair that it is also the most exposed. Perhaps that is why we speak of feeling something under our skin, because blooming speaks as much of life as it does of death, and we carry both as much on the outside as within. We experience everything through our skin and, when it becomes too much, we want to tear it off with our own hands or beg someone else to do it for us, because the burning makes it impossible to move. The body speaks what we cannot, and perhaps we pay far less attention to it than we should.",
      "<p>Francesca Woodman's work speaks of the desire to disappear, of the ghosts that live within us, and of the walls that prevent us from escaping ourselves. It unsettles us because we have all inhabited that skin and know how difficult it can be to remain inside it.</p><p>Her work brings together artists who use their bodies to speak and to cry out through lived experience. Their practices expose abuse, reclaim space, and invite us into a territory that many of us have inhabited but perhaps never fully recognized.</p>",
      "These works allow us to imagine what the body would say if it could speak, or to read words that, in a better world, should never have to exist side by side because they describe something unacceptable. They also remind us that, contrary to what we are often led to believe, life can exist beyond the silence and isolation imposed by the walls to which we seem to belong. Through these works, we come to understand the weight of everything the world chooses not to name."],
@@ -149,10 +148,7 @@ body += chapter(head("05  The vellum sleeve"), f'''    <div class="g" style="row
       <div class="t" style="--c: 7 / 12"><p>We designed a translucent vellum paper sleeve to separate the magazine from the artwork, as we felt that intervening directly on the piece would be too intrusive. This allows the image to remain clean once the sleeve is removed, giving the publication greater value as a collectible object.</p><p>At the same time, the sleeve reinforces the graphic concept by creating a sense of visual diffusion, echoing a nebula that gradually reveals the content underneath.</p></div>
     </div>''')
 body += chapter(head("06  Typeface", extra='      <p>Geist (Vercel) · Otto (Dinamo)</p>'), spec_neb)
-body += chapter(head("07  Credits"), '    <div class="trio g cred3">\n' + "\n".join(f'      <p>{t}</p>' for t in [
-    "Editorial Direction, Art Direction and Design:\nAntonia Ilic Bromberg\nManuela García Aristizábal\n\nResearch and Archives:\nAntonia Ilic Bromberg\nManuela García Aristizábal\n\nMaster's Degree in Editorial Design\nElisava, Barcelona School of Design and Engineering",
-    "Typeface:\nGeist (Vercel)\nOtto (Dinamo)\n\nPaper:\nArena Rough 90 gr\nFundas papel vegetal 90 gr\n\nPrinting:\nTecnoart, Barcelona\n\nBarcelona, 2026",
-    "Acknowledgements:\nCarol Monpart\nIsabel Merino\nJosep Román, Affaire\nLaura Meseguer\nAne Guerra\nMaría Dolores Soriano\nMarc Panero"]) + "\n    </div>")
+body += chapter(head("07  Credits"), credits(None, None, [("Editorial direction, art direction &amp; design", "Antonia Ilic Bromberg, Manuela García Aristizábal"), ("Research &amp; archives", "Antonia Ilic Bromberg, Manuela García Aristizábal"), ("Context", "Master's Degree in Editorial Design, Elisava, Barcelona School of Design and Engineering"), ("Typeface", "Geist (Vercel), Otto (Dinamo)"), ("Paper", "Arena Rough 90 g/m², vellum paper sleeves 90 g/m²"), ("Printing", "Tecnoart, Barcelona, 2026"), ("Acknowledgements", "Carol Monpart, Isabel Merino, Josep Román (Affaire), Laura Meseguer, Ane Guerra, María Dolores Soriano, Marc Panero")]))
 body += "  </main>\n"
 body += nxt("wild-lama", "wildlama/wl-25-q1-525", "Art direction", "Wild Lama", "50% 21%")
 write("nebular", page("Nebular", "Nebular — Emotional Cartography of Art. Art magazine, three issues. Master in Editorial Design, ELISAVA.", "nebular", body, "#000000", color="#fff", css=css))

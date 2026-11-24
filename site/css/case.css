@@ -182,3 +182,26 @@ body.go-prev, body.go-prev *, body.go-next, body.go-next * { cursor: none; }
 .spec .rule { display: none; } /* sin líneas dentro de los specimens */
 .spec .row3 { margin-top: var(--s-head); }
 .spec .big { overflow-wrap: normal; }
+
+/* Texto ↔ contenido: --s-head (40) en todas las landings (Nebular fuera; en Sanguaza solo
+   en los capítulos marcados .tx: el video de The book y el video corto tras el specimen) */
+body:not([data-project="nebular"]):not([data-project="sanguaza"]) .chapter > .head + *,
+body:not([data-project="nebular"]):not([data-project="sanguaza"]) .chapter > * + .head:not(:has(> h2)),
+.chapter.tx > * + * { margin-top: calc(var(--s-head) - var(--s-block)); }
+body:not([data-project="nebular"]):not([data-project="sanguaza"]) .chapter > .head + .media.solo,
+.chapter.tx > .media.solo { min-height: 0; }
+.chapter.tx > .media.solo:last-child { min-height: 0; }
+
+/* Etiquetas de stories en estilo de texto */
+.story-row > .slab { margin: 0; }
+
+/* Ficha: el mismo espacio entre todas las columnas */
+@media (min-width: 769px) {
+  .ficha { display: flex; justify-content: space-between; column-gap: calc(2 * var(--gutter)); }
+  .ficha > div { flex: 0 1 auto; max-width: 26%; }
+}
+
+/* Banner "siguiente" idéntico a la portada de esa landing: misma altura, imagen y recorte */
+.case-next .next-img { position: relative; height: calc(100vw * 900 / 1440); max-height: 100svh; min-height: 520px; }
+.case-next .next-img img { position: absolute; inset: 0; }
+.case-next { min-height: 100svh; } /* deja subir el banner hasta arriba antes de cambiar de landing */

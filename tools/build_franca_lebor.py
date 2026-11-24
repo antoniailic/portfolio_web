@@ -118,7 +118,7 @@ write("franca-projects", page("Franca Projects", "Art direction, Instagram syste
 
 # ============================== LEBOR ======================================
 css = """    .story-row { row-gap: var(--gutter); }
-    .story-row > .label-low { --c: 1 / 3; --m: 1 / -1; }
+    .story-row > .slab { --c: 1 / 3; --m: 1 / -1; }
     .story-row > img { aspect-ratio: 236 / 420; object-fit: cover; width: 100%; background: var(--ph); }
     .story-row > img:nth-of-type(1) { --c: 3 / 5; --m: 1 / 3; }
     .story-row > img:nth-of-type(2) { --c: 5 / 7; --m: 3 / 5; }
@@ -135,7 +135,7 @@ for i, f in enumerate(feed):
         cells.append(img(f"lebor/{f}", c, "span 4", "475.61 / 634.39", "Lebor Gabala AW26 — Instagram post"))
 def srow(label, files):
     imgs = "".join(f'<img src="../{im("lebor/" + f)}" alt="Lebor Gabala story" loading="lazy">' for f in files)
-    return f'      <div class="story-row g" style="padding:0"><p class="label-low">{label}</p>{imgs}</div>'
+    return f'      <div class="story-row g" style="padding:0"><p class="slab">{label}</p>{imgs}</div>'
 reels = [f'      <video src="../img/lebor/reel-{i}.mp4" poster="../img/lebor/reel-{i}.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Instagram ad — AW26" style="--c: {1 + (i - 1) * 3} / {4 + (i - 1) * 3}; --m: span 2; --r: 316 / 563"></video>' for i in range(1, 5)]
 
 body = hero("lebor/cover-noviembre", "Lebor Gabala AW26", "Art direction", "Lebor Gabala — AW26", "0% 4.6%")
@@ -156,7 +156,7 @@ body += chapter(head("03  Stories"), '    <div class="g"><div class="stories">\n
 body += chapter(head("04  Video editing — Instagram ads (AW26)"), media(reels),
     '    <div class="head g"><div class="t"><p>Edited for Instagram ads: vertical 9:16 cuts from the AW26 shoot.</p></div></div>')
 body += chapter(head("05  graphic Detail"), media([img("lebor/detail", "1 / -1", None, "1440 / 900", "Graphic detail", "50% 4.6%")], "bleed"))
-body += chapter(head("06  On set"), media([img("lebor/onset-7537", "3 / 6", "1 / 3", "346 / 615", "On set"), img("lebor/onset-7628", "8 / 11", "3 / 5", "346 / 615", "On set")]))
+body += chapter(head("06  On set"), media([video("lebor/onset-7537", "3 / 6", "1 / 3", "9 / 16", "On set"), video("lebor/onset-7628", "8 / 11", "3 / 5", "9 / 16", "On set")]))
 body += chapter(head("07  Result &amp; Credits"), credits(None, "A modular system for vertical formats that alternates full-bleed editorial imagery, colour-treated statements and lookbook line-ups. AW26 content rolling out on Lebor Gabala's Instagram from November 2026.",
     [("Client", "Lebor Gabala"), ("Studio", "Wizards Only, Barcelona"), ("Content plan, social graphics, shoot assistance", "Antonia Ilic Bromberg"), ("Photography", "Nereis Ferrer"), ("Creative production", "Alba Mitchell")]))
 body += "  </main>\n"

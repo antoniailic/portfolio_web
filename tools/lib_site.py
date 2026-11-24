@@ -59,10 +59,11 @@ def ficha(pairs):
   </section>
 '''
 
-def head(label, display=None, text=None, low=None, extra=""):
+def head(label, display=None, text=None, low=None, extra="", dc=None):
     parts = [f'      <h2 class="label">{label}</h2>']
     if low: parts.append(f'      <p class="label-low">{low}</p>')
-    if display: parts.append(f'      <p class="display">{display}</p>')
+    st = f' style="--c: {dc}"' if dc else ""
+    if display: parts.append(f'      <p class="display"{st}>{display}</p>')
     if text: parts.append(f'      <div class="t">{"".join(f"<p>{p}</p>" for p in text)}</div>')
     if extra: parts.append(extra)
     return '    <div class="head g">\n' + "\n".join(parts) + '\n    </div>'
@@ -85,6 +86,10 @@ def img(path, c, m=None, r=None, alt="", pos=None, extra_style="", cls=""):
     c_ = f' class="{cls}"' if cls else ""
     return f'      <img{c_} src="../{im(path)}" alt="{H.escape(alt)}" loading="lazy" style="{st}">'
 
+def video(src, c, m="1 / -1", r=None, label="", extra=""):
+    st = f"--c: {c}; --m: {m};" + (f" --r: {r};" if r else "") + extra
+    return f'      <video src="../img/{src}.mp4" poster="../img/{src}.jpg" muted loop playsinline autoplay preload="metadata" aria-label="{label}" style="{st}"></video>'
+
 def media(items, cls="", style=""):
     st = f' style="{style}"' if style else ""
     # Una sola imagen o video que no ocupa todo el ancho: módulo "solo", con blanco alrededor al centrarlo en pantalla
@@ -106,7 +111,24 @@ def credits(result_label, result, pairs, wide=False, title="Credits"):
         res = f'      <div class="t" style="display:flex; flex-direction:column; gap:var(--s-text)">{lab}<p>{result}</p></div>\n'
     return f'    <div class="credits g{w}">\n{res}      <dl>\n{rows}\n      </dl>\n    </div>'
 
+# Portada de cada landing: el banner "siguiente" usa la misma imagen, recorte y posición
+HEROES = {
+    "franca-projects": ("franca/massimo-sanvalentin-1", "0% 43%"),
+    "lebor-gabala": ("lebor/cover-noviembre", "0% 4.6%"),
+    "franciscandrea": ("franciscandrea/cover", "50% 40%"),
+    "nebular": ("nebular/nebular-composicion", "50% 50%"),
+    "wild-lama": ("wildlama/wl-25-q1-525", "50% 14.7%"),
+    "sanguaza": ("sanguaza/libro-centrado", "50% 45%"),
+    "potra": ("potra/home-crop", "50% 50%"),
+}
+
+def sg(s):
+    """'sanguaza' siempre en cursiva: es la única palabra en español."""
+    import re
+    return re.sub(r"(?<![>\w])([Ss]anguaza)(?!\w)", r"<i>\1</i>", s)
+
 def nxt(slug, img_, cat, name, pos="50% 50%"):
+    img_, pos = HEROES.get(slug, (img_, pos))
     return f'''  <footer class="case-next">
     <a class="next-img" href="{slug}.html" style="--pos: {pos}"><img src="../{im(img_)}" alt="" loading="lazy"></a>
     <a class="next-title g" href="{slug}.html"><span class="label tag"><span class="cat">[{cat}]</span><span>{name} →</span></span></a>

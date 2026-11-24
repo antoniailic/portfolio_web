@@ -12,6 +12,11 @@ css = """    .campaign { row-gap: var(--gutter); }
     .cells img.w3.low { aspect-ratio: 976 / 378; }
     .stats > div { display: flex; flex-direction: column; gap: var(--s-text); }
     .emails img { object-position: top; }
+    @media (min-width: 769px) {   /* mails más pequeños y con más aire: 3 columnas cada uno, 1 columna entre ellos */
+      .emails { display: flex; justify-content: center; align-items: flex-start;
+        --col: calc((100% - 11 * var(--gutter)) / 12); column-gap: calc(var(--col) + 2 * var(--gutter)); }
+      .emails img { width: calc(3 * var(--col) + 2 * var(--gutter)); }
+    }
     @media (max-width: 768px) {
       .campaign > .info, .campaign > .cells { --m: 1 / -1; }
       .cells { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 8px !important; }
@@ -58,12 +63,13 @@ body += chapter(head("03  Results", text=["Key results from the branding team du
       <div><p class="display">ROAS 20+</p><p>Email campaigns in Klaviyo maintained a ROAS above 20 across key launches.</p></div>
     </div>''',
     '    <div class="head g"><div class="t"><p>Purpose-driven content consistently outperformed average organic performance.</p></div></div>')
-body += chapter(head("04  Content strategy", "Storytelling-based marketing strategy, aimed at boosting sales through social media and email marketing."),
-    media([img(f"wildlama/content-{i}", f"{1 + (i - 1) * 4} / {5 + (i - 1) * 4}", ["1 / 3", "3 / 5", "1 / 3"][i - 1], "392 / 521", "Instagram content", "50% 41.5%") for i in (1, 2, 3)]))
+body += chapter(head("04  Content strategy", "Storytelling-based marketing strategy, aimed at boosting sales through social media and email marketing.", dc="1 / -1"),
+    media([img(f"wildlama/content-{i}", f"{1 + (i - 1) * 4} / {5 + (i - 1) * 4}", ["1 / 3", "3 / 5", "1 / 3"][i - 1], "392 / 521", "Instagram content", "50% 41.5%") for i in (1, 2, 3)]),
+    media([video("wildlama/reel-1", "3 / 6", "1 / 3", "9 / 16", "Wild Lama reel"), video("wildlama/reel-2", "8 / 11", "3 / 5", "9 / 16", "Wild Lama reel")]))
 body += chapter(head("05  Email marketing", text=["Email campaigns in Klaviyo maintained a ROAS above 20 across key launches."]),
     media([img(f"wildlama/email-{i}", f"{1 + (i - 1) * 4} / {5 + (i - 1) * 4}", ["1 / 3", "3 / 5", "1 / 3"][i - 1], r, "Email campaign") for i, r in ((1, "346 / 1672"), (2, "346 / 1739"), (3, "346 / 1783"))], "emails", "align-items:start"))
 body += "  </main>\n"
-body += nxt("sanguaza", "sanguaza/libro-centrado", "Editorial", "Una pizca de sangre y un vaso de sanguaza", "50% 45%")
+body += nxt("sanguaza", "", "Editorial", sg("Una pizca de sangre y un vaso de sanguaza"))
 write("wild-lama", page("Wild Lama", "Art direction, campaigns, content strategy and email marketing for Wild Lama.", "wild-lama", body, "#ffffff", css=css))
 
 # ================================ SANGUAZA ==================================
@@ -74,15 +80,15 @@ css = """    .paper { position: relative; color: #fff; background: #2333c8 url("
 spec_sg = '''    <div class="spec g sg-spec">
       <div class="rule"></div>
       <p class="caps c1 row1">Type specimen</p><p class="caps c2 row1">Source Serif 4 — titles</p><p class="caps c3 row1">Source Serif 4 — text</p>
-      <p class="big row2" style="font-size:calc(var(--fs-display) * 1.486); line-height:.96; letter-spacing:-.02em; font-weight:500">A Pinch of Blood and a Glass of Sanguaza</p>
+      <p class="big row2" style="font-size:calc(var(--fs-display) * 1.486); line-height:.96; letter-spacing:-.02em; font-weight:500">A Pinch of Blood and a Glass of <i>Sanguaza</i></p>
       <div class="c3 row2" style="display:flex; flex-direction:column; gap:12px"><p style="font-size:17px; line-height:1.55">Whether it is a grandmother's birthday celebration or a "coming of age" ceremony among the Swazi people, we have never stopped creating rites.</p><p class="caps s">Source Serif 4 Regular · 17 / 26</p></div>
       <p class="caps s c1 row3" style="font-weight:600">Source Serif 4 MEDIUM · titles</p>
       <div class="rule gap"></div>
       <p class="row3" style="--c: 1 / 9; font-size:26px; line-height:1.25; font-weight:300">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ<br>abcdefghijklmnñopqrstuvwxyz 0123456789</p>
       <p class="c3 row3" style="font-size:12px; line-height:1.5">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ abcdefghijklmnñopqrstuvwxyz 0123456789 &amp; ¿? ¡! —</p>
     </div>'''
-body = hero("sanguaza/libro-centrado", "A Pinch of Blood and a Glass of Sanguaza — the book", "Editorial", "Una pizca de sangre y un vaso de sanguaza", "50% 45%")
-body += ficha([("Title", "A Pinch of Blood and a Glass of Sanguaza"), ("Context", "Master's Degree in Editorial Design, ELISAVA"), ("Year", "September 2025 – June 2026"), ("Editorial direction, art direction &amp; design", "Antonia Ilic Bromberg &amp; Francesca Garre Buscaglia")])
+body = hero("sanguaza/libro-centrado", "A Pinch of Blood and a Glass of Sanguaza — the book", "Editorial", sg("Una pizca de sangre y un vaso de sanguaza"), "50% 45%")
+body += ficha([("Title", sg("A Pinch of Blood and a Glass of Sanguaza")), ("Context", "Master's Degree in Editorial Design, ELISAVA"), ("Year", "September 2025 – June 2026"), ("Editorial direction, art direction &amp; design", "Antonia Ilic Bromberg &amp; Francesca Garre Buscaglia")])
 body += "  <main>\n"
 body += chapter(head("01  Intro", "Across history, the one thing we have consistently maintained is the need to create rituals that bring us together as a society."),
     pair(("Why we still need it", ["By exploring the symbols, elements, and rhythms that make ritual possible, we begin to understand why we continue to need it. Even today, amid productive routines and weakened social bonds, we keep searching for moments that allow us to belong, transform, and make the passage of time visible."]),
@@ -90,7 +96,7 @@ body += chapter(head("01  Intro", "Across history, the one thing we have consist
 body += chapter(head("02  The book"),
     pair(("The architecture of ritual", ["The graphic concept reflects the \"architecture of ritual\" through the rhythm of the book. Drawing on Arnold van Gennep's structure of rites of passage, the reading flow alternates between continuity and interruption, translating the process of separation, transformation, and reintegration into the editorial experience."]),
          ("Four reading levels", ["The book is structured through four reading levels. The editorial voice guides the reader through chapter introductions, while the essays provide the theoretical framework. Poems and silver-printed images offer an experiential reading of ritual, interrupting the academic discourse with a more intimate, symbolic, and emotional perspective. Like ritual experiences, whose memories often remain fragmented and elusive, the images move away from literal representation to evoke what cannot be fully explained."])),
-    media(['      <video src="../img/sanguaza/libro-post-full.mp4" poster="../img/sanguaza/libro-post-full.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Pages of the book being turned" style="--c: 5 / 9; --m: 1 / -1; --r: 720 / 654"></video>']))
+    media(['      <video src="../img/sanguaza/libro-post-full.mp4" poster="../img/sanguaza/libro-post-full.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Pages of the book being turned" style="--c: 5 / 9; --m: 1 / -1; --r: 720 / 654"></video>']), cls="tx")
 body += chapter(head("03  the ink", text=["The images of rituals are printed in silver ink. Some rituals are so intense that they are hard to remember clearly: like ritual experiences, whose memories often remain fragmented and elusive, the silver images move away from literal representation to open a less structured, almost dreamlike space, evoking what cannot be fully explained. The poems do the same at certain moments of the book."]),
     media(['      <video src="../img/sanguaza/tinta.mp4" poster="../img/sanguaza/tinta.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Silver ink catching the light" style="--c: 5 / 9; --m: 1 / -1; --r: 1080 / 1350"></video>']))
 # Doble página a todo el ancho para quebrar el ritmo
@@ -99,8 +105,8 @@ body += f'''  <section class="paper">
 {head("04  the paper", extra='      <p style="--c: 1 / 7">Curious Matter Adiron Blue, 270 g/m² (Arjowiggins).</p>')}
   </section>
 '''
-body += chapter(head("05  Typeface"), spec_sg, top=True)
-body += chapter(head("06  Credits"), credits(None, None, [("Editorial direction, art direction &amp; design", "Antonia Ilic Bromberg, Francesca Garre Buscaglia"), ("Research &amp; archives", "Antonia Ilic Bromberg, Francesca Garre Buscaglia"), ("Typeface", "Source Serif 4, by Frank Grießhammer"), ("Paper", "Munken Print Cream 80 g/m², Curious Matter Adiron Blue 270 g/m²"), ("Printing", "Tecnoart, Barcelona, 2026"), ("Acknowledgements", "Pol Nadal (Studiopol), Josep Román (Affaire), Laura Meseguer, Ane Guerra, María Dolores Soriano, Marc Panero")], wide=True))
+body += chapter(head("05  Typeface"), spec_sg, media([video("sanguaza/libro-post-video", "5 / 9", "1 / -1", "720 / 900", "The book")]), top=True, cls="tx")
+body += chapter(head("06  Credits"), credits(None, None, [("Editorial direction, art direction &amp; design", "Antonia Ilic Bromberg, Francesca Garre Buscaglia"), ("Research &amp; archives", "Antonia Ilic Bromberg, Francesca Garre Buscaglia"), ("Typeface", "Source Serif 4, by Frank Grießhammer"), ("Paper", "Munken Print Cream 80 g/m², Curious Matter Adiron Blue 270 g/m²"), ("Printing", "Tecnoart, Barcelona, 2026"), ("Acknowledgements", "Pol Nadal (Studiopol), Josep Román (Affaire), Laura Meseguer, Ane Guerra, María Dolores Soriano, Marc Panero")], ))
 body += "  </main>\n"
 body += nxt("potra", "potra/home-crop", "Web design", "POTRA", "50% 50%")
 write("sanguaza", page("Una pizca de sangre y un vaso de sanguaza", "A Pinch of Blood and a Glass of Sanguaza — editorial book on ritual. Master in Editorial Design, ELISAVA.", "sanguaza", body, "#ffffff", css=css))
@@ -116,7 +122,7 @@ css = """    .pillars5 > div { display: flex; flex-direction: column; gap: 12px;
     .phones img { object-fit: contain; }
     @media (max-width: 768px) { .ppal > div { aspect-ratio: 1 / 2; } }"""
 pil = [("Finanzas", "finanzas"), ("Comunicación", "comunicacion"), ("Derechos", "derechos"), ("Creatividad", "creatividad"), ("Biomindset", "biomindset")]
-pillars = "\n".join(f'      <div style="--c: {2 + i * 2} / {4 + i * 2}; --m: span 2"><p class="label-low">{n}</p><img src="../{im("potra/obj-" + f)}" alt="" loading="lazy"></div>' for i, (n, f) in enumerate(pil))
+pillars = "\n".join(f'      <div style="--c: {2 + i * 2} / {4 + i * 2}; --m: span 2"><p>{n}</p><img src="../{im("potra/obj-" + f)}" alt="" loading="lazy"></div>' for i, (n, f) in enumerate(pil))
 spec_po = '''    <div class="spec g po-spec">
       <div class="rule"></div>
       <p class="caps c1 row1">Type specimen</p><p class="caps c2 row1">Mona Sans — titles</p><p class="caps c3 row1">Mona Sans — text</p>
@@ -132,12 +138,11 @@ palette = '    <div class="ppal g bleed" style="grid-template-columns: repeat(5,
 body = hero("potra/home-crop", "POTRA website", "Web design", "POTRA", "50% 50%")
 body += ficha([("Project", "POTRA — Tools, Insights &amp; Masterclasses to Hack the Productive Sphere"), ("Context", "Master's Degree in Editorial Design, ELISAVA"), ("Editorial direction, art direction &amp; design", "Antonia Ilic Bromberg &amp; Andie Puentes Fernández"), ("Typeface", "Mona Sans")])
 body += "  <main>\n"
-body += chapter(head("01  Intro", "We've been sold an idea of productivity built on systems that weren't designed with us in mind."),
+body += chapter(head("01  Intro", "We've been sold an idea of productivity built on systems that weren't designed with us in mind.", dc="1 / -1"),
     '    <div class="head g"><div class="t"><p>About</p><p>The alarm goes off. 6 a.m. This is the week you\'ll finally become "that" person: wake up early, work out, meal prep, journal, optimize. At least, that\'s what the TikToks you saved last night promised. Reality? It\'s 8 a.m., you\'re rushing out the door, and breakfast is whatever you can grab on the way.</p><p>We keep trying to fit into models that leave little room for real life: for emotions, uncertainty, care, or simply being human.</p></div></div>')
 body += chapter(head("02  The platform", text=["POTRA", "Potra exists for anyone who feels they don't quite belong in that narrative. Instead of asking you to adapt to the system, we offer tools, classes, resources, and community-driven knowledge that help you navigate professional life on your own terms."]),
-    media(['      <video src="../img/potra/home.mp4" poster="../img/potra/home-poster.jpg" muted loop playsinline autoplay preload="metadata" aria-label="POTRA home" style="--c: 1 / -1; --r: 2580 / 1450"></video>'], "bleed"),
-    media([img("potra/screen-1", "1 / 7", "1 / -1", "711 / 430", "POTRA web screen"), img("potra/screen-2", "7 / 13", "1 / -1", "711 / 430", "POTRA web screen")], "bleed"),
-    media([img("potra/screen-3", "1 / 7", "1 / -1", "711 / 430", "POTRA web screen"), img("potra/screen-4", "7 / 13", "1 / -1", "711 / 430", "POTRA web screen")], "bleed"))
+    media(['      <video src="../img/potra/home.mp4" poster="../img/potra/home-poster.jpg" muted loop playsinline autoplay preload="metadata" aria-label="POTRA home" style="--c: 2 / 12; --m: 1 / -1; --r: 2580 / 1450"></video>']),
+    media([img(f"potra/screen-{i}", ["1 / 6", "8 / 13"][(i - 1) % 2], "1 / -1", "711 / 430", "POTRA web screen") for i in (1, 2, 3, 4)], "screens", "row-gap: var(--s-head)"))
 body += chapter(head("03  The metaphor", text=["The project begins with the metaphor of the bag we carry when we know a long day lies ahead. We leave home carrying objects that symbolize the weight of everyday life, and by grouping these items, we identified five core pillars of education:"]),
     media([img("potra/la-bolsa", "1 / -1", None, "1312 / 560", "The bag and its objects", extra_style=" object-fit: contain; background: transparent;")]))
 body += chapter(head("04  Content pillars", text=["Finances, communication, rights, creativity and biomindset: these are the topics that affect us in our professional development, and each one became a content pillar for the platform."]),
@@ -147,9 +152,9 @@ body += chapter(head("06  Social media", text=["A distinctive social media voice
     media([img("potra/redes", "4 / 10", "1 / -1", "648 / 464", "POTRA Instagram post", extra_style=" object-fit: contain; background: transparent;")]),
     media([img("potra/phone-1", "4 / 6", "1 / 3", "232 / 475", "POTRA Instagram profile"), img("potra/phone-2", "8 / 10", "3 / 5", "232 / 475", "POTRA Instagram story")], "phones", "--ph: transparent"))
 body += chapter(head("07  mobile"), media(['      <video src="../img/potra/mobile.mp4" poster="../img/potra/mobile.jpg" muted loop playsinline autoplay preload="metadata" aria-label="POTRA mobile" style="--c: 3 / 11; --r: 901 / 539; object-fit: contain; background: transparent; width:100%; height:auto"></video>']))
-body += chapter(head("08  Credits"), credits(None, None, [("Editorial direction, art direction &amp; design", "Antonia Ilic Bromberg, Andie Puentes Fernández"), ("Research &amp; archives", "Antonia Ilic Bromberg, Andie Puentes Fernández"), ("Acknowledgements", "Camilo Roa (Réplica), Javier Pereda (Esiete), Albert Folch, Josep Román (Affaire), Laura Meseguer, Ane Guerra, Marc Panero")], wide=True))
+body += chapter(head("08  Credits"), credits(None, None, [("Editorial direction, art direction &amp; design", "Antonia Ilic Bromberg, Andie Puentes Fernández"), ("Research &amp; archives", "Antonia Ilic Bromberg, Andie Puentes Fernández"), ("Acknowledgements", "Camilo Roa (Réplica), Javier Pereda (Esiete), Albert Folch, Josep Román (Affaire), Laura Meseguer, Ane Guerra, Marc Panero")]))
 body += "  </main>\n"
-body += nxt("franca-projects", "franca/massimo-sanvalentin-1", "Art direction", "Franca Projects", "0% 48%")
+body += nxt("franca-projects", "", "Art direction", "Franca Projects")
 write("potra", page("POTRA", "POTRA — Tools, Insights &amp; Masterclasses to Hack the Productive Sphere. Web design.", "potra", body, "#ffffff", css=css))
 
 # ============================ ABOUT / CONTACT ===============================

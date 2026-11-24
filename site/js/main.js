@@ -7,7 +7,7 @@ const PROJECTS = [
   { slug: "franciscandrea",  cat: "Brand identity", title: "francisc'andrea",  img: "img/franciscandrea/cover.jpg",          pos: "50% 40%" },
   { slug: "nebular",         cat: "Editorial",      title: "Nebular",          img: "img/nebular/nebular-composicion.jpg",             pos: "50% 50%" },
   { slug: "wild-lama",       cat: "Art direction",  title: "Wild Lama",        img: "img/wildlama/wl-25-q1-525.jpg",         pos: "50% 14.7%" },
-  { slug: "sanguaza",        cat: "Editorial",      title: "Una pizca de sangre y un vaso de sanguaza", img: "img/sanguaza/libro-centrado.jpg", pos: "50% 45%" },
+  { slug: "sanguaza",        cat: "Editorial",      title: "Una pizca de sangre y un vaso de <i>sanguaza</i>", img: "img/sanguaza/libro-centrado.jpg", pos: "50% 45%" },
   { slug: "potra",           cat: "Web design",     title: "POTRA",            img: "img/potra/home-crop.jpg",                    pos: "50% 50%" },
 ];
 
@@ -213,3 +213,32 @@ document.querySelectorAll("p, h1, h3, li, dd, .display, .ttl").forEach(el => {
   if (!last || el.textContent.trim().split(/\s+/).length < 4) return;
   last.nodeValue = last.nodeValue.replace(/[ \t]+(\S+\s*)$/, " $1");
 });
+
+/* Banner "siguiente": antes de cambiar de página sube el banner hasta arriba,
+   donde coincide con la portada de la landing siguiente (misma imagen y recorte). */
+(function () {
+  const foot = document.querySelector(".case-next");
+  if (!foot) return;
+  const banner = foot.querySelector(".next-img");
+  foot.querySelectorAll("a").forEach(a => a.addEventListener("click", e => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+    e.preventDefault();
+    const href = a.href;
+    const top = banner.getBoundingClientRect().top + window.scrollY;
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let gone = false;
+    const go = () => { if (!gone) { gone = true; location.href = href; } };
+    if (reduce || Math.abs(window.scrollY - top) < 2) return go();
+    window.scrollTo({ top, behavior: "smooth" });
+    let last = -1, still = 0;
+    const tick = () => {
+      if (Math.abs(window.scrollY - top) < 2) return go();
+      still = window.scrollY === last ? still + 1 : 0; last = window.scrollY;
+      if (still > 10) { window.scrollTo(0, top); return go(); }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+    setTimeout(() => { window.scrollTo(0, top); go(); }, 1500);
+  }));
+  addEventListener("pageshow", e => { if (e.persisted) location.reload(); });
+})();
