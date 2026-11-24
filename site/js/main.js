@@ -5,7 +5,7 @@ const PROJECTS = [
   { slug: "franca-projects", cat: "Art direction",  title: "Franca Projects",  img: "img/franca/massimo-sanvalentin-1.jpg", pos: "50% 43%" },
   { slug: "lebor-gabala",    cat: "Art direction",  title: "Lebor Gabala",     img: "img/lebor/cover-noviembre.jpg",        pos: "0% 4.5%" },
   { slug: "franciscandrea",  cat: "Brand identity", title: "francisc'andrea",  img: "img/franciscandrea/cover.jpg",          pos: "50% 40%" },
-  { slug: "nebular",         cat: "Editorial",      title: "Nebular",          img: "img/nebular/nebular-2.jpg",             pos: "50% 50%" },
+  { slug: "nebular",         cat: "Editorial",      title: "Nebular",          img: "img/nebular/nebular-composicion.jpg",             pos: "50% 50%" },
   { slug: "wild-lama",       cat: "Art direction",  title: "Wild Lama",        img: "img/wildlama/wl-25-q1-525.jpg",         pos: "50% 14.7%" },
   { slug: "sanguaza",        cat: "Editorial",      title: "Una pizca de sangre y un vaso de sanguaza", img: "img/sanguaza/libro-centrado.jpg", pos: "50% 45%" },
   { slug: "potra",           cat: "Web design",     title: "POTRA",            img: "img/potra/home-crop.jpg",                    pos: "50% 50%" },

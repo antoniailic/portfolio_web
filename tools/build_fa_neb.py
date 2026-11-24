@@ -59,7 +59,7 @@ body += chapter(head("07  Typeface", low=None, extra='      <p>Cormorant Upright
 body += chapter(head("08  Result &amp; Credits"), credits("Result", "The identity is in use across business cards, stationery, graphics and the flower presses themselves, carrying the brand onto the product. Website currently in development.",
     [("Client", "francisc'andrea"), ("Brand identity", "Antonia Ilic Bromberg"), ("Year", "2025")]))
 body += "  </main>\n"
-body += nxt("nebular", "nebular/nebular-2", "Editorial", "Nebular", "50% 50%")
+body += nxt("nebular", "nebular/nebular-composicion", "Editorial", "Nebular", "50% 50%")
 write("franciscandrea", page("francisc'andrea", "Brand identity for francisc'andrea, a floral design studio.", "franciscandrea", body, "#ffffff", css=css))
 
 # ================================ NEBULAR ===================================
@@ -119,7 +119,7 @@ spec_neb = '''    <div class="spec g neb-spec">
       <p class="otto row3" style="--c: 1 / 9; font-size:26px; line-height:1.25">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ<br>abcdefghijklmnñopqrstuvwxyz 0123456789</p>
       <p class="c3 row3" style="font-size:12px; line-height:1.5">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ abcdefghijklmnñopqrstuvwxyz 0123456789 &amp; ¿? ¡! —</p>
     </div>'''
-body = hero("nebular/nebular-2", "Nebular — three issues", "Editorial", "Nebular — Emotional Cartography of Art", "50% 50%")
+body = hero("nebular/nebular-composicion", "Nebular — three issues", "Editorial", "Nebular — Emotional Cartography of Art", "50% 50%")
 body += ficha([("Context", "Master in Editorial Design, ELISAVA"), ("Year", "2025–2026"), ("Issues", "Nº1 Exile · Nº2 Grief · Nº3 Body"), ("Editorial direction, art direction &amp; design", "Antonia Ilic Bromberg &amp; Manuela García Aristizábal")])
 body += "  <main>\n"
 body += chapter(head("01  Intro", "Emotional Cartography of Art", low=None,
