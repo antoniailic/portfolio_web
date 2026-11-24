@@ -180,7 +180,8 @@ def item(a, b, c=None):
     x = f"<p>{c}</p>" if c else ""
     return f'        <div class="item"><p>{a}</p><p>{b}</p>{x}</div>'
 about_css = """    .about-page { padding-block: 160px var(--s-section); row-gap: var(--s-head); }
-    .about-page .display { --c: 1 / 6; }
+    .about-page .display { --c: 1 / 9; }
+    .about-page .display span { display: block; white-space: nowrap; } /* siempre en 3 líneas */
     .about-page .portrait { --c: 10 / 13; --m: 1 / 3; grid-row: 1 / 3; width: 100%; aspect-ratio: 325 / 444; object-fit: cover; }
     .about-page .t { --c: 1 / 6; }
     .cv { --c: 1 / -1; display: grid; grid-template-columns: subgrid; margin-top: calc(160px - var(--s-head)); row-gap: 28px; }
@@ -190,11 +191,12 @@ about_css = """    .about-page { padding-block: 160px var(--s-section); row-gap:
     @media (max-width: 768px) {
       .about-page { padding-top: 96px; }
       .about-page .display, .about-page .t { --m: 1 / -1; }
+      .about-page .display { font-size: min(var(--fs-display), 9.4vw); }
       .about-page .portrait { grid-row: auto; }
       .cv .edu, .cv .exp { grid-column: 1 / -1; }
     }"""
 about = f'''  <main class="about-page g">
-    <h1 class="display">Designer with a holistic and editorial approach.</h1>
+    <h1 class="display"><span>Designer with a</span> <span>holistic and editorial</span> <span>approach.</span></h1>
     <img class="portrait" src="{im("about/portrait")}" alt="Antonia Ilic Bromberg">
     <div class="t"><p>I work on identity, editorial, branding, and art direction projects from a strategic and conceptual perspective, placing emphasis on the construction of coherent visual narratives and systems that hold up over time.</p><p>My goal is to articulate content, form, and narrative to give structure and meaning to brands and projects.</p></div>
     <div class="cv">
@@ -206,6 +208,7 @@ about = f'''  <main class="about-page g">
       </section>
       <section class="exp">
         <h2 class="label">Experience</h2>
+{item("Wizards Only — Creative Designer", "Creative studio, Barcelona · Internship · 2026 – present", "Social creative direction and Instagram system for Franca Projects. Content plan for Lebor Gabala and assistance on the AW26 shoot.")}
 {item("Wild Lama — Brand designer", "Sustainable lifestyle brand, Chile · March 2024 – August 2025", "Marketing strategy and brand positioning development. Art direction and fashion campaign production. Graphic design of digital and physical pieces.")}
 {item("Falabella Art Direction Team — Intern", "Major Latin American retail and department store chain · February 2023 – March 2024", "Design of graphic pieces for digital and physical media. Development of key visuals for campaigns. Fashion production assistance for shootings.")}
 {item("Falabella — Web designer", "Major Latin American retail and department store chain · April 2021 – March 2024", "Mailing design, media strategy, landing pages, key visuals, and campaign lead for select graphic campaigns.")}
@@ -228,7 +231,6 @@ contact = '''  <main class="contact-page g">
     <p>I work on identity, editorial, branding, web, and art direction projects, participating in both the conceptual definition and the visual construction.</p>
     <div class="data">
       <div><p>Email</p><a href="mailto:antonia.ilic@gmail.com">antonia.ilic@gmail.com</a></div>
-      <div><p>Instagram</p><a href="https://www.instagram.com/bai__antonia" target="_blank" rel="noopener">@bai__antonia</a></div>
       <div><p>Location</p><p>Barcelona, Spain</p></div>
     </div>
   </main>'''
