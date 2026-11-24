@@ -95,7 +95,7 @@ spec_sg = '''    <div class="spec g sg-spec">
       <p class="c3 row3" style="font-size:12px; line-height:1.5">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ abcdefghijklmnñopqrstuvwxyz 0123456789 &amp; ¿? ¡! —</p>
     </div>'''
 body = hero("sanguaza/libro-centrado", "A Pinch of Blood and a Glass of Sanguaza — the book", "Editorial", sg("Una pizca de sangre y un vaso de sanguaza"), "50% 45%")
-body += ficha([("Title", sg("A Pinch of Blood and a Glass of Sanguaza")), ("Context", "Master's Degree in Editorial Design, ELISAVA"), ("Year", "September 2025 – June 2026"), ("Editorial direction, art direction &amp; design", "Antonia Ilic Bromberg &amp; Francesca Garre Buscaglia")])
+body += ficha([("Title", sg("A Pinch of Blood and a Glass of Sanguaza")), ("Context", "Master's Degree in Editorial Design, ELISAVA"), ("Year", "September 2025 – June 2026"), ("Editorial direction, art direction &amp;&nbsp;design", "Antonia Ilic Bromberg &amp; Francesca Garre Buscaglia")])
 body += "  <main>\n"
 body += chapter(head("01  Intro", "Across history, the one thing we have consistently maintained is the need to create rituals that bring us together as a society."),
     pair(("Why we still need it", ["By exploring the symbols, elements, and rhythms that make ritual possible, we begin to understand why we continue to need it. Even today, amid productive routines and weakened social bonds, we keep searching for moments that allow us to belong, transform, and make the passage of time visible."]),
@@ -113,7 +113,7 @@ body += f'''  <section class="paper">
   </section>
 '''
 body += chapter(head("05  Typeface"), spec_sg, media([video("sanguaza/libro-post-video", "5 / 9", "1 / -1", "720 / 900", "The book")]), top=True, cls="tx")
-body += chapter(head("06  Credits"), credits(None, None, [("Editorial direction, art direction &amp; design", "Antonia Ilic Bromberg, Francesca Garre Buscaglia"), ("Research &amp; archives", "Antonia Ilic Bromberg, Francesca Garre Buscaglia"), ("Typeface", "Source Serif 4, by Frank Grießhammer"), ("Paper", "Munken Print Cream 80 g/m², Curious Matter Adiron Blue 270 g/m²"), ("Printing", "Tecnoart, Barcelona, 2026"), ("Acknowledgements", "Pol Nadal (Studiopol), Josep Román (Affaire), Laura Meseguer, Ane Guerra, María Dolores Soriano, Marc Panero")], ))
+body += chapter(head("06  Credits"), credits(None, None, [("Editorial direction, art direction &amp;&nbsp;design", "Antonia Ilic Bromberg, Francesca Garre Buscaglia"), ("Research &amp; archives", "Antonia Ilic Bromberg, Francesca Garre Buscaglia"), ("Typeface", "Source Serif 4, by Frank Grießhammer"), ("Paper", "Munken Print Cream 80 g/m², Curious Matter Adiron Blue 270 g/m²"), ("Printing", "Tecnoart, Barcelona, 2026"), ("Acknowledgements", "Pol Nadal (Studiopol), Josep Román (Affaire), Laura Meseguer, Ane Guerra, María Dolores Soriano, Marc Panero")], ))
 body += "  </main>\n"
 body += nxt("potra", "potra/home-crop", "Web design", "POTRA", "50% 50%")
 write("sanguaza", page("Una pizca de sangre y un vaso de sanguaza", "A Pinch of Blood and a Glass of Sanguaza — editorial book on ritual. Master in Editorial Design, ELISAVA.", "sanguaza", body, "#ffffff", css=css))
@@ -143,7 +143,7 @@ spec_po = '''    <div class="spec g po-spec">
 pal = [("#8ab0cf", "#000"), ("#680139", "#fff"), ("#341c2f", "#fff"), ("#daef20", "#000"), ("#cccaff", "#000")]
 palette = '    <div class="ppal g bleed" style="grid-template-columns: repeat(5, 1fr)">\n' + "\n".join(f'      <div style="--c: auto; --m: auto; background:{b}"><p style="color:{t}">{b.upper()}</p></div>' for b, t in pal) + "\n    </div>"
 body = hero("potra/home-crop", "POTRA website", "Web design", "POTRA", "50% 50%")
-body += ficha([("Project", "POTRA — Tools, Insights &amp; Masterclasses to Hack the Productive Sphere"), ("Context", "Master's Degree in Editorial Design, ELISAVA"), ("Editorial direction, art direction &amp; design", "Antonia Ilic Bromberg &amp; Andie Puentes Fernández"), ("Typeface", "Mona Sans")])
+body += ficha([("Project", "POTRA — Tools, Insights &amp; Masterclasses to Hack the Productive Sphere"), ("Context", "Master's Degree in Editorial Design, ELISAVA"), ("Editorial direction, art direction &amp;&nbsp;design", "Antonia Ilic Bromberg &amp; Andie Puentes Fernández"), ("Typeface", "Mona Sans")])
 body += "  <main>\n"
 body += chapter(head("01  Intro", "We've been sold an idea of productivity built on systems that weren't designed with us in mind."),
     '    <div class="head g"><div class="t"><p>About</p><p>The alarm goes off. 6 a.m. This is the week you\'ll finally become "that" person: wake up early, work out, meal prep, journal, optimize. At least, that\'s what the TikToks you saved last night promised. Reality? It\'s 8 a.m., you\'re rushing out the door, and breakfast is whatever you can grab on the way.</p><p>We keep trying to fit into models that leave little room for real life: for emotions, uncertainty, care, or simply being human.</p></div></div>')
@@ -159,7 +159,7 @@ body += chapter(head("06  Social media", text=["A distinctive social media voice
     media([img("potra/redes", "4 / 10", "1 / -1", "648 / 464", "POTRA Instagram post", extra_style=" object-fit: contain; background: transparent;")]),
     media([img("potra/phone-1", "4 / 6", "1 / 3", "232 / 475", "POTRA Instagram profile"), img("potra/phone-2", "8 / 10", "3 / 5", "232 / 475", "POTRA Instagram story")], "phones", "--ph: transparent"))
 body += chapter(head("07  mobile"), media(['      <video src="../img/potra/mobile.mp4" poster="../img/potra/mobile.jpg" muted loop playsinline autoplay preload="metadata" aria-label="POTRA mobile" style="--c: 3 / 11; --r: 901 / 539; object-fit: contain; background: transparent; width:100%; height:auto"></video>']))
-body += chapter(head("08  Credits"), credits(None, None, [("Editorial direction, art direction &amp; design", "Antonia Ilic Bromberg, Andie Puentes Fernández"), ("Research &amp; archives", "Antonia Ilic Bromberg, Andie Puentes Fernández"), ("Acknowledgements", "Camilo Roa (Réplica), Javier Pereda (Esiete), Albert Folch, Josep Román (Affaire), Laura Meseguer, Ane Guerra, Marc Panero")]))
+body += chapter(head("08  Credits"), credits(None, None, [("Editorial direction, art direction &amp;&nbsp;design", "Antonia Ilic Bromberg, Andie Puentes Fernández"), ("Research &amp; archives", "Antonia Ilic Bromberg, Andie Puentes Fernández"), ("Acknowledgements", "Camilo Roa (Réplica), Javier Pereda (Esiete), Albert Folch, Josep Román (Affaire), Laura Meseguer, Ane Guerra, Marc Panero")]))
 body += "  </main>\n"
 body += nxt("franca-projects", "", "Art direction", "Franca Projects")
 write("potra", page("POTRA", "POTRA — Tools, Insights &amp; Masterclasses to Hack the Productive Sphere. Web design.", "potra", body, "#ffffff", css=css))
