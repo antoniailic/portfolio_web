@@ -300,23 +300,50 @@ document.querySelectorAll("p, h1, h3, li, dd, .display, .ttl").forEach(el => {
 })();
 
 /* About y Contact bajan desde arriba cuando se abren desde la home o una landing
-   (entre About y Contact el cambio es directo). */
+   (entre About y Contact el cambio es directo). La página que baja es la real: se precarga
+   en un marco oculto, así al terminar de bajar ya está todo y el cambio no se nota. */
 (function () {
   const here = document.body.dataset.page;               // "about" | "contact" | undefined
   if (here === "about" || here === "contact") return;
-  document.querySelectorAll('a[href$="about.html"], a[href$="contact.html"]').forEach(a => a.addEventListener("click", e => {
-    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
-    e.preventDefault();
-    if (document.querySelector(".curtain")) return;
-    const c = document.createElement("div"); c.className = "curtain"; document.body.appendChild(c);
-    const go = () => { try { sessionStorage.setItem("dropIn", "1"); } catch (_) {} location.href = a.href; };
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return go();
-    c.getBoundingClientRect();
-    requestAnimationFrame(() => c.classList.add("on"));
-    c.addEventListener("transitionend", go, { once: true });
-    setTimeout(go, 900);
-  }));
-  addEventListener("pageshow", e => { if (e.persisted) document.querySelectorAll(".curtain").forEach(c => c.remove()); });
+  const links = [...document.querySelectorAll('a[href$="about.html"], a[href$="contact.html"]')];
+  if (!links.length) return;
+  const frames = {};
+  const prep = href => {
+    if (frames[href]) return frames[href];
+    const f = document.createElement("iframe");
+    f.className = "drop-frame"; f.setAttribute("aria-hidden", "true"); f.tabIndex = -1;
+    f.src = href; f.ready = false;
+    f.addEventListener("load", () => { f.ready = true; }, { once: true });
+    document.body.appendChild(f);
+    return (frames[href] = f);
+  };
+  const idle = window.requestIdleCallback || (fn => setTimeout(fn, 1200));
+  addEventListener("load", () => idle(() => [...new Set(links.map(a => a.href))].forEach(prep)));
+  links.forEach(a => {
+    a.addEventListener("pointerenter", () => prep(a.href));
+    a.addEventListener("click", e => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      e.preventDefault();
+      if (document.body.classList.contains("dropping")) return;
+      document.body.classList.add("dropping");
+      const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const f = frames[a.href];
+      let layer = f && f.ready ? f : null, flag = false;
+      if (!layer) { layer = document.createElement("div"); layer.className = "curtain"; document.body.appendChild(layer); flag = true; }
+      const go = () => { if (flag) { try { sessionStorage.setItem("dropIn", "1"); } catch (_) {} } location.href = a.href; };
+      if (reduce) return go();
+      layer.getBoundingClientRect();
+      requestAnimationFrame(() => layer.classList.add("on"));
+      layer.addEventListener("transitionend", go, { once: true });
+      setTimeout(go, 900);
+    });
+  });
+  addEventListener("pageshow", e => {
+    if (!e.persisted) return;
+    document.body.classList.remove("dropping");
+    document.querySelectorAll(".curtain").forEach(c => c.remove());
+    document.querySelectorAll(".drop-frame.on").forEach(f => f.classList.remove("on"));
+  });
 })();
 
 /* Videos: se cargan y reproducen cuando están a punto de entrar en pantalla, y se pausan al salir */
