@@ -181,7 +181,7 @@ def item(a, b, c=None):
     return f'        <div class="item"><p>{a}</p><p>{b}</p>{x}</div>'
 about_css = """    .about-page { padding-block: 160px var(--s-section); row-gap: var(--s-head); }
     .about-page .display { --c: 1 / 9; }
-    .about-page .display span { display: block; white-space: nowrap; } /* siempre en 3 líneas, cortadas como las definió Antonia */
+    .about-page .display span { display: block; white-space: nowrap; } /* siempre en 2 líneas, cortadas como las definió Antonia */
     .about-page .portrait { --c: 10 / 13; --m: 1 / 3; grid-row: 1 / 3; width: 100%; aspect-ratio: 325 / 444; object-fit: cover; }
     .about-page .t { --c: 1 / 6; }
     .cv { --c: 1 / -1; display: grid; grid-template-columns: subgrid; margin-top: calc(160px - var(--s-head)); row-gap: 28px; }
@@ -192,12 +192,12 @@ about_css = """    .about-page { padding-block: 160px var(--s-section); row-gap:
     @media (max-width: 768px) {
       .about-page { padding-top: 96px; }
       .about-page .display, .about-page .t { --m: 1 / -1; }
-      .about-page .display { font-size: min(var(--fs-display), 9.4vw); }
+      .about-page .display { font-size: min(var(--fs-display), 7.4vw); }
       .about-page .portrait { grid-row: auto; }
       .cv .edu, .cv .exp { grid-column: 1 / -1; }
     }"""
 about = f'''  <main class="about-page g">
-    <h1 class="display"><span>Designer with</span> <span>a holistic and</span> <span>editorial approach.</span></h1>
+    <h1 class="display"><span>Designer with a holistic</span> <span>and editorial approach.</span></h1>
     <img class="portrait" src="{im("about/portrait")}" alt="Antonia Ilic Bromberg">
     <div class="t"><p>I work on identity, editorial, branding, and art direction projects from a strategic and conceptual perspective, placing emphasis on the construction of coherent visual narratives and systems that hold up over time.</p><p>My goal is to articulate content, form, and narrative to give structure and meaning to brands and projects.</p></div>
     <div class="cv">
