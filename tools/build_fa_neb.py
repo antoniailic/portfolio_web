@@ -72,7 +72,7 @@ css = """    .lists { position: relative; }
     @media (min-width: 769px) { .lists .artists { position: relative !important; } }
     .lists .artists { position: absolute; top: 0; text-align: center; white-space: nowrap;
       font-family: "Source Serif 4", serif; font-weight: 600; font-size: 50px; line-height: 1.15; letter-spacing: -.02em; }
-    .lists .side { position: absolute; white-space: pre; }
+    .lists .side { position: absolute; white-space: pre; top: 50% !important; transform: translateY(-50%); } /* centrado con la lista de nombres */
     .lists .side em { font-family: "Source Serif 4", serif; font-style: italic; font-size: 14px; }
     .issue-a .artists { --x: 7; }
     .covers { row-gap: var(--s-block); }
