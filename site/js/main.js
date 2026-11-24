@@ -123,7 +123,7 @@ function brightnessAt(x, y) {
 }
 
 // Menú sobre imágenes: cada apartado en blanco o negro según lo que tiene debajo
-const navItems = [...document.querySelectorAll(".case-nav .portfolio, .case-nav .name, .case-nav .about, .case-nav .contact")];
+const navItems = [...document.querySelectorAll(".case-nav .portfolio, .case-nav .name, .case-nav .about, .case-nav .contact, .home .foot p")];
 function navContrast() {
   navItems.forEach(el => {
     const r = el.getBoundingClientRect();

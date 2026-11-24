@@ -20,7 +20,7 @@
     .index .ttl { grid-column: 3 / -1; color: rgba(255,255,255,.55); }
     .index a.on .cat { color: rgba(255,255,255,.5); }
     .index a.on .ttl, .index a:hover .ttl { color: #fff; }
-    .foot { position: absolute; left: 0; right: 0; bottom: 12px; pointer-events: none; }
+    .foot { position: absolute; left: 0; right: 0; bottom: 12px; pointer-events: none; color: #fff; }
     .foot p:first-child { --c: 1 / 7; } .foot p:last-child { --c: 7 / 13; text-align: right; }
     .index .dot { display: none; }
     @media (max-width: 768px) {
@@ -31,7 +31,7 @@
       .index .ttl { min-width: 0; }
       .index .dot { display: block; position: absolute; left: 0; top: 0; width: 7px; height: 7px; border-radius: 50%; background: #fff;
         transition: transform .45s cubic-bezier(.65, 0, .35, 1); pointer-events: none; }
-      .foot p:first-child, .foot p:last-child { --m: 1 / -1; text-align: left; font-size: 12px; }
+      .foot p:first-child, .foot p:last-child { --m: 1 / -1; text-align: left; }
     }
   </style>
 </head>
@@ -45,7 +45,7 @@
       <span class="links"><a class="hand about" href="about.html" aria-label="About"></a><a class="hand contact" href="contact.html" aria-label="Contact"></a></span>
     </nav>
     <div class="index-wrap g"><nav class="index" aria-label="Projects"></nav></div>
-    <div class="foot g"><p class="label">Based in Barcelona · Working across Europe</p><p class="label">Editorial &amp; brand designer</p></div>
+    <div class="foot g"><p>Based in Barcelona · Working across Europe</p><p>Editorial &amp; brand designer</p></div>
   </main>
   <script src="js/main.js"></script>
 </body>
