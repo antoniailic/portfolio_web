@@ -205,3 +205,13 @@ body:not([data-project="nebular"]):not([data-project="sanguaza"]) .chapter > .he
 .case-next .next-img { position: relative; height: calc(100vw * 900 / 1440); max-height: 100svh; min-height: 520px; }
 .case-next .next-img img { position: absolute; inset: 0; }
 .case-next { min-height: 100svh; } /* deja subir el banner hasta arriba antes de cambiar de landing */
+
+/* Banner "siguiente" como ventana corta: se ve solo una franja de la imagen, con el
+   "Next" encima, para que se lea como enlace y no como parte del proyecto.
+   Al hacer clic la ventana crece hasta la altura de la portada y luego sube. */
+.case-next { min-height: 0; padding-bottom: 64px; }
+.case-next .next-title { padding-block: 64px 12px; }
+.case-next .next-img { height: calc(100vw * 320 / 1440); min-height: 200px; transition: height .6s cubic-bezier(.4, 0, .2, 1); }
+.case-next .next-img.open { height: min(calc(100vw * 900 / 1440), 100svh); min-height: 520px; }
+.case-next.opening { padding-bottom: 100svh; }
+@media (max-width: 768px) { .case-next .next-title { padding-block: 40px 12px; } .case-next { padding-bottom: 40px; } }

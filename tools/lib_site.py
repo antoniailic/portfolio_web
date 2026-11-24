@@ -130,8 +130,8 @@ def sg(s):
 def nxt(slug, img_, cat, name, pos="50% 50%"):
     img_, pos = HEROES.get(slug, (img_, pos))
     return f'''  <footer class="case-next">
+    <a class="next-title g" href="{slug}.html"><span class="label tag"><span class="cat">[{cat}]</span><span>Next: {name} →</span></span></a>
     <a class="next-img" href="{slug}.html" style="--pos: {pos}"><img src="../{im(img_)}" alt="" loading="lazy"></a>
-    <a class="next-title g" href="{slug}.html"><span class="label tag"><span class="cat">[{cat}]</span><span>{name} →</span></span></a>
   </footer>
 '''
 

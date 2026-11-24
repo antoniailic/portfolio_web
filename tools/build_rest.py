@@ -78,7 +78,11 @@ write("wild-lama", page("Wild Lama", "Art direction, campaigns, content strategy
 css = """    .paper { position: relative; color: #fff; background: #2333c8 url("../img/sanguaza/paper-blue.jpg") center / cover; aspect-ratio: 1440 / 1149; padding-top: 40px; }
     .paper .head { row-gap: 36px; }
     .sg-spec { background: #fff; color: #2333c8; font-family: "Source Serif 4", serif; }
-    @media (max-width: 768px) { .paper { aspect-ratio: auto; min-height: 70vh; } }"""
+    @media (max-width: 768px) { .paper { aspect-ratio: auto; min-height: 70vh; } }
+    /* Intro en 3 líneas */
+    @media (min-width: 769px) { .chapter:first-child .head > .display { --c: 1 / -1; } }
+    /* Video de The book: blanco alrededor para que al centrarlo no se vea texto */
+    .chapter.tx > .media.solo:has(video[src*="libro-post-full"]) { min-height: 100svh; align-content: center; }"""
 spec_sg = '''    <div class="spec g sg-spec">
       <div class="rule"></div>
       <p class="caps c1 row1">Type specimen</p><p class="caps c2 row1">Source Serif 4 — titles</p><p class="caps c3 row1">Source Serif 4 — text</p>

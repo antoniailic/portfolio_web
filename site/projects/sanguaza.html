@@ -13,6 +13,10 @@
     .paper .head { row-gap: 36px; }
     .sg-spec { background: #fff; color: #2333c8; font-family: "Source Serif 4", serif; }
     @media (max-width: 768px) { .paper { aspect-ratio: auto; min-height: 70vh; } }
+    /* Intro en 3 líneas */
+    @media (min-width: 769px) { .chapter:first-child .head > .display { --c: 1 / -1; } }
+    /* Video de The book: blanco alrededor para que al centrarlo no se vea texto */
+    .chapter.tx > .media.solo:has(video[src*="libro-post-full"]) { min-height: 100svh; align-content: center; }
   </style>
 </head>
 <body class="case" data-project="sanguaza">
@@ -110,8 +114,8 @@
   </section>
   </main>
   <footer class="case-next">
+    <a class="next-title g" href="potra.html"><span class="label tag"><span class="cat">[Web design]</span><span>Next: POTRA →</span></span></a>
     <a class="next-img" href="potra.html" style="--pos: 50% 50%"><img src="../img/potra/home-crop.jpg" alt="" loading="lazy"></a>
-    <a class="next-title g" href="potra.html"><span class="label tag"><span class="cat">[Web design]</span><span>POTRA →</span></span></a>
   </footer>
 
   <script src="../js/main.js"></script>

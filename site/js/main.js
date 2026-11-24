@@ -228,15 +228,12 @@ document.querySelectorAll("p, h1, h3, li, dd, .display, .ttl").forEach(el => {
     const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
     let gone = false;
     const go = () => { if (!gone) { gone = true; location.href = href; } };
-    if (reduce || Math.abs(window.scrollY - top) < 2) return go();
+    if (reduce) return go();
+    foot.classList.add("opening"); banner.classList.add("open");
     window.scrollTo({ top, behavior: "smooth" });
-    let last = -1, still = 0;
-    const tick = () => {
-      if (Math.abs(window.scrollY - top) < 2) return go();
-      still = window.scrollY === last ? still + 1 : 0; last = window.scrollY;
-      if (still > 10) { window.scrollTo(0, top); return go(); }
-      requestAnimationFrame(tick);
-    };
+    // cambia de página cuando la ventana ya creció y llegó arriba
+    const full = () => banner.getBoundingClientRect().height >= Math.max(520, Math.min(innerHeight, innerWidth * 900 / 1440)) - 2;
+    const tick = () => (full() && Math.abs(window.scrollY - top) < 2) ? go() : requestAnimationFrame(tick);
     requestAnimationFrame(tick);
     setTimeout(() => { window.scrollTo(0, top); go(); }, 1500);
   }));
