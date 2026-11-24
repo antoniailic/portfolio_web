@@ -42,7 +42,7 @@ body.case { background: var(--bg-case); }
 }
 .case-band {
   position: absolute; left: 0; right: 0; bottom: 0; height: 96px;
-  background: var(--band); align-content: center;
+  background: var(--bg-case); align-content: center;
   transform: translateY(100%);
   animation: band-up .9s cubic-bezier(.2,.7,.1,1) .35s forwards;
 }
