@@ -206,6 +206,7 @@ about_css = """    .about-page { padding-block: 160px var(--s-section); row-gap:
     .about-page .t { --c: 1 / 6; }
     .cv { --c: 1 / -1; display: grid; grid-template-columns: subgrid; margin-top: calc(120px - var(--s-head)); row-gap: 28px; }
     .cv section { display: flex; flex-direction: column; gap: 24px; }
+    .cv .label { font-family: var(--sans); font-size: var(--fs-body); letter-spacing: .06em; } /* Inter en mayúsculas en vez de la mono */
     .cv .edu { grid-column: 1 / 5; } .cv .exp { grid-column: 6 / 11; }
     .cv .item { display: flex; flex-direction: column; gap: 4px; }
     .cv .item p:first-child { font-weight: 600; } /* lugar y puesto en negrita */
