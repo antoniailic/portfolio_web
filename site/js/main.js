@@ -4,7 +4,7 @@
 const PROJECTS = [
   { slug: "franca-projects", cat: "Art direction",  title: "Franca Projects",  img: "img/franca/massimo-sanvalentin-1.jpg", pos: "50% 43%" },
   { slug: "lebor-gabala",    cat: "Art direction",  title: "Lebor Gabala",     img: "img/lebor/cover-noviembre.jpg",        pos: "0% 4.5%" },
-  { slug: "franciscandrea",  cat: "Brand identity", title: "francisc'andrea",  img: "img/franciscandrea/cover.jpg",          pos: "50% 40%" },
+  { slug: "franciscandrea",  cat: "Brand identity", title: "francisc'andrea",  img: "img/franciscandrea/cover.jpg",          pos: "50% 40%", foot: "#fff" },
   { slug: "nebular",         cat: "Editorial",      title: "Nebular",          img: "img/nebular/nebular-composicion.jpg",             pos: "50% 50%" },
   { slug: "wild-lama",       cat: "Art direction",  title: "Wild Lama",        img: "img/wildlama/wl-25-q1-525.jpg",         pos: "50% 14.7%" },
   { slug: "sanguaza",        cat: "Editorial",      title: "Una pizca de sangre y un vaso de <i>sanguaza</i>", img: "img/sanguaza/libro-centrado.jpg", pos: "50% 45%" },
@@ -58,6 +58,7 @@ if (home) {
   addEventListener("resize", placeDot);
   function show(i) {
     current = (i + PROJECTS.length) % PROJECTS.length;
+    home.dataset.foot = PROJECTS[current].foot || ""; // color fijo del texto de abajo para algunas portadas
     banners.querySelectorAll("img").forEach((im, k) => im.classList.toggle("on", k === current));
     index.querySelectorAll("a").forEach((a, k) => a.classList.toggle("on", k === current));
     placeDot();
@@ -135,7 +136,9 @@ function navContrast() {
       sum += brightnessAt(x, y); n++;
     }
     if (!n) return;
-    const c = sum / n < .55 ? "#fff" : "#000";
+    let c = sum / n < .55 ? "#fff" : "#000";
+    const fixed = el.closest(".foot") && document.querySelector(".home-stage")?.dataset.foot;
+    if (fixed) c = fixed;
     el.style.color = c; if (el.classList.contains("hand")) el.style.backgroundColor = c;
   });
 }
