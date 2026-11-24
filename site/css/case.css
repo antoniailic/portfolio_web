@@ -166,13 +166,14 @@ body.go-prev, body.go-prev *, body.go-next, body.go-next * { cursor: none; }
 /* Normalización de espaciados (sistema único)
    título de capítulo o display → contenido: --s-head (40)
    etiqueta → texto, párrafo → párrafo, imagen → pie: --s-text (12)
-   texto ↔ imagen, bloque → bloque: --s-block (80)
-   capítulo → capítulo: --s-section (140) */
+   texto ↔ imagen, bloque → bloque: --s-block (160; 120 tablet; 64 mobile)
+   capítulo → capítulo: --s-section (240; 200 tablet; 120 mobile) */
 .chapter > .head:has(> :last-child:is(h2, .display)) + * { margin-top: calc(var(--s-head) - var(--s-block)); }
 .head > .label-low + * { margin-top: calc(var(--s-text) - var(--s-head)); }
 .ficha { padding-bottom: var(--s-section); }
-.spec { padding-block: var(--s-block); }   /* aire interior igual arriba y abajo del color */
+.spec { padding-block: 80px; }   /* aire interior igual arriba y abajo del color */
 .spec .row1 { margin-top: 0; }
 .spec > .rule:first-child { display: none; } /* sin línea en el borde del color */
+@media (max-width: 768px) { .spec { padding-block: 40px; } }
 /* Specimens sin color propio (mismo fondo que la página): sin aire interior extra */
 .neb-spec, .sg-spec { padding-block: 0; }

@@ -48,12 +48,12 @@
   /* Espaciados — únicos para todas las landings */
   --s-text: 12px;        /* etiqueta → texto, párrafo → párrafo */
   --s-head: 40px;        /* encabezado de capítulo → contenido */
-  --s-block: 80px;       /* texto → imagen, imagen → imagen dentro de un capítulo */
-  --s-section: 140px;    /* capítulo → capítulo */
+  --s-block: 160px;      /* texto → imagen, imagen → imagen dentro de un capítulo */
+  --s-section: 240px;    /* capítulo → capítulo */
 }
 
 @media (min-width: 1441px) { :root { --fs-display: calc(100vw * 70 / 1440); } }
-@media (max-width: 1100px) { :root { --fs-display: 52px; --s-block: 64px; --s-section: 112px; } }
+@media (max-width: 1100px) { :root { --fs-display: 52px; --s-block: 120px; --s-section: 200px; } }
 @media (max-width: 768px) {
   :root {
     --cols: 4;
@@ -61,8 +61,8 @@
     --gutter: 12px;
     --fs-display: 34px;
     --s-head: 24px;
-    --s-block: 40px;
-    --s-section: 88px;
+    --s-block: 64px;
+    --s-section: 120px;
   }
 }
 

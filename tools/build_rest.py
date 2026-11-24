@@ -181,7 +181,7 @@ about_css = """    .about-page { padding-block: 160px var(--s-section); row-gap:
     .about-page .display { --c: 1 / 6; }
     .about-page .portrait { --c: 10 / 13; --m: 1 / 3; grid-row: 1 / 3; width: 100%; aspect-ratio: 325 / 444; object-fit: cover; }
     .about-page .t { --c: 1 / 6; }
-    .cv { --c: 1 / -1; display: grid; grid-template-columns: subgrid; margin-top: calc(var(--s-block) * 2 - var(--s-head)); row-gap: 28px; }
+    .cv { --c: 1 / -1; display: grid; grid-template-columns: subgrid; margin-top: calc(160px - var(--s-head)); row-gap: 28px; }
     .cv section { display: flex; flex-direction: column; gap: 24px; }
     .cv .edu { grid-column: 1 / 5; } .cv .exp { grid-column: 6 / 11; }
     .cv .item { display: flex; flex-direction: column; gap: 4px; }
