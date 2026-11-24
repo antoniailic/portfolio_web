@@ -11,6 +11,11 @@
     :root { --bg-case: #000000; --band: #000000; }
     body.case { color: #fff; }
     .lists { position: relative; }
+    /* Presentación del issue a pantalla completa: título + nombres llenan la vista, sin asomar el video */
+    @media (min-width: 1101px) {
+      .lists { min-height: calc(100svh - var(--s-section)); display: flex; align-items: center; }
+      .lists .in { position: relative; width: 100%; }
+    }
     @media (min-width: 769px) { .lists .artists { position: relative !important; } }
     .lists .artists { position: absolute; top: 0; text-align: center; white-space: nowrap;
       font-family: "Source Serif 4", serif; font-weight: 600; font-size: 50px; line-height: 1.15; letter-spacing: -.02em; }
@@ -29,7 +34,8 @@
     .cred3 p { white-space: pre-line; }
     @media (max-width: 1100px) {
       .lists { height: auto; display: flex; flex-direction: column; gap: 24px; }
-      .lists > * { position: static !important; transform: none !important; text-align: left !important; }
+      .lists > *, .lists .in > * { position: static !important; transform: none !important; text-align: left !important; }
+      .lists .in { display: flex; flex-direction: column; gap: 24px; }
       .lists .artists { font-size: 34px; white-space: normal; }
       .lists .side { white-space: pre-wrap; }
     }
@@ -77,12 +83,12 @@
       <h2 class="label">02  Issue 1 — Exile</h2>
     </div>
     <div class="g">
-      <div class="lists" style="--c: 1 / -1">
+      <div class="lists" style="--c: 1 / -1"><div class="in">
         <p class="artists" style="left: calc(6 * (100% + var(--gutter)) / 12); width: calc(6 * (100% + var(--gutter)) / 12 - var(--gutter))">Ana Mendieta<br>Shirin Neshat<br>Cristina Peri Rossi<br>Ariane Mnouchkine<br>Tala Madani<br>Larissa Sansour<br>Laura El-Tantawy</p>
         <p class="side" style="left: calc(2 * (100% + var(--gutter)) / 12); top:150px">      Seven artists,
 seven ways
          to navigate <em>exile</em>.</p>
-      </div>
+      </div></div>
     </div>
     <div class="g" ><p class="label-low">Editorial</p></div>
     <div class="trio g" style="margin-top:calc(var(--s-text) - var(--s-block))">
@@ -101,12 +107,12 @@ seven ways
       <h2 class="label">03  Issue 2 — Grief</h2>
     </div>
     <div class="g">
-      <div class="lists" style="--c: 1 / -1">
+      <div class="lists" style="--c: 1 / -1"><div class="in">
         <p class="artists" style="left: calc(0 * (100% + var(--gutter)) / 12); width: calc(5 * (100% + var(--gutter)) / 12 - var(--gutter))">Käthe Kollwitz<br>Nan Goldin<br>Sarah Sudhoff<br>Björk<br>Graciela Iturbide<br>Joan Jonas<br>Charlotte Wells</p>
         <p class="side" style="left: calc(9 * (100% + var(--gutter)) / 12); top:60px">Seven artists,
                seven ways
 to navigate <em>grief.</em></p>
-      </div>
+      </div></div>
     </div>
     <div class="g" ><p class="label-low">Editorial</p></div>
     <div class="trio g" style="margin-top:calc(var(--s-text) - var(--s-block))">
@@ -125,12 +131,12 @@ to navigate <em>grief.</em></p>
       <h2 class="label">04  Issue 3 — Body</h2>
     </div>
     <div class="g">
-      <div class="lists" style="--c: 1 / -1">
+      <div class="lists" style="--c: 1 / -1"><div class="in">
         <p class="artists" style="left: calc(6 * (100% + var(--gutter)) / 12); width: calc(6 * (100% + var(--gutter)) / 12 - var(--gutter))">Francesca Woodman<br>Wangechi Mutu<br>Mari Katayama<br>Tracey Emin<br>Adrian Ghenie<br>Siân Davey<br>Anne De Keersmaeker</p>
         <p class="side" style="left: calc(0 * (100% + var(--gutter)) / 12); top:150px">      Seven artists,
 seven ways
              to inhabit the <em>body</em>.</p>
-      </div>
+      </div></div>
     </div>
     <div class="g" ><p class="label-low">Editorial</p></div>
     <div class="trio g" style="margin-top:calc(var(--s-text) - var(--s-block))">

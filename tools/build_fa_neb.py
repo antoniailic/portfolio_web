@@ -64,6 +64,11 @@ write("franciscandrea", page("francisc'andrea", "Brand identity for francisc'and
 
 # ================================ NEBULAR ===================================
 css = """    .lists { position: relative; }
+    /* Presentación del issue a pantalla completa: título + nombres llenan la vista, sin asomar el video */
+    @media (min-width: 1101px) {
+      .lists { min-height: calc(100svh - var(--s-section)); display: flex; align-items: center; }
+      .lists .in { position: relative; width: 100%; }
+    }
     @media (min-width: 769px) { .lists .artists { position: relative !important; } }
     .lists .artists { position: absolute; top: 0; text-align: center; white-space: nowrap;
       font-family: "Source Serif 4", serif; font-weight: 600; font-size: 50px; line-height: 1.15; letter-spacing: -.02em; }
@@ -82,7 +87,8 @@ css = """    .lists { position: relative; }
     .cred3 p { white-space: pre-line; }
     @media (max-width: 1100px) {
       .lists { height: auto; display: flex; flex-direction: column; gap: 24px; }
-      .lists > * { position: static !important; transform: none !important; text-align: left !important; }
+      .lists > *, .lists .in > * { position: static !important; transform: none !important; text-align: left !important; }
+      .lists .in { display: flex; flex-direction: column; gap: 24px; }
       .lists .artists { font-size: 34px; white-space: normal; }
       .lists .side { white-space: pre-wrap; }
     }"""
@@ -90,10 +96,10 @@ def lists(artists, list_cols, side, side_cols, side_top):
     # la lista se centra dentro de su tramo de columnas
     a = "<br>".join(artists)
     return f'''    <div class="g">
-      <div class="lists" style="--c: 1 / -1">
+      <div class="lists" style="--c: 1 / -1"><div class="in">
         <p class="artists" style="left: calc({list_cols[0]} * (100% + var(--gutter)) / 12); width: calc({list_cols[1]} * (100% + var(--gutter)) / 12 - var(--gutter))">{a}</p>
         <p class="side" style="left: calc({side_cols} * (100% + var(--gutter)) / 12); top:{side_top}px">{side}</p>
-      </div>
+      </div></div>
     </div>'''
 def issue(label, artists, lc, side, sc, st, ed, cover, back, video, name):
     return chapter(head(label), lists(artists, lc, side, sc, st),
