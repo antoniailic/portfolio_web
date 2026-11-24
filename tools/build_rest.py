@@ -21,6 +21,15 @@ css = """    .campaign { row-gap: var(--gutter); }
       .campaign > .info, .campaign > .cells { --m: 1 / -1; }
       .cells { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 8px !important; }
       .cells img, .cells video { grid-column: span 1; } .cells img.w2, .cells img.w3 { grid-column: span 2; }
+      /* sin huecos: las sueltas se juntan de a dos y las grandes van solas */
+      .cells { grid-auto-flow: row dense; }
+      .cells img[src*="c2-10"] { grid-column: span 2; }
+      /* Instagram: solo la 2 y la 3, una sobre otra */
+      img[src*="wildlama/content-1"] { display: none; }
+      img[src*="wildlama/content-2"], img[src*="wildlama/content-3"] { --m: 1 / -1 !important; }
+      /* Email: solo el 1 y el 3, lado a lado */
+      img[src*="wildlama/email-2"] { display: none; }
+      img[src*="wildlama/email-1"] { --m: 1 / 3 !important; } img[src*="wildlama/email-3"] { --m: 3 / 5 !important; }
       .stats .display { font-size: 48px; }
     }"""
 def cells(items):
@@ -78,6 +87,7 @@ write("wild-lama", page("Wild Lama", "Art direction, campaigns, content strategy
 css = """    .paper { position: relative; color: #fff; background: #2333c8 url("../img/sanguaza/paper-blue.jpg") center / cover; aspect-ratio: 1440 / 1149; padding-top: 40px; }
     .paper .head { row-gap: 36px; }
     .sg-spec { background: #fff; color: #2333c8; font-family: "Source Serif 4", serif; }
+    @media (max-width: 768px) { img[src*="sanguaza/doble-banner"] { --r: 5 / 4 !important; object-position: 50.5% 50%; } } /* encuadre en el libro */
     @media (max-width: 768px) { .paper { aspect-ratio: auto; min-height: 70vh; } }
     /* Intro en 3 líneas */
     @media (min-width: 769px) { .chapter:first-child .head > .display { --c: 1 / -1; } }
@@ -122,6 +132,13 @@ write("sanguaza", page("Una pizca de sangre y un vaso de sanguaza", "A Pinch of 
 css = """    .pillars5 > div { display: flex; flex-direction: column; gap: 12px; }
     .pillars5 p { text-align: center; }
     .pillars5 img { width: 100%; aspect-ratio: 250 / 300; object-fit: contain; }
+    @media (max-width: 768px) {
+      /* pilares: dos arriba y tres abajo, cada nombre sobre su objeto */
+      .pillars5 { grid-template-columns: repeat(6, minmax(0, 1fr)) !important; row-gap: 40px; column-gap: 12px; }
+      .pillars5 > div { gap: 8px; }
+      .pillars5 > div:nth-child(-n+2) { grid-column: span 3 !important; }
+      .pillars5 > div:nth-child(n+3) { grid-column: span 2 !important; }
+    }
     .po-spec { background: #cccaff; color: #331a2a; font-family: "Mona Sans", sans-serif; }
     .ppal { column-gap: 0; }
     .ppal > div { aspect-ratio: 288 / 480; position: relative; }

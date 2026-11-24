@@ -7,7 +7,7 @@
   <meta name="description" content="Nebular — Emotional Cartography of Art. Art magazine, three issues. Master in Editorial Design, ELISAVA.">
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/case.css">
-  <script>try{for(const k of ["fromNext","dropIn"]){if(sessionStorage.getItem(k)){document.documentElement.classList.add(k==="fromNext"?"from-next":"drop-in");sessionStorage.removeItem(k)}}}catch(e){}</script>
+  <script>try{for(const [k,c] of [["fromNext","from-next"],["dropIn","drop-in"],["fromHome","from-home"]]){if(sessionStorage.getItem(k)){document.documentElement.classList.add(c);sessionStorage.removeItem(k)}}}catch(e){}</script>
   <style>
     :root { --bg-case: #000000; --band: #000000; }
     body.case { color: #fff; }
@@ -33,6 +33,17 @@
     .neb-spec { background: #fff; color: #000; font-family: "Geist", sans-serif; font-weight: 300; }
     .neb-spec .otto { font-family: "Source Serif 4", serif; font-weight: 600; }
     .cred3 p { white-space: pre-line; }
+    .mb-br { display: none; }
+    @media (max-width: 768px) {
+      /* título en tres líneas: Emotional / Cartography / of Art */
+      .mb-br { display: inline; }
+      /* gifs centrados en su espacio: el mismo aire arriba y abajo */
+      .chapter:has(> .gifs) { gap: var(--s-section); }
+      /* nombres de las artistas centrados, cada uno en una línea */
+      .lists .in > p.artists { width: 100% !important; white-space: nowrap; text-align: center !important; font-size: min(34px, 6.6vw); }
+      /* "Seven artists…" centrado */
+      .lists .side { align-self: center; }
+    }
     @media (max-width: 1100px) {
       .lists { height: auto; display: flex; flex-direction: column; gap: 24px; }
       .lists > *, .lists .in > * { position: static !important; transform: none !important; text-align: left !important; }
@@ -63,7 +74,7 @@
   <section class="chapter ">
     <div class="head g">
       <h2 class="label">01  Intro</h2>
-      <p class="display">Emotional Cartography of Art</p>
+      <p class="display">Emotional<br class="mb-br"> Cartography<br class="mb-br"> of Art</p>
       <div class="t"><p>Master in Editorial Design · September 2025 – June 2026</p><p>Art magazine that reflects on why we create, what drives us, and how we translate emotions into visual language. In a context of visual saturation and the constant production of content, the magazine offers a slower perspective on what happens before the artwork itself: the experiences, emotions, and inner tensions that shape the creative process and are transformed into art through literature, the visual arts, cinema, and music.</p></div>
     </div>
   </section>
@@ -170,8 +181,8 @@ seven ways
       <div class="c3 row2" style="display:flex; flex-direction:column; gap:12px"><p style="font-size:17px; line-height:1.55">Art magazine that reflects on why we create, what drives us, and how we translate emotions into visual language.</p><p class="caps s">Geist Light · 17 / 26</p></div>
       <p class="caps s c1 row3">Otto · titles</p>
       <div class="rule gap"></div>
-      <p class="otto row3" style="--c: 1 / 9; font-size:26px; line-height:1.25">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ<br>abcdefghijklmnñopqrstuvwxyz 0123456789</p>
-      <p class="c3 row3" style="font-size:12px; line-height:1.5">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ abcdefghijklmnñopqrstuvwxyz 0123456789 &amp; ¿? ¡! —</p>
+      <p class="otto row3 abc" style="--c: 1 / 9; font-size:26px; line-height:1.25">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ<br>abcdefghijklmnñopqrstuvwxyz 0123456789</p>
+      <p class="c3 row3 abc" style="font-size:12px; line-height:1.5">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ abcdefghijklmnñopqrstuvwxyz 0123456789 &amp; ¿? ¡! —</p>
     </div>
   </section>
   <section class="chapter ">

@@ -2,7 +2,8 @@ import sys; import os; sys.path.insert(0, os.path.dirname(os.path.abspath(__file
 from lib_site import *
 
 # =========================== FRANCISC'ANDREA ================================
-css = """    .logo { position: relative; overflow: hidden; }
+css = """    img.mb-only { display: none; }
+    .logo { position: relative; overflow: hidden; }
     .logo img { position: absolute; max-width: none; }
     .marks { row-gap: var(--s-block); }
     .marks > .main { --c: 3 / 11; display: flex; flex-direction: column; align-items: center; gap: var(--s-head); }
@@ -20,6 +21,15 @@ css = """    .logo { position: relative; overflow: hidden; }
     @media (max-width: 768px) {
       .marks > .main, .marks > .var { --m: 1 / -1; }
       .swatches > div { --m: span 2 !important; } .swatches .chip { margin-right: 0 !important; }
+      /* isotipos chicos centrados ópticamente (por el dibujo, no por la caja) */
+      .marks > .var:nth-of-type(2) .logo { transform: translateX(27px); }
+      .marks > .var:nth-of-type(3) .logo { transform: translateX(48px); }
+      /* colores apaisados y cada nombre pegado a su color */
+      .swatches { row-gap: 32px; }
+      .swatches > div { gap: 8px; }
+      .swatches .chip { height: auto; min-height: 0; aspect-ratio: 3 / 2; }
+      /* art direction: recorte de la composición hacia abajo (como en el Figma) */
+      img.dk-only { display: none; } img.mb-only { display: block; }
     }"""
 sw = [("#ece1d5", "1 / 4", "Light neutral"), ("#a5a598", "4 / 6", "Light neutral"), ("#20201a", "6 / 9", "Dark"), ("#4b3f1b", "9 / 11", "Dark earth"), ("#4e1003", "11 / 12", "Wine"), ("#bd850a", "12 / 13", "Dry yellow")]
 swatches = "\n".join(f'      <div style="--c: {c}"><div class="chip" style="background:{h}"></div><p>{n}<br>{h.upper()}</p></div>' for h, c, n in sw)
@@ -53,7 +63,7 @@ body += chapter(head("03  Applications", text=["Business cards, stationery, grap
     media([img(f"franciscandrea/application-{i}", f"{1 + (i - 1) * 4} / {5 + (i - 1) * 4}", "span 4", "467 / 702", "Application") for i in (1, 2, 3)], "bleed"))  # tarjetas fuera: Antonia las sube luego como "on set"
 body += chapter(head("04  colors", text=["The colours were chosen as a complement to the flowers that will appear in the brand's content. They don't seek to compete with them."]), f'    <div class="swatches g">\n{swatches}\n    </div>')
 body += chapter(head("05  Art direction", text=["The art direction I set for the brand's visual world: colour, light and the way flowers are shown."]),
-    media([img("franciscandrea/art-direction", "1 / -1", None, "1440 / 700", "Art direction")], "bleed"))
+    media([img("franciscandrea/art-direction", "1 / -1", None, "1440 / 700", "Art direction", cls="dk-only"), img("franciscandrea/art-direction-mb", "1 / -1", None, "988 / 780", "Art direction", cls="mb-only")], "bleed"))
 body += chapter(head("06  Instagram today", text=["Through my consultancy, the identity and art direction have been applied correctly on the brand's Instagram."]), media([img("franciscandrea/instagram-1", "2 / 6", "1 / 3", "416 / 751", "francisc'andrea Instagram feed"), img("franciscandrea/instagram-2", "8 / 12", "3 / 5", "416 / 751", "francisc'andrea Instagram feed")]))
 body += chapter(head("07  Typeface", low=None, extra='      <p>Cormorant Upright · Roboto Mono</p>').replace('row-gap: var(--s-head)', ''), spec_fa)
 body += chapter(head("08  Result &amp; Credits"), credits(None, "The identity is in use across business cards, stationery, graphics and the flower presses themselves, carrying the brand onto the product. Website currently in development.",
@@ -85,6 +95,17 @@ css = """    .lists { position: relative; }
     .neb-spec { background: #fff; color: #000; font-family: "Geist", sans-serif; font-weight: 300; }
     .neb-spec .otto { font-family: "Source Serif 4", serif; font-weight: 600; }
     .cred3 p { white-space: pre-line; }
+    .mb-br { display: none; }
+    @media (max-width: 768px) {
+      /* título en tres líneas: Emotional / Cartography / of Art */
+      .mb-br { display: inline; }
+      /* gifs centrados en su espacio: el mismo aire arriba y abajo */
+      .chapter:has(> .gifs) { gap: var(--s-section); }
+      /* nombres de las artistas centrados, cada uno en una línea */
+      .lists .in > p.artists { width: 100% !important; white-space: nowrap; text-align: center !important; font-size: min(34px, 6.6vw); }
+      /* "Seven artists…" centrado */
+      .lists .side { align-self: center; }
+    }
     @media (max-width: 1100px) {
       .lists { height: auto; display: flex; flex-direction: column; gap: 24px; }
       .lists > *, .lists .in > * { position: static !important; transform: none !important; text-align: left !important; }
@@ -122,7 +143,7 @@ spec_neb = '''    <div class="spec g neb-spec">
 body = hero("nebular/nebular-composicion", "Nebular — three issues", "Editorial", "Nebular — Emotional Cartography of Art", "50% 50%")
 body += ficha([("Context", "Master in Editorial Design, ELISAVA"), ("Year", "2025–2026"), ("Issues", "Nº1 Exile · Nº2 Grief · Nº3 Body"), ("Editorial direction, art direction &amp;&nbsp;design", "Antonia Ilic Bromberg &amp; Manuela García Aristizábal")])
 body += "  <main>\n"
-body += chapter(head("01  Intro", "Emotional Cartography of Art", low=None,
+body += chapter(head("01  Intro", "Emotional<br class=\"mb-br\"> Cartography<br class=\"mb-br\"> of Art", low=None,
     extra='      <div class="t"><p>Master in Editorial Design · September 2025 – June 2026</p><p>Art magazine that reflects on why we create, what drives us, and how we translate emotions into visual language. In a context of visual saturation and the constant production of content, the magazine offers a slower perspective on what happens before the artwork itself: the experiences, emotions, and inner tensions that shape the creative process and are transformed into art through literature, the visual arts, cinema, and music.</p></div>'))
 body += chapter(media([f'      <video src="../img/nebular/gif-{n}.mp4" poster="../img/nebular/gif-{n}.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Nebular {t}" style="--c: {1 + i * 4} / {5 + i * 4}; --m: span 4; --r: 480 / 810"></video>' for i, (n, t) in enumerate([("exile", "Nº1 Exile"), ("grief", "Nº2 Grief"), ("body", "Nº3 Body")])], "bleed gifs"),
     head("", text=["Each issue is built around a shared tension connected to a deceased artist, whose legacy serves as the narrative core that links a range of contemporary artists.", "Rather than focusing on the final outcome, we understand creation as a process of transformation and as a way of giving form to the invisible. The magazine explores how experiences such as grief, exile, and bodily trauma transcend time, connecting people through art."]).replace('<h2 class="label"></h2>\n', ''))

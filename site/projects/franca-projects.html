@@ -7,7 +7,7 @@
   <meta name="description" content="Art direction, Instagram system and grid design for Franca Projects.">
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/case.css">
-  <script>try{for(const k of ["fromNext","dropIn"]){if(sessionStorage.getItem(k)){document.documentElement.classList.add(k==="fromNext"?"from-next":"drop-in");sessionStorage.removeItem(k)}}}catch(e){}</script>
+  <script>try{for(const [k,c] of [["fromNext","from-next"],["dropIn","drop-in"],["fromHome","from-home"]]){if(sessionStorage.getItem(k)){document.documentElement.classList.add(c);sessionStorage.removeItem(k)}}}catch(e){}</script>
   <style>
     :root { --bg-case: #f6f6f6; --band: #ececea; }
     .sprite { position: relative; overflow: hidden; aspect-ratio: 442 / 554; }
@@ -47,16 +47,22 @@
     @media (max-width: 768px) {
       .strip { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
       .strip::-webkit-scrollbar { display: none; }
-      .strip > *, .strip.four > * { flex: 0 0 88%; scroll-snap-align: start; }
-      /* 03 discarded: cuatro en fila */
-      .discard > img { --m: span 1 !important; }
-      /* 04 the grid: A y B a todo el ancho */
-      .ab figure:nth-child(1), .ab figure:nth-child(2) { --m: 1 / -1; }
-      .ab { row-gap: var(--s-block); }
+      /* carruseles como en Instagram: una imagen por pantalla, sin asomar la siguiente */
+      .strip { gap: 0; }
+      .strip > *, .strip.four > * { flex: 0 0 100%; scroll-snap-align: start; }
+      /* el título del carrusel va arriba (solo mobile) */
+      .carousels > .t { display: flex; flex-direction: column; }
+      .carousels > .t > .cap { order: -1; margin: 0 0 var(--s-text); }
+      /* 02 discarded: cuadrícula de dos en dos */
+      .discard > img { --m: span 2 !important; }
+      /* 03 the grid: A y B juntas, lado a lado */
+      .ab figure:nth-child(1) { --m: 1 / 3; } .ab figure:nth-child(2) { --m: 3 / 5; }
       /* 06 content pillars: texto sobre la imagen, en carrusel */
       .pillars { display: flex; gap: 2px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-inline: var(--margin); scroll-padding-inline: var(--margin); }
       .pillars::-webkit-scrollbar { display: none; }
       .pillars > div { flex: 0 0 88%; scroll-snap-align: start; }
+      /* texto más angosto para que no se junte con el de la tarjeta siguiente */
+      .pillars > div > p { padding-right: 28px; }
       .pillars .post { order: 3; }
       .pillars-dots { padding-inline: var(--margin); }
     }

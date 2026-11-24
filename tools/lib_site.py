@@ -21,7 +21,7 @@ def nav(rel="../", dark=False, current=None):
 '''
 
 # Marcas de transición entre páginas (se leen antes de pintar para no dar saltos)
-FLAGS = '<script>try{for(const k of ["fromNext","dropIn"]){if(sessionStorage.getItem(k)){document.documentElement.classList.add(k==="fromNext"?"from-next":"drop-in");sessionStorage.removeItem(k)}}}catch(e){}</script>'
+FLAGS = '<script>try{for(const [k,c] of [["fromNext","from-next"],["dropIn","drop-in"],["fromHome","from-home"]]){if(sessionStorage.getItem(k)){document.documentElement.classList.add(c);sessionStorage.removeItem(k)}}}catch(e){}</script>'
 
 def site_foot(rel="../"):
     """Pie de todas las páginas salvo la home: Portfolio, nombre y mail, en las mismas columnas que el menú."""
@@ -162,4 +162,7 @@ def write(slug, html_):
     html_ = html_.replace(' autoplay preload="metadata"', ' data-auto preload="none"')
     # Imágenes: decodificación sin bloquear el scroll
     html_ = html_.replace(' loading="lazy"', ' loading="lazy" decoding="async"')
+    # Specimens: los alfabetos llevan la clase "abc" (en mobile se ocultan)
+    import re as _re
+    html_ = _re.sub(r'<p class="([^"]*)"([^>]*)>(ABCDEFGHIJKLMN)', r'<p class="\1 abc"\2>\3', html_)
     open(f"{ROOT}/projects/{slug}.html", "w").write(_split_paras(html_))

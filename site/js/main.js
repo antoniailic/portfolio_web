@@ -72,7 +72,10 @@ if (home) {
   const enter = href => {
     if (document.body.classList.contains("entering")) return;
     document.body.classList.add("entering");
-    setTimeout(() => { location.href = href; }, matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 320);
+    // mobile: la imagen de la home (pantalla completa) no coincide con la portada, así que todo se funde a blanco
+    // y la portada entra con un fundido suave (marca "fromHome")
+    if (mobile.matches) { try { sessionStorage.setItem("fromHome", "1"); } catch (_) {} }
+    setTimeout(() => { location.href = href; }, matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : (mobile.matches ? 420 : 320));
   };
   home.addEventListener("click", e => {
     if (e.defaultPrevented) return;                  // mobile: el primer toque solo cambia la imagen
@@ -182,7 +185,7 @@ document.querySelectorAll("[data-carousel]").forEach(c => {
   d.innerHTML = "<span></span>".repeat(n);
   c.after(d);
   const upd = () => {
-    const step = c.children[0].getBoundingClientRect().width + 2;
+    const step = (c.children[1] ? c.children[1].offsetLeft - c.children[0].offsetLeft : c.clientWidth) || 1;
     let i = Math.round(c.scrollLeft / step);
     if (c.scrollLeft + c.clientWidth >= c.scrollWidth - 2) i = n - 1;
     [...d.children].forEach((s, k) => s.classList.toggle("on", k === i));
@@ -277,11 +280,12 @@ document.querySelectorAll("p, h1, h3, li, dd, .display, .ttl").forEach(el => {
     }
     document.body.appendChild(fly);
     const h = fly.getBoundingClientRect().height;
-    const y = r.top + r.height / 2 - h / 2;            // la copia arranca alineada con la imagen de la franja
-    const cut = (h - r.height) / 2;
+    // la copia arranca con su imagen alineada con la de la franja (centro con centro)
+    const y = r.top + r.height / 2 - (c.offsetTop + c.offsetHeight / 2);
+    const cutTop = Math.max(0, r.top - y), cutBot = Math.max(0, h - (r.bottom - y));
     fly.style.transition = "none";
     fly.style.transform = `translateY(${y}px)`;
-    fly.style.clipPath = `inset(${cut}px 0 ${cut}px 0)`;
+    fly.style.clipPath = `inset(${cutTop}px 0 ${cutBot}px 0)`;
     banner.style.visibility = "hidden";
     fly.getBoundingClientRect();                        // fija el estado inicial
     fly.style.transition = "";

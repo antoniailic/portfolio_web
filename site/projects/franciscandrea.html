@@ -7,9 +7,10 @@
   <meta name="description" content="Brand identity for francisc'andrea, a floral design studio.">
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/case.css">
-  <script>try{for(const k of ["fromNext","dropIn"]){if(sessionStorage.getItem(k)){document.documentElement.classList.add(k==="fromNext"?"from-next":"drop-in");sessionStorage.removeItem(k)}}}catch(e){}</script>
+  <script>try{for(const [k,c] of [["fromNext","from-next"],["dropIn","drop-in"],["fromHome","from-home"]]){if(sessionStorage.getItem(k)){document.documentElement.classList.add(c);sessionStorage.removeItem(k)}}}catch(e){}</script>
   <style>
     :root { --bg-case: #ffffff; --band: #ffffff; }
+    img.mb-only { display: none; }
     .logo { position: relative; overflow: hidden; }
     .logo img { position: absolute; max-width: none; }
     .marks { row-gap: var(--s-block); }
@@ -28,6 +29,15 @@
     @media (max-width: 768px) {
       .marks > .main, .marks > .var { --m: 1 / -1; }
       .swatches > div { --m: span 2 !important; } .swatches .chip { margin-right: 0 !important; }
+      /* isotipos chicos centrados ópticamente (por el dibujo, no por la caja) */
+      .marks > .var:nth-of-type(2) .logo { transform: translateX(27px); }
+      .marks > .var:nth-of-type(3) .logo { transform: translateX(48px); }
+      /* colores apaisados y cada nombre pegado a su color */
+      .swatches { row-gap: 32px; }
+      .swatches > div { gap: 8px; }
+      .swatches .chip { height: auto; min-height: 0; aspect-ratio: 3 / 2; }
+      /* art direction: recorte de la composición hacia abajo (como en el Figma) */
+      img.dk-only { display: none; } img.mb-only { display: block; }
     }
   </style>
 </head>
@@ -101,7 +111,8 @@
       <div class="t"><p>The art direction I set for the brand's visual world: colour, light and the way flowers are shown.</p></div>
     </div>
     <div class="media g bleed">
-      <img src="../img/franciscandrea/art-direction.jpg" alt="Art direction" loading="lazy" decoding="async" style="--c: 1 / -1; --r: 1440 / 700;">
+      <img class="dk-only" src="../img/franciscandrea/art-direction.jpg" alt="Art direction" loading="lazy" decoding="async" style="--c: 1 / -1; --r: 1440 / 700;">
+      <img class="mb-only" src="../img/franciscandrea/art-direction-mb.jpg" alt="Art direction" loading="lazy" decoding="async" style="--c: 1 / -1; --r: 988 / 780;">
     </div>
   </section>
   <section class="chapter ">
@@ -126,8 +137,8 @@
       <div class="c3 row2" style="display:flex; flex-direction:column; gap:12px; --c: 9 / 12"><p style="font-size:14px; line-height:1.6">The project is born from the contemplation of the ephemeral: that instant when a flower reaches its highest point of beauty before fading.</p><p class="caps s">Roboto Mono Regular · 14 / 22</p><p style="font-size:11px; line-height:16px">Why Roboto Mono: it needed to be easy to master and available across platforms, since she would be creating her own content and wanted the system to be easy to apply.</p></div>
       <p class="caps s c1 row3">Cormorant Upright semibold</p>
       <div class="rule gap"></div>
-      <p class="corm c1 row3" style="--c: 1 / 9; font-size:26px; line-height:1.25">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ<br>abcdefghijklmnñopqrstuvwxyz 0123456789</p>
-      <p class="c3 row3" style="font-size:12px; line-height:1.5">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ abcdefghijklmnñopqrstuvwxyz 0123456789 &amp; ¿? ¡! —</p>
+      <p class="corm c1 row3 abc" style="--c: 1 / 9; font-size:26px; line-height:1.25">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ<br>abcdefghijklmnñopqrstuvwxyz 0123456789</p>
+      <p class="c3 row3 abc" style="font-size:12px; line-height:1.5">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ abcdefghijklmnñopqrstuvwxyz 0123456789 &amp; ¿? ¡! —</p>
     </div>
   </section>
   <section class="chapter ">

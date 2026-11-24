@@ -7,12 +7,13 @@
   <meta name="description" content="A Pinch of Blood and a Glass of Sanguaza — editorial book on ritual. Master in Editorial Design, ELISAVA.">
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/case.css">
-  <script>try{for(const k of ["fromNext","dropIn"]){if(sessionStorage.getItem(k)){document.documentElement.classList.add(k==="fromNext"?"from-next":"drop-in");sessionStorage.removeItem(k)}}}catch(e){}</script>
+  <script>try{for(const [k,c] of [["fromNext","from-next"],["dropIn","drop-in"],["fromHome","from-home"]]){if(sessionStorage.getItem(k)){document.documentElement.classList.add(c);sessionStorage.removeItem(k)}}}catch(e){}</script>
   <style>
     :root { --bg-case: #ffffff; --band: #ffffff; }
     .paper { position: relative; color: #fff; background: #2333c8 url("../img/sanguaza/paper-blue.jpg") center / cover; aspect-ratio: 1440 / 1149; padding-top: 40px; }
     .paper .head { row-gap: 36px; }
     .sg-spec { background: #fff; color: #2333c8; font-family: "Source Serif 4", serif; }
+    @media (max-width: 768px) { img[src*="sanguaza/doble-banner"] { --r: 5 / 4 !important; object-position: 50.5% 50%; } } /* encuadre en el libro */
     @media (max-width: 768px) { .paper { aspect-ratio: auto; min-height: 70vh; } }
     /* Intro en 3 líneas */
     @media (min-width: 769px) { .chapter:first-child .head > .display { --c: 1 / -1; } }
@@ -92,8 +93,8 @@
       <div class="c3 row2" style="display:flex; flex-direction:column; gap:12px"><p style="font-size:17px; line-height:1.55">Whether it is a grandmother's birthday celebration or a "coming of age" ceremony among the Swazi people, we have never stopped creating rites.</p><p class="caps s">Source Serif 4 Regular · 17 / 26</p></div>
       <p class="caps s c1 row3" style="font-weight:600">Source Serif 4 MEDIUM · titles</p>
       <div class="rule gap"></div>
-      <p class="row3" style="--c: 1 / 9; font-size:26px; line-height:1.25; font-weight:300">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ<br>abcdefghijklmnñopqrstuvwxyz 0123456789</p>
-      <p class="c3 row3" style="font-size:12px; line-height:1.5">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ abcdefghijklmnñopqrstuvwxyz 0123456789 &amp; ¿? ¡! —</p>
+      <p class="row3 abc" style="--c: 1 / 9; font-size:26px; line-height:1.25; font-weight:300">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ<br>abcdefghijklmnñopqrstuvwxyz 0123456789</p>
+      <p class="c3 row3 abc" style="font-size:12px; line-height:1.5">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ abcdefghijklmnñopqrstuvwxyz 0123456789 &amp; ¿? ¡! —</p>
     </div>
     <div class="media g solo">
       <video src="../img/sanguaza/libro-post-video.mp4" poster="../img/sanguaza/libro-post-video.jpg" muted loop playsinline data-auto preload="none" aria-label="The book" style="--c: 5 / 9; --m: 1 / -1; --r: 720 / 900;"></video>

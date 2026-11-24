@@ -141,9 +141,10 @@ body.case { background: var(--bg-case); }
 /* Puntos de carrusel (solo mobile) */
 .dots { display: none; }
 @media (max-width: 768px) {
-  .dots { display: flex; justify-content: center; gap: 4px; margin-top: 12px; }
-  .dots span { width: 6px; height: 6px; border-radius: 50%; background: #c8c8c8; transition: background .2s; }
-  .dots span.on { background: #3897f0; }
+  /* puntos blancos y juntos, sobre la parte baja de la imagen (como en Instagram) */
+  .dots { display: flex; justify-content: center; gap: 3px; position: relative; z-index: 2; height: 6px; margin-top: -18px; margin-bottom: 12px; pointer-events: none; }
+  .dots span { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.5); box-shadow: 0 0 2px rgba(0,0,0,.2); transition: background .2s; }
+  .dots span.on { background: #fff; }
 }
 
 /* Ficha y créditos en mobile: etiqueta en columnas 1–2, dato en 3–4, alineados */
@@ -258,3 +259,40 @@ body.leaving > *:not(.hero-fly) { opacity: 0; transition: opacity .6s ease .15s;
 /* En páginas cortas (Contact) el pie queda abajo de la pantalla */
 body[data-page] { min-height: 100svh; display: flex; flex-direction: column; }
 body[data-page] > main { flex: 1 0 auto; }
+
+/* ==========================================================================
+   MOBILE (≤768) — ajustes exclusivos de mobile. Nada de esto afecta desktop.
+   Las portadas se ajustan por imagen, para que la portada, la transición
+   del banner "next" y su franja usen exactamente el mismo encuadre.
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Lebor: imagen más grande para que no se vea el texto de la foto */
+  .case-hero > img[src*="cover-noviembre"] { width: 160%; max-width: none; height: 160%; left: -22%; right: auto; bottom: auto; }
+  .case-next .next-img img[src*="cover-noviembre"] { width: 160%; max-width: none; left: -22%; right: auto; height: calc(var(--hero-h) * 1.6); }
+  /* Franca: imagen centrada */
+  .case-hero > img[src*="massimo-sanvalentin-1"], .case-next .next-img img[src*="massimo-sanvalentin-1"],
+  .banners img[src*="massimo-sanvalentin-1"] { width: 100%; right: 0; object-position: 50% 43% !important; }
+  /* francisc'andrea: ramo y bolsillo centrados en lo visible */
+  .case-hero > img[src*="franciscandrea/cover"], .case-next .next-img img[src*="franciscandrea/cover"] { object-position: 50% 60% !important; }
+  /* Nebular: encuadre en la revista roja */
+  .case-hero > img[src*="nebular-composicion"], .case-next .next-img img[src*="nebular-composicion"] { object-position: 0% 50% !important; }
+  /* Sanguaza y POTRA: portada más baja, la imagen entera a lo ancho y la franja debajo */
+  .case-hero:has(> img[src*="libro-centrado"]) { height: calc(100vw / 1.475 + 96px); min-height: 0; }
+  .case-hero > img[src*="libro-centrado"] { height: calc(100vw / 1.475); bottom: auto; }
+  .case-next .next-img img[src*="libro-centrado"] { height: calc(100vw / 1.475); }
+  .case-hero:has(> img[src*="home-crop"]) { height: calc(100vw / 2.067 + 96px); min-height: 0; }
+  .case-hero > img[src*="home-crop"] { height: calc(100vw / 2.067); bottom: auto; }
+  .case-next .next-img img[src*="home-crop"] { height: calc(100vw / 2.067); }
+}
+@media (max-width: 768px) {
+  /* Entrada desde la home en mobile: la portada aparece con un fundido, la franja sube después */
+  .from-home .case-hero { background: var(--bg-case); }
+  .from-home .case-hero > img { animation: hero-in .7s ease both; }
+  .from-home .case-band { animation-delay: .25s; }
+  .from-home .case-nav { animation: hero-in .7s ease both; }
+  @keyframes hero-in { from { opacity: 0; } }
+}
+@media (max-width: 768px) {
+  /* Typefaces en mobile: sin el ejemplo alfabético */
+  .spec .abc { display: none; }
+}

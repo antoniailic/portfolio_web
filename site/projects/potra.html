@@ -7,12 +7,19 @@
   <meta name="description" content="POTRA — Tools, Insights &amp; Masterclasses to Hack the Productive Sphere. Web design.">
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/case.css">
-  <script>try{for(const k of ["fromNext","dropIn"]){if(sessionStorage.getItem(k)){document.documentElement.classList.add(k==="fromNext"?"from-next":"drop-in");sessionStorage.removeItem(k)}}}catch(e){}</script>
+  <script>try{for(const [k,c] of [["fromNext","from-next"],["dropIn","drop-in"],["fromHome","from-home"]]){if(sessionStorage.getItem(k)){document.documentElement.classList.add(c);sessionStorage.removeItem(k)}}}catch(e){}</script>
   <style>
     :root { --bg-case: #ffffff; --band: #ffffff; }
     .pillars5 > div { display: flex; flex-direction: column; gap: 12px; }
     .pillars5 p { text-align: center; }
     .pillars5 img { width: 100%; aspect-ratio: 250 / 300; object-fit: contain; }
+    @media (max-width: 768px) {
+      /* pilares: dos arriba y tres abajo, cada nombre sobre su objeto */
+      .pillars5 { grid-template-columns: repeat(6, minmax(0, 1fr)) !important; row-gap: 40px; column-gap: 12px; }
+      .pillars5 > div { gap: 8px; }
+      .pillars5 > div:nth-child(-n+2) { grid-column: span 3 !important; }
+      .pillars5 > div:nth-child(n+3) { grid-column: span 2 !important; }
+    }
     .po-spec { background: #cccaff; color: #331a2a; font-family: "Mona Sans", sans-serif; }
     .ppal { column-gap: 0; }
     .ppal > div { aspect-ratio: 288 / 480; position: relative; }
@@ -95,8 +102,8 @@
       <div class="c3 row2" style="display:flex; flex-direction:column; gap:12px"><p style="font-size:17px; line-height:1.55">Potra exists for anyone who feels they don't quite belong in that narrative.</p><p class="caps s">Mona Sans Regular · 17 / 26</p></div>
       <p class="caps s c1 row3">Mona Sans Bold · titles</p>
       <div class="rule gap"></div>
-      <p class="row3" style="--c: 1 / 9; font-size:26px; line-height:1.25; font-weight:700">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ<br>abcdefghijklmnñopqrstuvwxyz 0123456789</p>
-      <p class="c3 row3" style="font-size:12px; line-height:1.5">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ abcdefghijklmnñopqrstuvwxyz 0123456789 &amp; ¿? ¡! —</p>
+      <p class="row3 abc" style="--c: 1 / 9; font-size:26px; line-height:1.25; font-weight:700">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ<br>abcdefghijklmnñopqrstuvwxyz 0123456789</p>
+      <p class="c3 row3 abc" style="font-size:12px; line-height:1.5">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ abcdefghijklmnñopqrstuvwxyz 0123456789 &amp; ¿? ¡! —</p>
     </div>
     <div class="ppal g bleed" style="grid-template-columns: repeat(5, 1fr)">
       <div style="--c: auto; --m: auto; background:#8ab0cf"><p style="color:#000">#8AB0CF</p></div>

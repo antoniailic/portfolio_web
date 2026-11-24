@@ -39,16 +39,22 @@ css = """    .sprite { position: relative; overflow: hidden; aspect-ratio: 442 /
     @media (max-width: 768px) {
       .strip { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
       .strip::-webkit-scrollbar { display: none; }
-      .strip > *, .strip.four > * { flex: 0 0 88%; scroll-snap-align: start; }
-      /* 03 discarded: cuatro en fila */
-      .discard > img { --m: span 1 !important; }
-      /* 04 the grid: A y B a todo el ancho */
-      .ab figure:nth-child(1), .ab figure:nth-child(2) { --m: 1 / -1; }
-      .ab { row-gap: var(--s-block); }
+      /* carruseles como en Instagram: una imagen por pantalla, sin asomar la siguiente */
+      .strip { gap: 0; }
+      .strip > *, .strip.four > * { flex: 0 0 100%; scroll-snap-align: start; }
+      /* el título del carrusel va arriba (solo mobile) */
+      .carousels > .t { display: flex; flex-direction: column; }
+      .carousels > .t > .cap { order: -1; margin: 0 0 var(--s-text); }
+      /* 02 discarded: cuadrícula de dos en dos */
+      .discard > img { --m: span 2 !important; }
+      /* 03 the grid: A y B juntas, lado a lado */
+      .ab figure:nth-child(1) { --m: 1 / 3; } .ab figure:nth-child(2) { --m: 3 / 5; }
       /* 06 content pillars: texto sobre la imagen, en carrusel */
       .pillars { display: flex; gap: 2px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-inline: var(--margin); scroll-padding-inline: var(--margin); }
       .pillars::-webkit-scrollbar { display: none; }
       .pillars > div { flex: 0 0 88%; scroll-snap-align: start; }
+      /* texto más angosto para que no se junte con el de la tarjeta siguiente */
+      .pillars > div > p { padding-right: 28px; }
       .pillars .post { order: 3; }
       .pillars-dots { padding-inline: var(--margin); }
     }
@@ -124,7 +130,8 @@ css = """    .story-row { row-gap: var(--gutter); }
     .story-row > img:nth-of-type(2) { --c: 5 / 7; --m: 3 / 5; }
     .story-row > img:nth-of-type(3) { --c: 7 / 9; --m: 1 / 3; }
     .stories { display: flex; flex-direction: column; gap: var(--s-block); }
-    .lg-feed { column-gap: 6px; row-gap: 6px; background: #fff; }"""
+    .lg-feed { column-gap: 6px; row-gap: 6px; background: #fff; }
+    @media (max-width: 768px) { .lg-filler { display: none; } } /* sin las dos imágenes de relleno antes de Stories */"""
 feed = ["feed-craft-01", "feed-17", "feed-16", "feed-craft-04", "feed-14", "feed-03", "feed-12", "feed-noviembre-08", "feed-10", "feed-09", "feed-08", "feed-05", "feed-06", "feed-04", "feed-4b", "feed-07", "feed-02", "feed-11"]
 cells = []
 for i, f in enumerate(feed):
@@ -146,7 +153,7 @@ body += chapter(head("01  Intro", "Translate a clean, tangible brand, focused on
          ("Challenge &amp; role", ["Content had to feel as considered as the garments: elegant, tactile and unhurried. I built the AW26 Instagram content plan, designed the graphic system for stories and posts, and supported the campaign shoot on set."])))
 body += chapter(head("02  The Feed", text=["Planned as a whole: images split across posts so the grid reads as one surface."]),
     media(cells, "bleed lg-feed feed3"))
-body += chapter(media([img("lebor/feed-16", "1 / 7", "1 / 3", "720 / 810", ""), img("lebor/feed-10", "7 / 13", "3 / 5", "720 / 810", "")], "bleed"))
+body += chapter(media([img("lebor/feed-16", "1 / 7", "1 / 3", "720 / 810", ""), img("lebor/feed-10", "7 / 13", "3 / 5", "720 / 810", "")], "bleed"), cls="lg-filler")
 body += chapter(head("03  Stories"), '    <div class="g"><div class="stories">\n' + "\n".join([
     srow("Full-bleed editorial", ["story-01", "cover-noviembre", "story-03"]),
     srow("Colour treatment", ["story-colour-1", "story-colour-2", "story-colour-3"]),
