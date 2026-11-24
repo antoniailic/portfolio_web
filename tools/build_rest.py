@@ -6,7 +6,7 @@ css = """    .campaign { row-gap: var(--gutter); }
     .campaign > .info { --c: 1 / 4; display: flex; flex-direction: column; gap: 24px; } /* 24 entre grupos, 12 dentro de cada grupo */
     .campaign > .info p { white-space: pre-line; }
     .campaign > .cells { --c: 4 / 13; display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: var(--gutter); }
-    .cells img { grid-column: span 3; width: 100%; aspect-ratio: 304 / 457; object-fit: cover; background: var(--ph); }
+    .cells img, .cells video { grid-column: span 3; width: 100%; aspect-ratio: 304 / 457; object-fit: cover; background: var(--ph); }
     .cells img.w2 { grid-column: span 6; aspect-ratio: 640 / 457; }
     .cells img.w3 { grid-column: span 9; aspect-ratio: 976 / 457; }
     .cells img.w3.low { aspect-ratio: 976 / 378; }
@@ -20,7 +20,7 @@ css = """    .campaign { row-gap: var(--gutter); }
     @media (max-width: 768px) {
       .campaign > .info, .campaign > .cells { --m: 1 / -1; }
       .cells { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 8px !important; }
-      .cells img { grid-column: span 1; } .cells img.w2, .cells img.w3 { grid-column: span 2; }
+      .cells img, .cells video { grid-column: span 1; } .cells img.w2, .cells img.w3 { grid-column: span 2; }
       .stats .display { font-size: 48px; }
     }"""
 def cells(items):
@@ -28,12 +28,15 @@ def cells(items):
     for f, cls, pos in items:
         c = f' class="{cls}"' if cls else ""
         st = f' style="object-position:{pos}"' if pos else ""
+        if f.startswith("reel-"):   # video en su celda de la grilla, como en el Figma
+            out.append(f'<video{c} src="../img/wildlama/{f}.mp4" poster="../img/wildlama/{f}.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Wild Lama campaign video"></video>')
+            continue
         out.append(f'<img{c} src="../{im("wildlama/" + f)}" alt="Wild Lama campaign" loading="lazy"{st}>')
     return "".join(out)
 team1 = "Team:\n\nCreative Direction\nCamila Espinoza\n\nArt Direction\nAntonia Ilic, Fernanda González\n\nPhotography\nAndrés Mora\n\nVideo\nRafael Núñez\n\nModels (Elite Models Chile)\nMartina Schneeberger\nDeco"
 team2 = "Team:\n\nCreative Direction\nCamila Espinoza\n\nArt Direction\nAntonia Ilic, Fernanda González\n\nPhotography\nAndrés Mora\n\nVideo\nRafael Núñez\n\nModels: We Love Models Chile"
-c1 = cells([("c1-01", "", ""), ("c1-02", "", ""), ("c1-03", "", ""), ("c1-04", "", ""), ("c1-05", "", ""), ("c1-06", "", ""), ("c1-07", "", ""), ("c1-08", "w2", ""), ("c1-09", "", ""), ("c1-10", "", ""), ("c1-11", "", ""), ("c1-12", "w3", "")])
-c2 = cells([("c2-01", "w3", "50% 31%"), ("c2-02", "", ""), ("c2-03", "", ""), ("c2-04", "", ""), ("c2-05", "w3 low", ""), ("c2-06", "", ""), ("c2-07", "", ""), ("c2-08", "", ""), ("c2-09", "w2", ""), ("c2-10", "", "")])
+c1 = cells([("c1-01", "", ""), ("c1-02", "", ""), ("c1-03", "", ""), ("c1-04", "", ""), ("c1-05", "", ""), ("c1-06", "", ""), ("reel-1", "", ""), ("c1-08", "w2", ""), ("c1-09", "", ""), ("c1-10", "", ""), ("c1-11", "", ""), ("c1-12", "w3", "")])
+c2 = cells([("c2-01", "w3", "50% 31%"), ("c2-02", "", ""), ("c2-03", "", ""), ("c2-04", "", ""), ("c2-05", "w3 low", ""), ("c2-06", "", ""), ("c2-07", "", ""), ("reel-2", "", ""), ("c2-09", "w2", ""), ("c2-10", "", "")])
 body = hero("wildlama/wl-25-q1-525", "Wild Lama campaign", "Art direction", "Wild Lama", "50% 14.7%")
 body += ficha([("Client", "Wild Lama — sustainable lifestyle brand, Chile"), ("Role", "Brand designer"), ("Period", "March 2024 – August 2025"), ("Web", '<a href="https://www.wildlama.com" target="_blank" rel="noopener">www.wildlama.com</a>')])
 body += "  <main>\n"
@@ -64,8 +67,7 @@ body += chapter(head("03  Results", text=["Key results from the branding team du
     </div>''',
     '    <div class="head g"><div class="t"><p>Purpose-driven content consistently outperformed average organic performance.</p></div></div>')
 body += chapter(head("04  Content strategy", "Storytelling-based marketing strategy, aimed at boosting sales through social media and email marketing.", dc="1 / -1"),
-    media([img(f"wildlama/content-{i}", f"{1 + (i - 1) * 4} / {5 + (i - 1) * 4}", ["1 / 3", "3 / 5", "1 / 3"][i - 1], "392 / 521", "Instagram content", "50% 41.5%") for i in (1, 2, 3)]),
-    media([video("wildlama/reel-1", "3 / 6", "1 / 3", "9 / 16", "Wild Lama reel"), video("wildlama/reel-2", "8 / 11", "3 / 5", "9 / 16", "Wild Lama reel")]))
+    media([img(f"wildlama/content-{i}", f"{1 + (i - 1) * 4} / {5 + (i - 1) * 4}", ["1 / 3", "3 / 5", "1 / 3"][i - 1], "392 / 521", "Instagram content", "50% 41.5%") for i in (1, 2, 3)]))
 body += chapter(head("05  Email marketing", text=["Email campaigns in Klaviyo maintained a ROAS above 20 across key launches."]),
     media([img(f"wildlama/email-{i}", f"{1 + (i - 1) * 4} / {5 + (i - 1) * 4}", ["1 / 3", "3 / 5", "1 / 3"][i - 1], r, "Email campaign") for i, r in ((1, "346 / 1672"), (2, "346 / 1739"), (3, "346 / 1783"))], "emails", "align-items:start"))
 body += "  </main>\n"
