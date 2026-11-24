@@ -136,7 +136,7 @@ function navContrast() {
     }
     if (!n) return;
     const c = sum / n < .55 ? "#fff" : "#000";
-    if (el.classList.contains("hand")) el.style.backgroundColor = c; else el.style.color = c;
+    el.style.color = c; if (el.classList.contains("hand")) el.style.backgroundColor = c;
   });
 }
 if (navItems.length) {

@@ -215,3 +215,11 @@ body:not([data-project="nebular"]):not([data-project="sanguaza"]) .chapter > .he
 .case-next .next-img.open { height: min(calc(100vw * 900 / 1440), 100svh); min-height: 520px; }
 .case-next.opening { padding-bottom: 100svh; }
 @media (max-width: 768px) { .case-next .next-title { padding-block: 40px 12px; } .case-next { padding-bottom: 40px; } }
+
+/* Prueba: menú en texto normal en lugar de manuscrito (mismo estilo que el nombre).
+   Para volver al manuscrito, borrar este bloque. */
+.case-nav .hand { -webkit-mask-image: none !important; mask-image: none !important; background-color: transparent !important;
+  width: auto; height: auto; margin-top: 2px; color: #fff; white-space: nowrap; transition: color .3s; }
+.case-nav .hand::before { content: attr(aria-label); }
+.case-nav.dark .hand { color: #000; }
+.case-nav [aria-current]::before { text-decoration: underline; text-underline-offset: 3px; }
