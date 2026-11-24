@@ -100,7 +100,7 @@ body += f'''  <section class="paper">
 body += chapter(head("05  Typeface"), spec_sg, top=True)
 body += chapter(head("06  Credits"), credits(None, None, [("Editorial direction, art direction &amp; design", "Antonia Ilic Bromberg, Francesca Garre Buscaglia"), ("Research &amp; archives", "Antonia Ilic Bromberg, Francesca Garre Buscaglia"), ("Typeface", "Source Serif 4, by Frank Grießhammer"), ("Paper", "Munken Print Cream 80 g/m², Curious Matter Adiron Blue 270 g/m²"), ("Printing", "Tecnoart, Barcelona, 2026"), ("Acknowledgements", "Pol Nadal (Studiopol), Josep Román (Affaire), Laura Meseguer, Ane Guerra, María Dolores Soriano, Marc Panero")], wide=True))
 body += "  </main>\n"
-body += nxt("potra", "potra/home", "Web design", "POTRA", "50% 50%")
+body += nxt("potra", "potra/home-crop", "Web design", "POTRA", "50% 50%")
 write("sanguaza", page("Una pizca de sangre y un vaso de sanguaza", "A Pinch of Blood and a Glass of Sanguaza — editorial book on ritual. Master in Editorial Design, ELISAVA.", "sanguaza", body, "#ffffff", css=css))
 
 # ================================== POTRA ===================================
@@ -127,7 +127,7 @@ spec_po = '''    <div class="spec g po-spec">
     </div>'''
 pal = [("#8ab0cf", "#000"), ("#680139", "#fff"), ("#341c2f", "#fff"), ("#daef20", "#000"), ("#cccaff", "#000")]
 palette = '    <div class="ppal g bleed" style="grid-template-columns: repeat(5, 1fr)">\n' + "\n".join(f'      <div style="--c: auto; --m: auto; background:{b}"><p style="color:{t}">{b.upper()}</p></div>' for b, t in pal) + "\n    </div>"
-body = hero("potra/home", "POTRA website", "Web design", "POTRA", "50% 50%")
+body = hero("potra/home-crop", "POTRA website", "Web design", "POTRA", "50% 50%")
 body += ficha([("Project", "POTRA — Tools, Insights &amp; Masterclasses to Hack the Productive Sphere"), ("Context", "Master's Degree in Editorial Design, ELISAVA"), ("Editorial direction, art direction &amp; design", "Antonia Ilic Bromberg &amp; Andie Puentes Fernández"), ("Typeface", "Mona Sans")])
 body += "  <main>\n"
 body += chapter(head("01  Intro", "We've been sold an idea of productivity built on systems that weren't designed with us in mind."),
