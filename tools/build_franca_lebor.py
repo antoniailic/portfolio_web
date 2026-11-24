@@ -141,7 +141,7 @@ reels = [f'      <video src="../img/lebor/reel-{i}.mp4" poster="../img/lebor/ree
 body = hero("lebor/cover-noviembre", "Lebor Gabala AW26", "Art direction", "Lebor Gabala — AW26", "0% 4.6%")
 body += ficha([("Client", "Lebor Gabala"), ("Studio", "Wizards Only"), ("Role", "Art Direction, Content Plan, Social Graphics, Shoot Assistance"), ("Year", "2026"), ("Channel", "Instagram")])
 body += "  <main>\n"
-body += chapter(head("01  Intro", "Translate a clean, tangible brand, focused on the materials of its fabrics, into Instagram's rhythm without losing&nbsp;its&nbsp;quietness."),
+body += chapter(head("01  Intro", "Translate a clean, tangible brand, focused on the materials of its fabrics, without losing&nbsp;its&nbsp;quietness."),
     pair(("Context", ["Lebor Gabala is a Barcelona knitwear label founded in 1989 by Maite Muñoz. Its name comes from Lebor Gabála Érenn, a book of Irish mythology, chosen for the bond between Ireland and the wool tradition. The brand designs for durability: pieces meant to last and to mix with garments from earlier collections."]),
          ("Challenge &amp; role", ["Content had to feel as considered as the garments: elegant, tactile and unhurried. I built the AW26 Instagram content plan, designed the graphic system for stories and posts, and supported the campaign shoot on set."])))
 body += chapter(head("02  The Feed", text=["Planned as a whole: images split across posts so the grid reads as one surface."]),
