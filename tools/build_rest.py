@@ -183,7 +183,10 @@ def item(a, b, c=None):
     if c:
         parts = [p.strip().rstrip(".") for p in _re.split(r"(?<=\.)\s+", c) if p.strip()]
         x = "<ul>" + "".join(f"<li>{p}</li>" for p in parts) + "</ul>"
-    return f'        <div class="item"><p>{a}</p><p>{b}</p>{x}</div>'
+    # Las fechas (último tramo tras " · ") van en su propia línea
+    ctx, _, date = b.rpartition(" · ")
+    b_html = f"<p>{ctx}</p><p>{date}</p>" if ctx else f"<p>{b}</p>"
+    return f'        <div class="item"><p>{a}</p>{b_html}{x}</div>'
 about_css = """    .about-page { padding-block: 160px var(--s-section); row-gap: var(--s-head); }
     .about-page .display { --c: 1 / 9; }
     .about-page .display span { display: block; white-space: nowrap; } /* siempre en 2 líneas, cortadas como las definió Antonia */
@@ -196,7 +199,7 @@ about_css = """    .about-page { padding-block: 160px var(--s-section); row-gap:
     .cv .item p:first-child { font-weight: 600; } /* lugar y puesto en negrita */
     .cv .item ul { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
     .cv .item li { padding-left: 1em; text-indent: -1em; }
-    .cv .item li::before { content: "–"; display: inline-block; width: 1em; text-indent: 0; }
+    .cv .item li::before { content: "•"; display: inline-block; width: 1em; text-indent: 0; }
     @media (max-width: 768px) {
       .about-page { padding-top: 96px; }
       .about-page .display, .about-page .t { --m: 1 / -1; }
