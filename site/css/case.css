@@ -44,7 +44,7 @@ body.case { background: var(--bg-case); }
   position: absolute; left: 0; right: 0; bottom: 0; height: 96px;
   background: var(--bg-case); align-content: center;
   transform: translateY(100%);
-  animation: band-up .9s cubic-bezier(.2,.7,.1,1) .35s forwards;
+  animation: band-up .7s cubic-bezier(.2,.7,.1,1) forwards; /* sin retraso: entra junto con la portada */
 }
 @keyframes band-up { to { transform: translateY(0); } }
 @media (prefers-reduced-motion: reduce) { .case-band { animation: none; transform: none; } }
