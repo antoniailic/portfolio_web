@@ -17,7 +17,13 @@ css = """    .sprite { position: relative; overflow: hidden; aspect-ratio: 442 /
     .compo .v { transform-origin: 0 0; transform: rotate(90deg); }
     .pillars > div { --m: 1 / -1; display: flex; flex-direction: column; gap: var(--s-text); }
     .pillars > div > p { order: 1; } .pillars > div > p + p { order: 2; }
-    @media (min-width: 769px) { .pillars > div > p, .pillars > div > p + p { order: 4; } }
+    .pillars .post { order: 3; } /* título y texto sobre la imagen, también en escritorio */
+    @media (min-width: 769px) {
+      /* las tres imágenes alineadas aunque los textos tengan distinto largo */
+      .pillars { grid-template-rows: auto auto auto; row-gap: 0; }
+      .pillars > div { display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: var(--s-text); }
+      .pillars > div > p { grid-row: 1; } .pillars > div > p + p { grid-row: 2; } .pillars .post { grid-row: 3; }
+    }
     .pillars > div:nth-child(1) { --c: 1 / 5; } .pillars > div:nth-child(2) { --c: 5 / 9; } .pillars > div:nth-child(3) { --c: 9 / 13; }
     .post { position: relative; overflow: hidden; background: #fff; aspect-ratio: 416 / 520; }
     .post img { position: absolute; object-fit: cover; }
@@ -88,9 +94,7 @@ body += chapter(head("01  Intro", "An ever-evolving archive"),
 # 02 Defining craft fuera: no exponer el proceso del estudio (la intro del challenge ya lo explica)
 body += chapter(head("02  Discarded explorations", text=["Early tests explored more literal expressions of craft. They always ended up dirtying work that needed to be shown clean. Discarding them clarified the line: the craft had to live in the structure, not on top of the images."]),
     media(discard, "discard"))
-body += chapter(head("03  The grid", text=["We didn't want paper to be the answer. My proposal was to work in the space between digital and print: laying out the feed on the page grid of an editorial magazine, built to show their work. Franca often brings magazines to their productions for their clients, so the solution grew out of their own way of working."]),
-    pair(("", ["I presented a grid for laying out images and building compositions. Each post is composed on it; then the grid is removed and the post stays clean, with white bands framing the images like the margins of a printed page."]),
-         ("", ["Franca liked the idea of a system that would make them recognisable, but worried it could become boring, with the formula too obvious. So I presented two grids instead of one. Posts alternate between them: no single post reads as a template, but across the feed the structure comes through."])).replace("<p></p>", ""),
+body += chapter(head("03  The grid", text=["We didn't want paper to be the answer. My proposal was to work in the space between digital and print: laying out the feed on the page grid of an editorial magazine, built to show their work. Franca often brings magazines to their productions for their clients, so the solution grew out of their own way of working.", "I presented a grid for laying out images and building compositions. Each post is composed on it; then the grid is removed and the post stays clean, with white bands framing the images like the margins of a printed page.", "Franca liked the idea of a system that would make them recognisable, but worried it could become boring, with the formula too obvious. So I presented two grids instead of one. Posts alternate between them: no single post reads as a template, but across the feed the structure comes through."]),
     f'''    <div class="ab g">
       <figure><figcaption>A.</figcaption><div class="sprite a"><img src="{L}grid-ab.jpg" alt="Grid A"></div></figure>
       <figure><figcaption>B.</figcaption><div class="sprite b"><img src="{L}grid-ab.jpg" alt="Grid B"></div></figure>
