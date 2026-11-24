@@ -188,6 +188,7 @@ about_css = """    .about-page { padding-block: 160px var(--s-section); row-gap:
     .cv section { display: flex; flex-direction: column; gap: 24px; }
     .cv .edu { grid-column: 1 / 5; } .cv .exp { grid-column: 6 / 11; }
     .cv .item { display: flex; flex-direction: column; gap: 4px; }
+    .cv .item p:first-child { font-weight: 600; } /* lugar y puesto en negrita */
     @media (max-width: 768px) {
       .about-page { padding-top: 96px; }
       .about-page .display, .about-page .t { --m: 1 / -1; }
