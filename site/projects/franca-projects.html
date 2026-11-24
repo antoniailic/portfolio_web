@@ -7,7 +7,7 @@
   <meta name="description" content="Art direction, Instagram system and grid design for Franca Projects.">
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/case.css">
-  <script>try{if(sessionStorage.getItem("fromNext")){document.documentElement.classList.add("from-next");sessionStorage.removeItem("fromNext")}}catch(e){}</script>
+  <script>try{for(const k of ["fromNext","dropIn"]){if(sessionStorage.getItem(k)){document.documentElement.classList.add(k==="fromNext"?"from-next":"drop-in");sessionStorage.removeItem(k)}}}catch(e){}</script>
   <style>
     :root { --bg-case: #f6f6f6; --band: #ececea; }
     .sprite { position: relative; overflow: hidden; aspect-ratio: 442 / 554; }
@@ -192,6 +192,11 @@
     <a class="next-img" href="lebor-gabala.html" style="--pos: 0% 4.6%"><img src="../img/lebor/cover-noviembre.jpg" alt="" loading="lazy"></a>
   </footer>
 
+  <footer class="site-foot g">
+    <a class="sf-portfolio" href="../index.html">Portfolio</a>
+    <span class="sf-name">Antonia Ilic Bromberg</span>
+    <a class="sf-mail" href="mailto:antonia.ilic@gmail.com">antonia.ilic@gmail.com</a>
+  </footer>
   <script src="../js/main.js"></script>
 </body>
 </html>

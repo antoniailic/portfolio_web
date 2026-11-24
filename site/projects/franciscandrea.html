@@ -7,7 +7,7 @@
   <meta name="description" content="Brand identity for francisc'andrea, a floral design studio.">
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/case.css">
-  <script>try{if(sessionStorage.getItem("fromNext")){document.documentElement.classList.add("from-next");sessionStorage.removeItem("fromNext")}}catch(e){}</script>
+  <script>try{for(const k of ["fromNext","dropIn"]){if(sessionStorage.getItem(k)){document.documentElement.classList.add(k==="fromNext"?"from-next":"drop-in");sessionStorage.removeItem(k)}}}catch(e){}</script>
   <style>
     :root { --bg-case: #ffffff; --band: #ffffff; }
     .logo { position: relative; overflow: hidden; }
@@ -149,6 +149,11 @@
     <a class="next-img" href="nebular.html" style="--pos: 50% 50%"><img src="../img/nebular/nebular-composicion.jpg" alt="" loading="lazy"></a>
   </footer>
 
+  <footer class="site-foot g">
+    <a class="sf-portfolio" href="../index.html">Portfolio</a>
+    <span class="sf-name">Antonia Ilic Bromberg</span>
+    <a class="sf-mail" href="mailto:antonia.ilic@gmail.com">antonia.ilic@gmail.com</a>
+  </footer>
   <script src="../js/main.js"></script>
 </body>
 </html>

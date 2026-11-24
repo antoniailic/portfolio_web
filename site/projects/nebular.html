@@ -7,7 +7,7 @@
   <meta name="description" content="Nebular — Emotional Cartography of Art. Art magazine, three issues. Master in Editorial Design, ELISAVA.">
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/case.css">
-  <script>try{if(sessionStorage.getItem("fromNext")){document.documentElement.classList.add("from-next");sessionStorage.removeItem("fromNext")}}catch(e){}</script>
+  <script>try{for(const k of ["fromNext","dropIn"]){if(sessionStorage.getItem(k)){document.documentElement.classList.add(k==="fromNext"?"from-next":"drop-in");sessionStorage.removeItem(k)}}}catch(e){}</script>
   <style>
     :root { --bg-case: #000000; --band: #000000; }
     body.case { color: #fff; }
@@ -196,6 +196,11 @@ seven ways
     <a class="next-img" href="wild-lama.html" style="--pos: 50% 14.7%"><img src="../img/wildlama/wl-25-q1-525.jpg" alt="" loading="lazy"></a>
   </footer>
 
+  <footer class="site-foot g">
+    <a class="sf-portfolio" href="../index.html">Portfolio</a>
+    <span class="sf-name">Antonia Ilic Bromberg</span>
+    <a class="sf-mail" href="mailto:antonia.ilic@gmail.com">antonia.ilic@gmail.com</a>
+  </footer>
   <script src="../js/main.js"></script>
 </body>
 </html>

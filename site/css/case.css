@@ -237,3 +237,22 @@ body.leaving > *:not(.hero-fly) { opacity: 0; transition: opacity .6s ease .15s;
    (subió durante la transición): sin animación de entrada. */
 .from-next .case-band { animation: none; transform: none; }
 .hero-fly .case-band { animation: none; transform: none; } /* la franja no se mueve: queda fija abajo y el recorte la descubre al abrirse */
+
+/* --- Pie de página: Portfolio · nombre · mail (mismas columnas que el menú) --- */
+.site-foot { padding-block: 24px 22px; align-items: start; }
+.site-foot .sf-portfolio { --c: 1 / 3; --m: 1 / 3; }
+.site-foot .sf-name { --c: 6 / 8; justify-self: center; white-space: nowrap; }
+.site-foot .sf-mail { --c: 10 / 13; --m: 3 / 5; justify-self: end; white-space: nowrap; }
+.site-foot a:hover { text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 768px) { .site-foot .sf-name { display: none; } }
+
+/* --- About y Contact bajan desde arriba (solo desde la home o una landing) --- */
+.curtain { position: fixed; inset: 0; z-index: 3000; background: #fff; transform: translateY(-100%);
+  transition: transform .7s cubic-bezier(.76, 0, .24, 1); }
+.curtain.on { transform: translateY(0); }
+.drop-in body > * { animation: drop-fade .45s ease both; }
+@keyframes drop-fade { from { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .curtain { transition: none; } .drop-in body > * { animation: none; } }
+/* En páginas cortas (Contact) el pie queda abajo de la pantalla */
+body[data-page] { min-height: 100svh; display: flex; flex-direction: column; }
+body[data-page] > main { flex: 1 0 auto; }

@@ -20,6 +20,17 @@ def nav(rel="../", dark=False, current=None):
   </nav>
 '''
 
+# Marcas de transición entre páginas (se leen antes de pintar para no dar saltos)
+FLAGS = '<script>try{for(const k of ["fromNext","dropIn"]){if(sessionStorage.getItem(k)){document.documentElement.classList.add(k==="fromNext"?"from-next":"drop-in");sessionStorage.removeItem(k)}}}catch(e){}</script>'
+
+def site_foot(rel="../"):
+    """Pie de todas las páginas salvo la home: Portfolio, nombre y mail, en las mismas columnas que el menú."""
+    return f'''  <footer class="site-foot g">
+    <a class="sf-portfolio" href="{rel}index.html">Portfolio</a>
+    <span class="sf-name">Antonia Ilic Bromberg</span>
+    <a class="sf-mail" href="mailto:antonia.ilic@gmail.com">antonia.ilic@gmail.com</a>
+  </footer>'''
+
 def page(title, desc, slug, body, bg="#f6f6f6", band=None, color=None, css=""):
     root = f":root {{ --bg-case: {bg}; --band: {band or bg}; }}"
     col = f"\n    body.case {{ color: {color}; }}" if color else ""
@@ -32,7 +43,7 @@ def page(title, desc, slug, body, bg="#f6f6f6", band=None, color=None, css=""):
   <meta name="description" content="{desc}">
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/case.css">
-  <script>try{{if(sessionStorage.getItem("fromNext")){{document.documentElement.classList.add("from-next");sessionStorage.removeItem("fromNext")}}}}catch(e){{}}</script>
+  {FLAGS}
   <style>
     {root}{col}
 {css}
@@ -41,6 +52,7 @@ def page(title, desc, slug, body, bg="#f6f6f6", band=None, color=None, css=""):
 <body class="case" data-project="{slug}">
 {nav()}
 {body}
+{site_foot()}
   <script src="../js/main.js"></script>
 </body>
 </html>

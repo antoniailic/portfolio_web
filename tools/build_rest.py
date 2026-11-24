@@ -176,13 +176,15 @@ def simple(fname, title, desc, body, css, current):
   <meta name="description" content="{desc}">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/case.css">
+  {FLAGS}
   <style>
 {css}
   </style>
 </head>
-<body>
+<body data-page="{current}">
 {n}
 {body}
+{site_foot("")}
   <script src="js/main.js"></script>
 </body>
 </html>

@@ -7,6 +7,7 @@
   <meta name="description" content="Contact Antonia Ilic Bromberg — identity, editorial, branding, web and art direction projects.">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/case.css">
+  <script>try{for(const k of ["fromNext","dropIn"]){if(sessionStorage.getItem(k)){document.documentElement.classList.add(k==="fromNext"?"from-next":"drop-in");sessionStorage.removeItem(k)}}}catch(e){}</script>
   <style>
     .contact-page { padding-block: 160px; row-gap: 56px; } /* título a la misma altura que en About */
     .contact-page .display { --c: 1 / 10; }
@@ -18,7 +19,7 @@
     @media (max-width: 768px) { .contact-page { padding-top: 96px; row-gap: 32px; } .contact-page .data > div { grid-column: 1 / -1 !important; margin-bottom: 16px; } }
   </style>
 </head>
-<body>
+<body data-page="contact">
   <nav class="case-nav g dark" aria-label="Main">
     <a class="hand portfolio" href="index.html" aria-label="Portfolio"></a>
     <a class="name" href="index.html">Antonia Ilic Bromberg</a>
@@ -33,6 +34,11 @@
       <div><p>Location</p><p>Barcelona, Spain</p></div>
     </div>
   </main>
+  <footer class="site-foot g">
+    <a class="sf-portfolio" href="index.html">Portfolio</a>
+    <span class="sf-name">Antonia Ilic Bromberg</span>
+    <a class="sf-mail" href="mailto:antonia.ilic@gmail.com">antonia.ilic@gmail.com</a>
+  </footer>
   <script src="js/main.js"></script>
 </body>
 </html>

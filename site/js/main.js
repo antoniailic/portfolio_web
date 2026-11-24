@@ -191,7 +191,7 @@ const slug = document.body.dataset.project;
 const idx = PROJECTS.findIndex(p => p.slug === slug);
 if (idx > -1 && matchMedia("(hover: hover) and (pointer: fine)").matches) {
   const go = d => { location.href = `${PROJECTS[(idx + d + PROJECTS.length) % PROJECTS.length].slug}.html`; };
-  const skip = el => el.closest("a, button, input, textarea, select, nav, [data-carousel], .site-nav");
+  const skip = el => el.closest("a, button, input, textarea, select, nav, [data-carousel], .site-nav, .site-foot");
   const side = e => e.clientX < innerWidth / 3 ? -1 : e.clientX > innerWidth * 2 / 3 ? 1 : 0;
   // Flecha propia: blanca sobre fondo oscuro, negra sobre fondo claro
   const arrow = document.createElement("div");
@@ -292,4 +292,24 @@ document.querySelectorAll("p, h1, h3, li, dd, .display, .ttl").forEach(el => {
     setTimeout(end, 1300);
   }));
   addEventListener("pageshow", e => { if (e.persisted) location.reload(); });
+})();
+
+/* About y Contact bajan desde arriba cuando se abren desde la home o una landing
+   (entre About y Contact el cambio es directo). */
+(function () {
+  const here = document.body.dataset.page;               // "about" | "contact" | undefined
+  if (here === "about" || here === "contact") return;
+  document.querySelectorAll('a[href$="about.html"], a[href$="contact.html"]').forEach(a => a.addEventListener("click", e => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+    e.preventDefault();
+    if (document.querySelector(".curtain")) return;
+    const c = document.createElement("div"); c.className = "curtain"; document.body.appendChild(c);
+    const go = () => { try { sessionStorage.setItem("dropIn", "1"); } catch (_) {} location.href = a.href; };
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return go();
+    c.getBoundingClientRect();
+    requestAnimationFrame(() => c.classList.add("on"));
+    c.addEventListener("transitionend", go, { once: true });
+    setTimeout(go, 900);
+  }));
+  addEventListener("pageshow", e => { if (e.persisted) document.querySelectorAll(".curtain").forEach(c => c.remove()); });
 })();

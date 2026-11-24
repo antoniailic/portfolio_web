@@ -7,6 +7,7 @@
   <meta name="description" content="Antonia Ilic Bromberg — designer with a holistic and editorial approach. Education and experience.">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/case.css">
+  <script>try{for(const k of ["fromNext","dropIn"]){if(sessionStorage.getItem(k)){document.documentElement.classList.add(k==="fromNext"?"from-next":"drop-in");sessionStorage.removeItem(k)}}}catch(e){}</script>
   <style>
     .about-page { padding-block: 160px var(--s-section); row-gap: var(--s-head); grid-template-rows: auto 1fr; align-items: start; } /* el texto va justo bajo el título; el alto extra del retrato queda abajo */
     .about-page .display { --c: 1 / 9; }
@@ -31,7 +32,7 @@
     }
   </style>
 </head>
-<body>
+<body data-page="about">
   <nav class="case-nav g dark" aria-label="Main">
     <a class="hand portfolio" href="index.html" aria-label="Portfolio"></a>
     <a class="name" href="index.html">Antonia Ilic Bromberg</a>
@@ -60,6 +61,11 @@
       </section>
     </div>
   </main>
+  <footer class="site-foot g">
+    <a class="sf-portfolio" href="index.html">Portfolio</a>
+    <span class="sf-name">Antonia Ilic Bromberg</span>
+    <a class="sf-mail" href="mailto:antonia.ilic@gmail.com">antonia.ilic@gmail.com</a>
+  </footer>
   <script src="js/main.js"></script>
 </body>
 </html>

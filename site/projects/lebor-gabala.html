@@ -7,7 +7,7 @@
   <meta name="description" content="AW26 art direction, content plan and social graphics for Lebor Gabala.">
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/case.css">
-  <script>try{if(sessionStorage.getItem("fromNext")){document.documentElement.classList.add("from-next");sessionStorage.removeItem("fromNext")}}catch(e){}</script>
+  <script>try{for(const k of ["fromNext","dropIn"]){if(sessionStorage.getItem(k)){document.documentElement.classList.add(k==="fromNext"?"from-next":"drop-in");sessionStorage.removeItem(k)}}}catch(e){}</script>
   <style>
     :root { --bg-case: #fdfbf9; --band: #fdfbf9; }
     .story-row { row-gap: var(--gutter); }
@@ -143,6 +143,11 @@
     <a class="next-img" href="franciscandrea.html" style="--pos: 50% 40%"><img src="../img/franciscandrea/cover.jpg" alt="" loading="lazy"></a>
   </footer>
 
+  <footer class="site-foot g">
+    <a class="sf-portfolio" href="../index.html">Portfolio</a>
+    <span class="sf-name">Antonia Ilic Bromberg</span>
+    <a class="sf-mail" href="mailto:antonia.ilic@gmail.com">antonia.ilic@gmail.com</a>
+  </footer>
   <script src="../js/main.js"></script>
 </body>
 </html>
