@@ -151,7 +151,7 @@ body += chapter(head("03  Stories"), '    <div class="g"><div class="stories">\n
     srow("Lookbook", ["story-lookbook-1", "story-lookbook-2", "story-lookbook-3"]),
     srow("Invitation", ["story-invitation"])]) + "\n    </div></div>")
 body += chapter(head("04  Video editing — Instagram ads (AW26)"), media(reels),
-    '    <div class="g"><p class="label-low">Edited for Instagram ads: vertical 9:16 cuts from the AW26 shoot.</p></div>')
+    '    <div class="head g"><div class="t"><p>Edited for Instagram ads: vertical 9:16 cuts from the AW26 shoot.</p></div></div>')
 body += chapter(head("05  graphic Detail"), media([img("lebor/detail", "1 / -1", None, "1440 / 900", "Graphic detail", "50% 4.6%")], "bleed"))
 body += chapter(head("06  On set"), media([img("lebor/onset-7537", "3 / 6", "1 / 3", "346 / 615", "On set"), img("lebor/onset-7628", "8 / 11", "3 / 5", "346 / 615", "On set")]))
 body += chapter(head("07  Result &amp; Credits"), credits(None, "A modular system for vertical formats that alternates full-bleed editorial imagery, colour-treated statements and lookbook line-ups. AW26 content rolling out on Lebor Gabala's Instagram from November 2026.",

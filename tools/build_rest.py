@@ -51,7 +51,7 @@ A one-day shoot in Santiago across two locations: a warehouse that rents out pro
       <div class="cells">{c2}</div>
     </div>''')
 body += chapter(media([img("wildlama/c2-03", "1 / -1", None, "1440 / 810", "")], "bleed"))
-body += chapter(head("03  Results", low="Key results from the branding team during the period worked:"),
+body += chapter(head("03  Results", text=["Key results from the branding team during the period worked:"]),
     '''    <div class="trio g stats">
       <div><p class="display">1.33%</p><p>Reached the brand's highest-ever organic Instagram engagement (1.33% average in 2024).</p></div>
       <div><p class="display">9.43%</p><p>Produced the brand's best-performing organic post, achieving 9.43% engagement.</p></div>
