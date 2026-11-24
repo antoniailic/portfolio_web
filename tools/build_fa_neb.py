@@ -54,7 +54,7 @@ body += chapter(head("03  Applications", text=["Business cards, stationery, grap
 body += chapter(head("04  colors", text=["The colours were chosen as a complement to the flowers that will appear in the brand's content. They don't seek to compete with them."]), f'    <div class="swatches g">\n{swatches}\n    </div>')
 body += chapter(head("05  Art direction", text=["The art direction I set for the brand's visual world: colour, light and the way flowers are shown."]),
     media([img("franciscandrea/art-direction", "1 / -1", None, "1440 / 700", "Art direction")], "bleed"))
-body += chapter(head("06  Instagram today"), media([img("franciscandrea/instagram-1", "2 / 6", "1 / 3", "416 / 751", "francisc'andrea Instagram feed"), img("franciscandrea/instagram-2", "8 / 12", "3 / 5", "416 / 751", "francisc'andrea Instagram feed")]))
+body += chapter(head("06  Instagram today", text=["Through my consultancy, the identity and art direction have been applied correctly on the brand's Instagram."]), media([img("franciscandrea/instagram-1", "2 / 6", "1 / 3", "416 / 751", "francisc'andrea Instagram feed"), img("franciscandrea/instagram-2", "8 / 12", "3 / 5", "416 / 751", "francisc'andrea Instagram feed")]))
 body += chapter(head("07  Typeface", low=None, extra='      <p>Cormorant Upright · Roboto Mono</p>').replace('row-gap: var(--s-head)', ''), spec_fa)
 body += chapter(head("08  Result &amp; Credits"), credits(None, "The identity is in use across business cards, stationery, graphics and the flower presses themselves, carrying the brand onto the product. Website currently in development.",
     [("Client", "francisc'andrea"), ("Brand identity", "Antonia Ilic Bromberg"), ("Year", "2025")]))
