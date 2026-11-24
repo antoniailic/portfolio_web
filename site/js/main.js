@@ -66,6 +66,12 @@ if (home) {
     if (window.__navContrast) { im.complete ? window.__navContrast(0) : im.addEventListener("load", () => window.__navContrast(0), { once: true }); }
   }
   show(0);
+  // clic en la imagen (cualquier zona que no sea un enlace) abre el proyecto que se está mostrando
+  home.style.cursor = "pointer";
+  home.addEventListener("click", e => {
+    if (e.target.closest("a, button")) return;
+    location.href = `projects/${PROJECTS[current].slug}.html`;
+  });
 
   document.addEventListener("keydown", e => {
     if (e.key === "ArrowRight") show(current + 1);
