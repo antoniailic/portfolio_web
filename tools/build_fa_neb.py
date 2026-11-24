@@ -38,7 +38,7 @@ def logo(path, w, h, s):
 body = hero("franciscandrea/cover", "francisc'andrea", "Brand identity", "francisc'andrea", "50% 40%")
 body += ficha([("Client", "francisc'andrea"), ("Type", "Client commission"), ("Role", "Brand Identity"), ("Year", "2025"), ("Scope", "Logotype, mark system, typography, stationery, product application")])
 body += "  <main>\n"
-body += chapter(head("01  Intro", "Just as a pressed flower may seem fragile, it can also contain a powerful presence, suspended in time.", dc="1 / -1"),
+body += chapter(head("01  Intro", "Just as a pressed flower may seem fragile, it&nbsp;can also contain a powerful presence, suspended in time.", dc="1 / -1"),
     pair(("Concept", ["The project is born from the contemplation of the ephemeral: that instant when a flower reaches its highest point of beauty before fading. Right there, we decided to stop time."]),
          ("Visual language", ["The visual language also responds to this duality. The identity of francisc'andrea is built from contrast: a typography that moves between the light and the firm, reflecting the very essence of our creations."])))
 body += chapter(head("02  logo System design"), f'''    <div class="marks g">
