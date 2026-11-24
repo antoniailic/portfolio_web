@@ -179,3 +179,6 @@ body.go-prev, body.go-prev *, body.go-next, body.go-next * { cursor: none; }
 .neb-spec, .sg-spec { padding-block: 0; }
 /* Imagen o video solo: al quedar centrado en pantalla, todo alrededor es fondo */
 .media.solo { min-height: calc(100svh - 2 * var(--s-block)); align-content: center; }
+.spec .rule { display: none; } /* sin líneas dentro de los specimens */
+.spec .row3 { margin-top: var(--s-head); }
+.spec .big { overflow-wrap: normal; }

@@ -41,15 +41,26 @@ if (home) {
     const a = document.createElement("a");
     a.href = `projects/${p.slug}.html`;
     a.innerHTML = `<span class="cat">[${p.cat}]</span><span class="ttl">${p.title}</span>`;
-    a.addEventListener("mouseenter", () => show(i));
-    a.addEventListener("focus", () => show(i));
+    a.addEventListener("mouseenter", () => { if (!mobile.matches) show(i); });
+    a.addEventListener("click", e => { if (mobile.matches && current !== i) { e.preventDefault(); show(i); } });
+    a.addEventListener("focus", () => { if (!mobile.matches) show(i); });
     index.appendChild(a);
   });
+  const dot = document.createElement("span");
+  dot.className = "dot"; index.appendChild(dot);
+  const mobile = matchMedia("(max-width: 768px)");
   let current = 0;
+  function placeDot() {
+    const a = index.querySelectorAll("a")[current];
+    const t = a.querySelector(".ttl");
+    dot.style.transform = `translateY(${a.offsetTop + t.offsetHeight / 2 - 3.5}px)`;
+  }
+  addEventListener("resize", placeDot);
   function show(i) {
     current = (i + PROJECTS.length) % PROJECTS.length;
     banners.querySelectorAll("img").forEach((im, k) => im.classList.toggle("on", k === current));
     index.querySelectorAll("a").forEach((a, k) => a.classList.toggle("on", k === current));
+    placeDot();
     const im = banners.querySelectorAll("img")[current];
     if (window.__navContrast) { im.complete ? window.__navContrast(0) : im.addEventListener("load", () => window.__navContrast(0), { once: true }); }
   }
@@ -61,14 +72,22 @@ if (home) {
     if (e.key === "Enter" && document.activeElement === document.body) location.href = `projects/${PROJECTS[current].slug}.html`;
   });
   // Swipe en mobile
-  let x0 = null;
-  home.addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+  // Mobile: deslizar (vertical u horizontal) pasa al siguiente preview y el círculo baja con él
+  let x0 = null, y0 = null;
+  home.addEventListener("touchstart", e => { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
   home.addEventListener("touchend", e => {
     if (x0 === null) return;
-    const dx = e.changedTouches[0].clientX - x0;
-    if (Math.abs(dx) > 40) show(current + (dx < 0 ? 1 : -1));
-    x0 = null;
+    const dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
+    const d = Math.abs(dy) > Math.abs(dx) ? dy : dx;
+    if (Math.abs(d) > 40) show(current + (d < 0 ? 1 : -1));
+    x0 = y0 = null;
   });
+  let wheelLock = false;
+  home.addEventListener("wheel", e => {
+    if (!mobile.matches || wheelLock || Math.abs(e.deltaY) < 20) return;
+    wheelLock = true; setTimeout(() => wheelLock = false, 700);
+    show(current + (e.deltaY > 0 ? 1 : -1));
+  }, { passive: true });
 }
 
 
@@ -188,6 +207,7 @@ if (idx > -1 && matchMedia("(hover: hover) and (pointer: fine)").matches) {
 // Viudas: une las dos últimas palabras de cada párrafo (respaldo para navegadores sin text-wrap: pretty)
 document.querySelectorAll("p, h1, h3, li, dd, .display, .ttl").forEach(el => {
   if (el.closest(".artists, .spec .caps, .case-nav")) return;
+  if (parseFloat(getComputedStyle(el).fontSize) > 40) return; // tipos grandes: solo text-wrap, para no forzar cortes de palabra
   const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
   let last = null; while (w.nextNode()) if (w.currentNode.nodeValue.trim()) last = w.currentNode;
   if (!last || el.textContent.trim().split(/\s+/).length < 4) return;

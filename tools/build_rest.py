@@ -3,7 +3,7 @@ from lib_site import *
 
 # =============================== WILD LAMA ==================================
 css = """    .campaign { row-gap: var(--gutter); }
-    .campaign > .info { --c: 1 / 4; display: flex; flex-direction: column; gap: var(--s-text); }
+    .campaign > .info { --c: 1 / 4; display: flex; flex-direction: column; gap: 24px; } /* 24 entre grupos, 12 dentro de cada grupo */
     .campaign > .info p { white-space: pre-line; }
     .campaign > .cells { --c: 4 / 13; display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: var(--gutter); }
     .cells img { grid-column: span 3; width: 100%; aspect-ratio: 304 / 457; object-fit: cover; background: var(--ph); }
@@ -82,7 +82,7 @@ spec_sg = '''    <div class="spec g sg-spec">
       <p class="c3 row3" style="font-size:12px; line-height:1.5">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ abcdefghijklmnñopqrstuvwxyz 0123456789 &amp; ¿? ¡! —</p>
     </div>'''
 body = hero("sanguaza/libro-centrado", "A Pinch of Blood and a Glass of Sanguaza — the book", "Editorial", "Una pizca de sangre y un vaso de sanguaza", "50% 45%")
-body += ficha([("Title", "A Pinch of Blood and a Glass of Sanguaza"), ("Context", "Master's Degree in Editorial Design, ELISAVA"), ("Year", "September 2025 – June 2026"), ("Editorial direction, art direction &amp; design", "Antonia Ilic Bromberg &amp; Francesca Garre Buscaglia"), ("Printing", "Tecnoart, Barcelona")])
+body += ficha([("Title", "A Pinch of Blood and a Glass of Sanguaza"), ("Context", "Master's Degree in Editorial Design, ELISAVA"), ("Year", "September 2025 – June 2026"), ("Editorial direction, art direction &amp; design", "Antonia Ilic Bromberg &amp; Francesca Garre Buscaglia")])
 body += "  <main>\n"
 body += chapter(head("01  Intro", "Across history, the one thing we have consistently maintained is the need to create rituals that bring us together as a society."),
     pair(("Why we still need it", ["By exploring the symbols, elements, and rhythms that make ritual possible, we begin to understand why we continue to need it. Even today, amid productive routines and weakened social bonds, we keep searching for moments that allow us to belong, transform, and make the passage of time visible."]),

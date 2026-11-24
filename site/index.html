@@ -22,9 +22,15 @@
     .index a.on .ttl, .index a:hover .ttl { color: #fff; }
     .foot { position: absolute; left: 0; right: 0; bottom: 12px; pointer-events: none; }
     .foot p:first-child { --c: 1 / 7; } .foot p:last-child { --c: 7 / 13; text-align: right; }
+    .index .dot { display: none; }
     @media (max-width: 768px) {
-      .index { --m: 1 / -1; grid-template-columns: repeat(4, minmax(0, 1fr)); }
-      .index .cat { grid-column: 1 / 3; } .index .ttl { grid-column: 3 / -1; }
+      /* Mobile: categoría junto al nombre y un círculo que marca el proyecto en pantalla */
+      .index { --m: 1 / -1; display: flex; flex-direction: column; row-gap: 6px; position: relative; padding-left: 16px; }
+      .index a { display: flex; gap: 8px; align-items: baseline; }
+      .index .cat { flex: none; }
+      .index .ttl { min-width: 0; }
+      .index .dot { display: block; position: absolute; left: 0; top: 0; width: 7px; height: 7px; border-radius: 50%; background: #fff;
+        transition: transform .45s cubic-bezier(.65, 0, .35, 1); pointer-events: none; }
       .foot p:first-child, .foot p:last-child { --m: 1 / -1; text-align: left; font-size: 12px; }
     }
   </style>
