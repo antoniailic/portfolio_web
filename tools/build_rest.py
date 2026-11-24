@@ -90,9 +90,11 @@ body += chapter(head("01  Intro", "Across history, the one thing we have consist
 body += chapter(head("02  The book"),
     pair(("The architecture of ritual", ["The graphic concept reflects the \"architecture of ritual\" through the rhythm of the book. Drawing on Arnold van Gennep's structure of rites of passage, the reading flow alternates between continuity and interruption, translating the process of separation, transformation, and reintegration into the editorial experience."]),
          ("Four reading levels", ["The book is structured through four reading levels. The editorial voice guides the reader through chapter introductions, while the essays provide the theoretical framework. Poems and silver-printed images offer an experiential reading of ritual, interrupting the academic discourse with a more intimate, symbolic, and emotional perspective. Like ritual experiences, whose memories often remain fragmented and elusive, the images move away from literal representation to evoke what cannot be fully explained."])),
-    media(['      <video src="../img/sanguaza/libro-post-video.mp4" poster="../img/sanguaza/libro-post-video.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Pages of the book being turned" style="--c: 5 / 9; --m: 1 / -1; --r: 1080 / 1350"></video>']))
+    media(['      <video src="../img/sanguaza/libro-post-full.mp4" poster="../img/sanguaza/libro-post-full.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Pages of the book being turned" style="--c: 5 / 9; --m: 1 / -1; --r: 720 / 654"></video>']))
 body += chapter(head("03  the ink", text=["The images of rituals are printed in silver ink. Some rituals are so intense that they are hard to remember clearly: like ritual experiences, whose memories often remain fragmented and elusive, the silver images move away from literal representation to open a less structured, almost dreamlike space, evoking what cannot be fully explained. The poems do the same at certain moments of the book."]),
-    media([img("sanguaza/libro-post-brillo", "5 / 9", "1 / -1", "464 / 580", "Silver ink printed image")]))
+    media(['      <video src="../img/sanguaza/tinta.mp4" poster="../img/sanguaza/tinta.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Silver ink catching the light" style="--c: 5 / 9; --m: 1 / -1; --r: 1080 / 1350"></video>']))
+# Doble página a todo el ancho para quebrar el ritmo
+body += chapter(media([img("sanguaza/doble-banner", "1 / -1", "1 / -1", "2400 / 1000", "Double-page spread on blue paper")], "bleed"))
 body += f'''  <section class="paper">
 {head("04  the paper", extra='      <p style="--c: 1 / 7">Curious Matter Adiron Blue, 270 g/m² (Arjowiggins).</p>')}
   </section>
