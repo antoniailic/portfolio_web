@@ -155,7 +155,7 @@ body += chapter(head("03  Stories"), '    <div class="g"><div class="stories">\n
     srow("Invitation", ["story-invitation"])]) + "\n    </div></div>")
 body += chapter(head("04  Video editing — Instagram ads (AW26)"), media(reels),
     '    <div class="head g"><div class="t"><p>Edited for Instagram ads: vertical 9:16 cuts from the AW26 shoot.</p></div></div>')
-body += chapter(head("05  graphic Detail"), media([img("lebor/detail", "1 / -1", None, "1440 / 900", "Graphic detail", "50% 4.6%")], "bleed"))
+body += chapter(head("05  graphic Detail"), media([img("lebor/detail", "3 / 11", "1 / -1", "1440 / 900", "Graphic detail", "50% 4.6%")]))
 body += chapter(head("06  On set"), media([video("lebor/onset-7537", "3 / 6", "1 / 3", "9 / 16", "On set"), video("lebor/onset-7628", "8 / 11", "3 / 5", "9 / 16", "On set")]))
 body += chapter(head("07  Result &amp; Credits"), credits(None, "A modular system for vertical formats that alternates full-bleed editorial imagery, colour-treated statements and lookbook line-ups. AW26 content rolling out on Lebor Gabala's Instagram from November 2026.",
     [("Client", "Lebor Gabala"), ("Studio", "Wizards Only, Barcelona"), ("Content plan, social graphics, shoot assistance", "Antonia Ilic Bromberg"), ("Photography", "Nereis Ferrer"), ("Creative production", "Alba Mitchell")]))
