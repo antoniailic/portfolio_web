@@ -321,3 +321,9 @@ body[data-page] > main { flex: 1 0 auto; }
   .home-stage:has(.banners img.on[src*="libro-centrado"]) { background-color: #3a55c6; }
   .home-stage:has(.banners img.on[src*="home-crop"]) { background-color: #f6f6f6; }
 }
+
+/* Cambio de página sin parpadeo: el navegador funde la página anterior con la nueva
+   (View Transitions entre documentos; los navegadores que no lo soportan cambian como siempre). */
+@view-transition { navigation: auto; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: .35s; animation-timing-function: ease; }
+@media (prefers-reduced-motion: reduce) { ::view-transition-old(root), ::view-transition-new(root) { animation: none; } }

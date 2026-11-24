@@ -300,7 +300,13 @@ document.querySelectorAll("p, h1, h3, li, dd, .display, .ttl").forEach(el => {
     fly.addEventListener("transitionend", ev => { if (ev.propertyName === "transform") setTimeout(end, 60); });
     setTimeout(end, 1300);
   }));
-  addEventListener("pageshow", e => { if (e.persisted) location.reload(); });
+  // al volver con "atrás": se deshace la transición en el sitio, sin recargar (recargar daba un parpadeo)
+  addEventListener("pageshow", e => {
+    if (!e.persisted) return;
+    document.querySelectorAll(".hero-fly").forEach(f => f.remove());
+    document.body.classList.remove("leaving");
+    banner.style.visibility = ""; busy = false;
+  });
 })();
 
 /* About y Contact bajan desde arriba cuando se abren desde la home o una landing
