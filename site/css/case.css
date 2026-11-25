@@ -327,3 +327,8 @@ body[data-page] > main { flex: 1 0 auto; }
 @view-transition { navigation: auto; }
 ::view-transition-old(root), ::view-transition-new(root) { animation-duration: .35s; animation-timing-function: ease; }
 @media (prefers-reduced-motion: reduce) { ::view-transition-old(root), ::view-transition-new(root) { animation: none; } }
+
+/* Videos: se reproducen solos; clic para pausar / reanudar. El cursor muestra la acción */
+video[data-auto] { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Ccircle cx='14' cy='14' r='13' fill='%23000' fill-opacity='.55'/%3E%3Cpath d='M11 9v10M17 9v10' stroke='%23fff' stroke-width='1.5'/%3E%3C/svg%3E") 14 14, pointer; }
+video[data-auto].is-held { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Ccircle cx='14' cy='14' r='13' fill='%23000' fill-opacity='.55'/%3E%3Cpath d='M11.5 9.5v9l7-4.5z' fill='%23fff'/%3E%3C/svg%3E") 14 14, pointer; }
+video[data-auto]:focus-visible { outline: 1px solid currentColor; outline-offset: 4px; }

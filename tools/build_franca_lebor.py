@@ -92,15 +92,15 @@ feed_imgs = [img(f"franca/{f}", f"{1 + (i % 3) * 4} / {5 + (i % 3) * 4}", None, 
 feed_imgs = [x.replace('style="--c:', 'style="--m: span 4; --c:') for x in feed_imgs]
 
 body = hero("franca/massimo-sanvalentin-1", "Franca Projects — Massimo Dutti San Valentín", "Art direction", "Franca Projects", "0% 43%")
-body += ficha([("Client", "Franca Projects"), ("Studio", "Wizards Only"), ("Role", "Art Direction, Instagram System, Grid Design"), ("Year", "2026"), ("Channel", "Instagram")])
+body += ficha([("Client", "Franca Projects"), ("Studio", "Wizards Only"), ("Role", "Creative Designer — Art Direction, Instagram System, Grid Design"), ("Year", "2026"), ("Channel", "Instagram")])
 body += "  <main>\n"
 body += chapter(head("01  Intro", "An ever-evolving archive"),
     pair(("Context", ["Franca Projects is a fashion production company, founded in January 2026. Their Instagram showcases the productions they work on for their clients. In October 2026 they began a monthly Social Creative Direction retainer with Wizards Only."]),
-         ("Challenge &amp; role", ["Franca wanted an aesthetic that leaned towards craft. Through a workshop with the team, we defined what craft meant for them: it had to feel human, but with extreme care so the system never interfered with their clients' images. I led the full structure of the account, from defining its visual language to the system behind every post."])))
+         ("Challenge &amp; role", ["I led the full structure of the account, from defining its visual language to the system behind every post.", "Franca wanted an aesthetic that leaned towards craft. Through a workshop with the team, we defined what craft meant for them: it had to feel human, but with extreme care so the system never interfered with their clients' images."])))
 # 02 Defining craft fuera: no exponer el proceso del estudio (la intro del challenge ya lo explica)
 body += chapter(head("02  Discarded explorations", text=["Early tests explored more literal expressions of craft. They always ended up dirtying work that needed to be shown clean. Discarding them clarified the line: the craft had to live in the structure, not on top of the images."]),
     media(discard, "discard"))
-body += chapter(head("03  The grid", text=["We didn't want paper to be the answer. My proposal was to work in the space between digital and print: laying out the feed on the page grid of an editorial magazine, built to show their work. Franca often brings magazines to their productions for their clients, so the solution grew out of their own way of working.", "I presented a grid for laying out images and building compositions. Each post is composed on it; then the grid is removed and the post stays clean, with white bands framing the images like the margins of a printed page.", "Franca liked the idea of a system that would make them recognisable, but worried it could become boring, with the formula too obvious. So I presented two grids instead of one. Posts alternate between them: no single post reads as a template, but across the feed the structure comes through."]),
+body += chapter(head("03  The grid", text=["We didn't want paper to be the answer. My proposal was to work in the space between digital and print: laying out the feed on the page grid of an editorial magazine, built to show their work. Franca often brings magazines to their productions for their clients, so the solution grew out of their own way of working.", "<strong>I presented a grid for laying out images and building compositions.</strong> Each post is composed on it; then the grid is removed and the post stays clean, with white bands framing the images like the margins of a printed page.", "<strong>I presented two grids instead of one.</strong> Franca liked the idea of a system that would make them recognisable, but worried it could become boring, with the formula too obvious. Posts alternate between them: no single post reads as a template, but across the feed the structure comes through."]),
     f'''    <div class="ab g">
       <figure><figcaption>A.</figcaption><div class="sprite a"><img src="{L}grid-ab.jpg" alt="Grid A"></div></figure>
       <figure><figcaption>B.</figcaption><div class="sprite b"><img src="{L}grid-ab.jpg" alt="Grid B"></div></figure>
@@ -119,7 +119,7 @@ body += chapter(head("07  The Feed"), media(feed_imgs, "tight feed3"))
 body += chapter(head("08  Result &amp; Credits"), credits(None, "An ongoing monthly retainer since October 2026.",
     [("Client", "Franca Projects"), ("Studio", "Wizards Only, Barcelona"), ("Art direction, Instagram system, grid design", "Antonia Ilic Bromberg"), ("Narrative", "Jordi Martinez")]))
 body += "  </main>\n"
-body += nxt("lebor-gabala", "lebor/cover-noviembre", "Art direction", "Lebor Gabala", "0% 30%")
+body += nxt("lebor-gabala", "lebor/cover-noviembre", "Social &amp; content design", "Lebor Gabala", "0% 30%")
 write("franca-projects", page("Franca Projects", "Art direction, Instagram system and grid design for Franca Projects.", "franca-projects", body, "#f6f6f6", "#ececea", css=css))
 
 # ============================== LEBOR ======================================
@@ -145,8 +145,8 @@ def srow(label, files):
     return f'      <div class="story-row g" style="padding:0"><p class="slab">{label}</p>{imgs}</div>'
 reels = [f'      <video src="../img/lebor/reel-{i}.mp4" poster="../img/lebor/reel-{i}.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Instagram ad — AW26" style="--c: {1 + (i - 1) * 3} / {4 + (i - 1) * 3}; --m: span 2; --r: 316 / 563"></video>' for i in range(1, 5)]
 
-body = hero("lebor/cover-noviembre", "Lebor Gabala AW26", "Art direction", "Lebor Gabala — AW26", "0% 4.6%")
-body += ficha([("Client", "Lebor Gabala"), ("Studio", "Wizards Only"), ("Role", "Art Direction, Content Plan, Social Graphics, Shoot Assistance"), ("Year", "2026"), ("Channel", "Instagram")])
+body = hero("lebor/cover-noviembre", "Lebor Gabala AW26", "Social &amp; content design", "Lebor Gabala — AW26", "0% 4.6%")
+body += ficha([("Client", "Lebor Gabala"), ("Studio", "Wizards Only"), ("Role", "Graphic Direction, Social &amp; Content Design, Content Plan, Shoot Assistance"), ("Year", "2026"), ("Channel", "Instagram")])
 body += "  <main>\n"
 body += chapter(head("01  Intro", "Translate a clean, tangible brand, focused on the materials of its fabrics, without losing&nbsp;its&nbsp;texture."),
     pair(("Context", ["Lebor Gabala is a Barcelona knitwear label founded in 1989 by Maite Muñoz. Its name comes from Lebor Gabála Érenn, a book of Irish mythology, chosen for the bond between Ireland and the wool tradition. The brand designs for durability: pieces meant to last and to mix with garments from earlier collections."]),
@@ -165,8 +165,8 @@ body += chapter(head("04  Video editing — Instagram ads (AW26)"), media(reels)
 body += chapter(head("05  graphic Detail"), media([img("lebor/detail", "3 / 11", "1 / -1", "1440 / 900", "Graphic detail", "50% 4.6%")]))
 body += chapter(head("06  On set"), media([video("lebor/onset-7537", "3 / 6", "1 / 3", "9 / 16", "On set"), video("lebor/onset-7628", "8 / 11", "3 / 5", "9 / 16", "On set")]))
 body += chapter(head("07  Result &amp; Credits"), credits(None, "A modular system for vertical formats that alternates full-bleed editorial imagery, colour-treated statements and lookbook line-ups. AW26 content rolling out on Lebor Gabala's Instagram from November 2026.",
-    [("Client", "Lebor Gabala"), ("Studio", "Wizards Only, Barcelona"), ("Content plan, social graphics, shoot assistance", "Antonia Ilic Bromberg"), ("Photography", "Nereis Ferrer"), ("Creative production", "Alba Mitchell")]))
+    [("Client", "Lebor Gabala"), ("Studio", "Wizards Only, Barcelona"), ("Graphic direction, content plan, social graphics, shoot assistance", "Antonia Ilic Bromberg"), ("Photography", "Nereis Ferrer"), ("Creative production", "Alba Mitchell")]))
 body += "  </main>\n"
-body += nxt("franciscandrea", "franciscandrea/cover", "Brand identity", "francisc'andrea", "50% 40%")
+body += nxt("nebular", "nebular/nebular-composicion", "Editorial", "Nebular", "50% 50%")  # francisc'andrea apagado
 write("lebor-gabala", page("Lebor Gabala — AW26", "AW26 art direction, content plan and social graphics for Lebor Gabala.", "lebor-gabala", body, "#fdfbf9", css=css))
 print("ok")

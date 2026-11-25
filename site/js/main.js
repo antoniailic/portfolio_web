@@ -4,7 +4,8 @@
 const PROJECTS = [
   { slug: "franca-projects", cat: "Art direction",  title: "Franca Projects",  img: "img/franca/massimo-sanvalentin-1.jpg", pos: "0% 43%" },
   { slug: "lebor-gabala",    cat: "Social & content design",  title: "Lebor Gabala",     img: "img/lebor/cover-noviembre.jpg",        pos: "0% 4.6%", ink: { ".portfolio": "#000" } },
-  { slug: "franciscandrea",  cat: "Brand identity", title: "francisc'andrea",  img: "img/franciscandrea/cover.jpg",          pos: "50% 40%", foot: "#fff" },
+  // francisc'andrea apagado (nov 2026): vuelve con mejores referentes o cuando esté la web de la clienta
+  // { slug: "franciscandrea",  cat: "Brand identity", title: "francisc'andrea",  img: "img/franciscandrea/cover.jpg",          pos: "50% 40%", foot: "#fff" },
   { slug: "nebular",         cat: "Editorial",      title: "Nebular",          img: "img/nebular/nebular-composicion.jpg",             pos: "50% 50%" },
   { slug: "wild-lama",       cat: "Art direction",  title: "Wild Lama",        img: "img/wildlama/wl-25-q1-525.jpg",         pos: "50% 14.7%" },
   { slug: "sanguaza",        cat: "Editorial",      title: "Una pizca de sangre y un vaso de <i>sanguaza</i>", img: "img/sanguaza/libro-centrado.jpg", pos: "50% 45%" },
@@ -199,7 +200,7 @@ const slug = document.body.dataset.project;
 const idx = PROJECTS.findIndex(p => p.slug === slug);
 if (idx > -1 && matchMedia("(hover: hover) and (pointer: fine)").matches) {
   const go = d => { location.href = `${PROJECTS[(idx + d + PROJECTS.length) % PROJECTS.length].slug}.html`; };
-  const skip = el => el.closest("a, button, input, textarea, select, nav, [data-carousel], .site-nav, .site-foot");
+  const skip = el => el.closest("a, button, input, textarea, select, nav, [data-carousel], .site-nav, .site-foot, video[data-auto]");
   const side = e => e.clientX < innerWidth / 3 ? -1 : e.clientX > innerWidth * 2 / 3 ? 1 : 0;
   // Flecha propia: blanca sobre fondo oscuro, negra sobre fondo claro
   const arrow = document.createElement("div");
@@ -360,7 +361,20 @@ document.querySelectorAll("p, h1, h3, li, dd, .display, .ttl").forEach(el => {
 (function () {
   const vids = document.querySelectorAll("video[data-auto]");
   if (!vids.length) return;
-  const play = v => { if (v.preload !== "auto") { v.preload = "auto"; v.load(); } const p = v.play(); if (p) p.catch(() => {}); };
+  // Un video pausado a mano se queda pausado aunque salga y vuelva a entrar en pantalla
+  const play = v => { if (v.dataset.held) return; if (v.preload !== "auto") { v.preload = "auto"; v.load(); } const p = v.play(); if (p) p.catch(() => {}); };
+  // Clic (o Enter / espacio) sobre el video: pausa o reanuda
+  const toggle = v => {
+    if (v.paused) { delete v.dataset.held; play(v); } else { v.dataset.held = "1"; v.pause(); }
+    v.classList.toggle("is-held", !!v.dataset.held);
+    v.setAttribute("aria-pressed", v.dataset.held ? "true" : "false");
+  };
+  vids.forEach(v => {
+    v.tabIndex = 0; v.setAttribute("role", "button"); v.setAttribute("aria-pressed", "false");
+    v.setAttribute("aria-label", (v.getAttribute("aria-label") || "Video") + " — pause / play");
+    v.addEventListener("click", () => toggle(v));
+    v.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(v); } });
+  });
   if (!("IntersectionObserver" in window)) { vids.forEach(play); return; }
   const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? play(e.target) : e.target.pause()), { rootMargin: "1200px 0px" });
   vids.forEach(v => io.observe(v));
