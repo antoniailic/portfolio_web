@@ -15,9 +15,12 @@
     .logo img { position: absolute; max-width: none; }
     .marks { row-gap: var(--s-block); }
     .marks > .main { --c: 3 / 11; display: flex; flex-direction: column; align-items: center; gap: var(--s-head); }
-    .marks > .var { display: flex; flex-direction: column; align-items: center; gap: var(--s-head); }
+    .marks > .var { display: grid; grid-template-rows: 264px auto; justify-items: center; align-items: end; row-gap: var(--s-head); } /* logos apoyados en la misma línea, textos a la misma altura */
+    .marks > .var > .t { align-self: start; }
     .marks > .var:nth-of-type(2) { --c: 1 / 7; } .marks > .var:nth-of-type(3) { --c: 7 / 13; }
-    .marks > .var:nth-of-type(3) .logo { transform: translateX(-24px); } /* corrección óptica: la f pequeña se veía corrida a la derecha */
+    /* isotipos centrados ópticamente sobre su texto (por el dibujo, no por la caja) */
+    .marks > .var:nth-of-type(2) .logo { transform: translateX(27px); }
+    .marks > .var:nth-of-type(3) .logo { transform: translateX(48px); }
     .marks p { max-width: 528px; }
     .marks p { text-align: center; margin-left: auto; margin-right: auto; }
     .swatches { column-gap: var(--gutter); }
@@ -29,9 +32,6 @@
     @media (max-width: 768px) {
       .marks > .main, .marks > .var { --m: 1 / -1; }
       .swatches > div { --m: span 2 !important; } .swatches .chip { margin-right: 0 !important; }
-      /* isotipos chicos centrados ópticamente (por el dibujo, no por la caja) */
-      .marks > .var:nth-of-type(2) .logo { transform: translateX(27px); }
-      .marks > .var:nth-of-type(3) .logo { transform: translateX(48px); }
       /* colores apaisados y cada nombre pegado a su color */
       .swatches { row-gap: 32px; }
       .swatches > div { gap: 8px; }
@@ -91,7 +91,7 @@
   <section class="chapter ">
     <div class="head g">
       <h2 class="label">03  Applications</h2>
-      <div class="t"><p>Business cards, stationery, graphics and the flower presses themselves. Mockups until the final photos arrive.</p></div>
+      <div class="t"><p>Business cards, stationery, graphics and the flower presses themselves.</p></div>
     </div>
     <div class="media g bleed">
       <img src="../img/franciscandrea/application-1.jpg" alt="Application" loading="lazy" decoding="async" style="--c: 1 / 5; --m: span 4; --r: 467 / 702;">
