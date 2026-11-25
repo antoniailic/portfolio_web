@@ -3,7 +3,7 @@
 // Orden de los casos (home, índice y "next").
 const PROJECTS = [
   { slug: "franca-projects", cat: "Art direction",  title: "Franca Projects",  img: "img/franca/massimo-sanvalentin-1.jpg", pos: "0% 43%" },
-  { slug: "lebor-gabala",    cat: "Art direction",  title: "Lebor Gabala",     img: "img/lebor/cover-noviembre.jpg",        pos: "0% 4.6%", ink: { ".portfolio": "#000" } },
+  { slug: "lebor-gabala",    cat: "Social & content design",  title: "Lebor Gabala",     img: "img/lebor/cover-noviembre.jpg",        pos: "0% 4.6%", ink: { ".portfolio": "#000" } },
   { slug: "franciscandrea",  cat: "Brand identity", title: "francisc'andrea",  img: "img/franciscandrea/cover.jpg",          pos: "50% 40%", foot: "#fff" },
   { slug: "nebular",         cat: "Editorial",      title: "Nebular",          img: "img/nebular/nebular-composicion.jpg",             pos: "50% 50%" },
   { slug: "wild-lama",       cat: "Art direction",  title: "Wild Lama",        img: "img/wildlama/wl-25-q1-525.jpg",         pos: "50% 14.7%" },
