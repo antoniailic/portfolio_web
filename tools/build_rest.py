@@ -193,8 +193,8 @@ def simple(fname, title, desc, body, css, current):
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{title} — Antonia Ilic Bromberg</title>
   <meta name="description" content="{desc}">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/case.css">
+  <link rel="stylesheet" href="css/base.css?v=20261126">
+  <link rel="stylesheet" href="css/case.css?v=20261126">
   {FLAGS}
   <style>
 {css}
@@ -204,7 +204,7 @@ def simple(fname, title, desc, body, css, current):
 {n}
 {body}
 {site_foot("")}
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=20261126"></script>
 </body>
 </html>
 '''
