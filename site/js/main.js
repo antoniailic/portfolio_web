@@ -2,7 +2,7 @@
 
 // Orden de los casos (home, índice y "next").
 const PROJECTS = [
-  { slug: "franca-projects", cat: "Social art direction",  title: "Franca Projects",  img: "img/franca/massimo-sanvalentin-1.jpg", pos: "0% 43%", ink: { ".portfolio": "#fff", ".name": "#fff", ".about": "#fff", ".contact": "#fff", ".hand": "#fff" } },
+  { slug: "franca-projects", cat: "Social art direction",  title: "Franca Projects",  img: "img/franca/massimo-sanvalentin-1.jpg", pos: "0% 43%", ink: { ".portfolio": "#fff", ".name": "#fff", ".about": "#fff", ".contact": "#fff", ".hand": "#fff" }, nav: "#fff" },
   { slug: "lebor-gabala",    cat: "Social & content design",  title: "Lebor Gabala",     img: "img/lebor/cover-noviembre.jpg",        pos: "0% 4.6%", ink: { ".portfolio": "#000" } },
   // francisc'andrea apagado (nov 2026): vuelve con mejores referentes o cuando esté la web de la clienta
   // { slug: "franciscandrea",  cat: "Brand identity", title: "francisc'andrea",  img: "img/franciscandrea/cover.jpg",          pos: "50% 40%", foot: "#fff" },
@@ -60,6 +60,7 @@ if (home) {
   function show(i) {
     current = (i + PROJECTS.length) % PROJECTS.length;
     home.dataset.foot = PROJECTS[current].foot || ""; // color fijo del texto de abajo para algunas portadas
+    home.dataset.nav = PROJECTS[current].nav || "";   // color fijo del menú en la home para algunas portadas (ej. Franca: blanco)
     banners.querySelectorAll("img").forEach((im, k) => im.classList.toggle("on", k === current));
     index.querySelectorAll("a").forEach((a, k) => a.classList.toggle("on", k === current));
     placeDot();
@@ -159,6 +160,8 @@ function navContrast() {
     let c = sum / n < .55 ? "#fff" : "#000";
     const fixed = el.closest(".foot") && document.querySelector(".home-stage")?.dataset.foot;
     if (fixed) c = fixed;
+    const navFixed = el.closest(".case-nav") && document.querySelector(".home-stage")?.dataset.nav;
+    if (navFixed) c = navFixed;
     // color fijo del menú sobre la portada de algunas landings (ej. Lebor: Portfolio en negro)
     const pr = PROJECTS.find(p => p.slug === document.body.dataset.project);
     const hero = document.querySelector(".case-hero");
