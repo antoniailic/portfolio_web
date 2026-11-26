@@ -14,7 +14,8 @@ Web del portafolio. HTML/CSS/JS plano, sin build. Construida desde el Figma "Por
 
 - Cloudflare Web Analytics, activado desde el proyecto de Pages (se inserta solo en el HTML).
 - `antoniailicb.com/para/<estudio>` muestra el home (regla en `site/_redirects`) y Web Analytics lo cuenta como ruta propia. Los enlaces por estudio salen de la columna "Link portafolio" de Postulaciones 2026 en Notion.
-- Visitas propias: abrir cualquier página con `?yo` deja una cookie en ese navegador y `functions/_middleware.js` quita el contador de esas visitas. Hay que hacerlo una vez por navegador y por dominio (antoniailicb.com, www, pages.dev son distintos).
+- Umami Cloud (plan gratis, cuenta de Antonia, región EU): da ciudad además de país. El script lo inserta `functions/_middleware.js` en todas las páginas.
+- Visitas propias: abrir cualquier página con `?yo` deja una cookie en ese navegador y `functions/_middleware.js` no inserta Umami y quita el contador de Cloudflare en esas visitas. Hay que hacerlo una vez por navegador y por dominio (antoniailicb.com, www, pages.dev son distintos).
 
 ## Reglas de diseño
 
