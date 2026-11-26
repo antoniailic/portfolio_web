@@ -91,8 +91,8 @@ feed = ["feed-1", "feed-2", "feed-3", "feed-4", "massimo-sanvalentin-1", "feed-6
 feed_imgs = [img(f"franca/{f}", f"{1 + (i % 3) * 4} / {5 + (i % 3) * 4}", None, "434 / 543", "Franca Projects feed") for i, f in enumerate(feed)]
 feed_imgs = [x.replace('style="--c:', 'style="--m: span 4; --c:') for x in feed_imgs]
 
-body = hero("franca/massimo-sanvalentin-1", "Franca Projects — Massimo Dutti San Valentín", "Social art direction", "Franca Projects", "0% 43%")
-body += ficha([("Client", "Franca Projects"), ("Studio", "Wizards Only"), ("Role", "Creative Designer — Social Art Direction, Instagram System, Grid Design"), ("Year", "2026"), ("Channel", "Instagram"), ("Photography", "Franca Projects’ client productions")])
+body = hero("franca/massimo-sanvalentin-1", "Franca Projects — Massimo Dutti San Valentín", "Art direction", "Franca Projects", "0% 43%")
+body += ficha([("Client", "Franca Projects"), ("Studio", "Wizards Only"), ("Role", "Creative Designer — Art Direction, Visual Strategy, Grid System"), ("Year", "2026"), ("Channel", "Instagram"), ("Photography", "Franca Projects’ client productions")])
 body += "  <main>\n"
 body += chapter(head("01  Intro", "An ever-evolving archive"),
     pair(("Context", ["Franca Projects is a fashion production company, founded in January 2026. Their Instagram showcases the productions they work on for their clients. In October 2026 they began a monthly Social Creative Direction retainer with Wizards Only."]),
@@ -118,10 +118,10 @@ body += chapter(head("06  Carousels"), '    <div class="g carousels">\n' + "\n".
 body += chapter(head("07  The Feed"), media(feed_imgs, "tight feed3"))
 PROD_CREDITS = '    <div class="g prod-credits">\n      <p class="t" style="--c: 1 / -1">Production credits</p>\n      <div class="t" style="--c: 1 / 4"><p>Zara Kids — Fits Denim &amp; The Neoprenes<br>Production by Franca</p><p>Photography: Matteo Montanari<br>Styling &amp; art direction: @mafersanzo<br>Art buying: @miaaaquinn<br>Hair &amp; makeup: @mariamartinez04<br>Featuring: Elijah, Julius, Gaspar</p></div>\n      <div class="t" style="--c: 4 / 7"><p>Massimo Dutti — San Valentín special<br>Art buying by Franca for Javier de Pardo</p><p>Photography: Morán Sar<br>Styling: Javier de Pardo<br>Hair &amp; makeup: Sara Ipujol<br>Featuring: Vivienne Rohner</p></div>\n      <div class="t" style="--c: 7 / 10"><p>Leandra Studio<br>Production by Franca</p><p>Photography: Bibi Cornejo Borthwick<br>Video: @tejadaacha_raul<br>Styling: Marta M. Regidor<br>Hair &amp; makeup: Gloria Ricoo<br>Featuring: Leia Sfez</p></div>\n      <div class="t" style="--c: 10 / 13"><p>Massimo Dutti — Menswear Linen Collection<br>Art buying by Franca for Javier de Pardo</p><p>Photography: Edmartin Studio<br>Styling: Javier de Pardo<br>Featuring: Joseph Uyttenhove</p></div>\n      <div class="t" style="--c: 1 / 4"><p>Lefties Man — Between Chapters<br>Art buying by Franca</p><p>Photography: Adrián Catalán<br>Styling: Cara Cano<br>Featuring: @ttttheodor</p></div>\n    </div>'
 body += chapter(head("08  Result &amp; Credits"), credits(None, "An ongoing monthly retainer since October 2026.",
-    [("Client", "Franca Projects"), ("Studio", "Wizards Only, Barcelona"), ("Social art direction, Instagram system, grid design", "Antonia Ilic Bromberg"), ("Narrative", "Jordi Martinez"), ("Photography", "Credited per production")]).rstrip("\n") + "\n" + PROD_CREDITS)
+    [("Client", "Franca Projects"), ("Studio", "Wizards Only, Barcelona"), ("Art direction, visual strategy, grid system", "Antonia Ilic Bromberg"), ("Narrative", "Jordi Martinez"), ("Photography", "Credited per production")]).rstrip("\n") + "\n" + PROD_CREDITS)
 body += "  </main>\n"
-body += nxt("lebor-gabala", "lebor/cover-noviembre", "Social &amp; content design", "Lebor Gabala", "0% 30%")
-write("franca-projects", page("Franca Projects", "Social art direction, Instagram system and grid design for Franca Projects.", "franca-projects", body, "#f6f6f6", "#ececea", css=css))
+body += nxt("nebular", "nebular/nebular-composicion", "Editorial", "Nebular", "50% 50%")
+write("franca-projects", page("Franca Projects", "Art direction, visual strategy and grid system for Franca Projects.", "franca-projects", body, "#f6f6f6", "#ececea", css=css))
 
 # ============================== LEBOR ======================================
 css = """    .story-row { row-gap: var(--gutter); }
@@ -146,8 +146,8 @@ def srow(label, files):
     return f'      <div class="story-row g" style="padding:0"><p class="slab">{label}</p>{imgs}</div>'
 reels = [f'      <video src="../img/lebor/reel-{i}.mp4" poster="../img/lebor/reel-{i}.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Instagram ad — AW26" style="--c: {1 + (i - 1) * 3} / {4 + (i - 1) * 3}; --m: span 2; --r: 316 / 563"></video>' for i in range(1, 5)]
 
-body = hero("lebor/cover-noviembre", "Lebor Gabala AW26", "Social &amp; content design", "Lebor Gabala — AW26", "0% 4.6%")
-body += ficha([("Client", "Lebor Gabala"), ("Studio", "Wizards Only"), ("Role", "Graphic Direction, Social &amp; Content Design, Content Plan, Shoot Assistance"), ("Year", "2026"), ("Channel", "Instagram")])
+body = hero("lebor/cover-noviembre", "Lebor Gabala AW26", "Visual strategy", "Lebor Gabala — AW26", "0% 4.6%")
+body += ficha([("Client", "Lebor Gabala"), ("Studio", "Wizards Only"), ("Role", "Graphic Direction, Visual Strategy, Content Plan, Shoot Assistance"), ("Year", "2026"), ("Channel", "Instagram")])
 body += "  <main>\n"
 body += chapter(head("01  Intro", "Translate a clean, tangible brand, focused on the materials of its fabrics, without losing&nbsp;its&nbsp;texture."),
     pair(("Context", ["Lebor Gabala is a Barcelona knitwear label founded in 1989 by Maite Muñoz. Its name comes from Lebor Gabála Érenn, a book of Irish mythology, chosen for the bond between Ireland and the wool tradition. The brand designs for durability: pieces meant to last and to mix with garments from earlier collections."]),
@@ -166,8 +166,8 @@ body += chapter(head("04  Video editing — Instagram ads (AW26)"), media(reels)
 body += chapter(head("05  graphic Detail"), media([img("lebor/detail", "3 / 11", "1 / -1", "1440 / 900", "Graphic detail", "50% 4.6%")]))
 body += chapter(head("06  On set"), media([video("lebor/onset-7537", "3 / 6", "1 / 3", "9 / 16", "On set"), video("lebor/onset-7628", "8 / 11", "3 / 5", "9 / 16", "On set")]))
 body += chapter(head("07  Result &amp; Credits"), credits(None, "A modular system for vertical formats that alternates full-bleed editorial imagery, colour-treated statements and lookbook line-ups. AW26 content rolling out on Lebor Gabala's Instagram from November 2026.",
-    [("Client", "Lebor Gabala"), ("Studio", "Wizards Only, Barcelona"), ("Graphic direction, content plan, social graphics, shoot assistance", "Antonia Ilic Bromberg"), ("Photography", "Nereis Ferrer"), ("Creative production", "Alba Mitchell")]))
+    [("Client", "Lebor Gabala"), ("Studio", "Wizards Only, Barcelona"), ("Graphic direction, visual strategy, content plan, shoot assistance", "Antonia Ilic Bromberg"), ("Photography", "Nereis Ferrer"), ("Creative production", "Alba Mitchell")]))
 body += "  </main>\n"
-body += nxt("nebular", "nebular/nebular-composicion", "Editorial", "Nebular", "50% 50%")  # francisc'andrea apagado
-write("lebor-gabala", page("Lebor Gabala — AW26", "AW26 art direction, content plan and social graphics for Lebor Gabala.", "lebor-gabala", body, "#fdfbf9", css=css))
+body += nxt("sanguaza", "", "Editorial", sg("Una pizca de sangre y un vaso de sanguaza"))  # francisc'andrea apagado
+write("lebor-gabala", page("Lebor Gabala — AW26", "AW26 visual strategy, content plan and graphic system for Lebor Gabala.", "lebor-gabala", body, "#fdfbf9", css=css))
 print("ok")

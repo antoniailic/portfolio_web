@@ -82,7 +82,7 @@ body += chapter(head("04  Content strategy", "Storytelling-based marketing strat
 body += chapter(head("05  Email marketing", text=["Email campaigns in Klaviyo maintained a ROAS above 20 across key launches."]),
     media([img(f"wildlama/email-{i}", f"{1 + (i - 1) * 4} / {5 + (i - 1) * 4}", ["1 / 3", "3 / 5", "1 / 3"][i - 1], r, "Email campaign") for i, r in ((1, "346 / 1672"), (2, "346 / 1739"), (3, "346 / 1783"))], "emails", "align-items:start"))
 body += "  </main>\n"
-body += nxt("sanguaza", "", "Editorial", sg("Una pizca de sangre y un vaso de sanguaza"))
+body += nxt("potra", "potra/home-crop", "Web design", "POTRA", "50% 50%")
 write("wild-lama", page("Wild Lama", "Art direction, campaigns, content strategy and email marketing for Wild Lama.", "wild-lama", body, "#ffffff", css=css))
 
 # ================================ SANGUAZA ==================================
@@ -127,7 +127,7 @@ body += f'''  <section class="paper">
 body += chapter(head("05  Typeface"), spec_sg, media([video("sanguaza/libro-post-video", "5 / 9", "1 / -1", "720 / 900", "The book")]), top=True, cls="tx")
 body += chapter(head("06  Credits"), credits(None, None, [("Editorial direction, art direction &amp;&nbsp;design", "Antonia Ilic Bromberg, Francesca Garre Buscaglia"), ("Research &amp; archives", "Antonia Ilic Bromberg, Francesca Garre Buscaglia"), ("Typeface", "Source Serif 4, by Frank Grießhammer"), ("Paper", "Munken Print Cream 80 g/m², Curious Matter Adiron Blue 270 g/m²"), ("Printing", "Tecnoart, Barcelona, 2026"), ("Acknowledgements", "Pol Nadal (Studiopol), Josep Román (Affaire), Laura Meseguer, Ane Guerra, María Dolores Soriano, Marc Panero")], ))
 body += "  </main>\n"
-body += nxt("potra", "potra/home-crop", "Web design", "POTRA", "50% 50%")
+body += nxt("wild-lama", "wildlama/wl-25-q1-525", "Brand design", "Wild Lama", "50% 21%")
 write("sanguaza", page("Una pizca de sangre y un vaso de sanguaza", "A Pinch of Blood and a Glass of Sanguaza — editorial book on ritual. Master in Editorial Design, ELISAVA.", "sanguaza", body, "#ffffff", css=css))
 
 # ================================== POTRA ===================================
@@ -180,7 +180,7 @@ body += chapter(head("06  Social media", text=["A distinctive social media voice
 body += chapter(head("07  mobile"), media(['      <video src="../img/potra/mobile.mp4" poster="../img/potra/mobile.jpg" muted loop playsinline autoplay preload="metadata" aria-label="POTRA mobile" style="--c: 3 / 11; --r: 901 / 539; object-fit: contain; background: transparent; width:100%; height:auto"></video>']))
 body += chapter(head("08  Credits"), credits(None, None, [("Editorial direction, art direction &amp;&nbsp;design", "Antonia Ilic Bromberg, Andie Puentes Fernández"), ("Research &amp; archives", "Antonia Ilic Bromberg, Andie Puentes Fernández"), ("Acknowledgements", "Camilo Roa (Réplica), Javier Pereda (Esiete), Albert Folch, Josep Román (Affaire), Laura Meseguer, Ane Guerra, Marc Panero")]))
 body += "  </main>\n"
-body += nxt("franca-projects", "", "Social art direction", "Franca Projects")
+body += nxt("franca-projects", "", "Art direction", "Franca Projects")
 write("potra", page("POTRA", "POTRA — Tools, Insights &amp; Masterclasses to Hack the Productive Sphere. Web design.", "potra", body, "#ffffff", css=css))
 
 # ============================ ABOUT / CONTACT ===============================
@@ -204,7 +204,7 @@ def simple(fname, title, desc, body, css, current):
 {n}
 {body}
 {site_foot("")}
-  <script src="js/main.js?v=20261126"></script>
+  <script src="js/main.js?v=20261126d"></script>
 </body>
 </html>
 '''
@@ -242,7 +242,7 @@ about_css = """    .about-page { padding-block: 160px var(--s-section); row-gap:
       .cv .edu, .cv .exp { grid-column: 1 / -1; }
     }"""
 about = f'''  <main class="about-page g">
-    <h1 class="display"><span>Identity, editorial</span> <span>and art direction.</span></h1>
+    <h1 class="display"><span>Identity, editorial and</span> <span>art direction.</span></h1>
     <img class="portrait" src="{im("about/portrait")}" alt="Antonia Ilic Bromberg">
     <div class="t"><p>My passion for design comes from the narratives each project allows me to show. Identity, editorial and art direction are elements that appear naturally once we give ourselves enough space to question every detail. My way of working comes from that restlessness and curiosity, looking for the meaning and essence of each project to give it a visual world of its&nbsp;own.</p><p>Today, editorial design no longer happens only on paper. A brand is read in a newsletter, on a website, in a catalogue. Each of these formats asks for the same things as a publication: hierarchy, rhythm, editing and a system that holds up over time. My eye was shaped by print, and what drives me is bringing that language into any medium, so that every project keeps a recognisable essence wherever it is&nbsp;read.</p></div>
     <div class="cv">

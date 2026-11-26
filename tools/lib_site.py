@@ -70,7 +70,7 @@ def page(title, desc, slug, body, bg="#f6f6f6", band=None, color=None, css=""):
 {nav()}
 {body}
 {site_foot()}
-  <script src="../js/main.js?v=20261126"></script>
+  <script src="../js/main.js?v=20261126d"></script>
 </body>
 </html>
 '''

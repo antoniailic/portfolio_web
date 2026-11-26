@@ -188,6 +188,6 @@ body += chapter(head("05  The vellum sleeve"), f'''    <div class="g" style="row
 body += chapter(head("06  Typeface", extra='      <p>Geist (Vercel) · Otto (Dinamo)</p>'), spec_neb)
 body += chapter(head("07  Credits"), credits(None, None, [("Editorial direction, art direction &amp;&nbsp;design", "Antonia Ilic Bromberg, Manuela García Aristizábal"), ("Research &amp; archives", "Antonia Ilic Bromberg, Manuela García Aristizábal"), ("Context", "Master's Degree in Editorial Design, Elisava, Barcelona School of Design and Engineering"), ("Typeface", "Geist (Vercel), Otto (Dinamo)"), ("Paper", "Arena Rough 90 g/m², vellum paper sleeves 90 g/m²"), ("Printing", "Tecnoart, Barcelona, 2026"), ("Acknowledgements", "Carol Monpart, Isabel Merino, Josep Román (Affaire), Laura Meseguer, Ane Guerra, María Dolores Soriano, Marc Panero")]))
 body += "  </main>\n"
-body += nxt("wild-lama", "wildlama/wl-25-q1-525", "Art direction", "Wild Lama", "50% 21%")
+body += nxt("lebor-gabala", "lebor/cover-noviembre", "Visual strategy", "Lebor Gabala", "0% 30%")
 write("nebular", page("Nebular", "Nebular — Emotional Cartography of Art. Art magazine, three issues. Master in Editorial Design, ELISAVA.", "nebular", body, "#000000", color="#fff", css=css))
 print("ok")
