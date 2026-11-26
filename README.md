@@ -10,6 +10,14 @@ Web del portafolio. HTML/CSS/JS plano, sin build. Construida desde el Figma "Por
 - **Se publica en:** Cloudflare Pages, proyecto `antoniailicb` → https://antoniailicb.pages.dev (y antoniailicb.com cuando el dominio esté activo). Cada push a `main` se publica solo. Configuración en Cloudflare: sin comando de build, carpeta de salida `site`.
 - Netlify ya no se usa.
 
+## Buscadores, IAs y vistas previas
+
+- `site/robots.txt` y `site/sitemap.xml` (actualizar el sitemap si se agrega o quita un caso).
+- `site/404.html`: las direcciones que no existen devuelven 404 (antes devolvían el home).
+- Vista previa al compartir (og:image 1200×630) en `site/img/og/`, generadas con `python3 tools/build_og.py`. Las etiquetas las pone `og_tags()` en `tools/lib_site.py`; index, about y contact las tienen a mano.
+- Datos estructurados (schema.org Person) en index y about. Faltan enlaces a LinkedIn/Instagram (`sameAs`).
+- El home lista los casos en `<noscript>` para bots que no ejecutan JavaScript; si cambia la lista de casos en `js/main.js`, actualizarla también ahí.
+
 ## Analítica
 
 - Cloudflare Web Analytics, activado desde el proyecto de Pages (se inserta solo en el HTML).

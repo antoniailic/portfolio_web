@@ -31,6 +31,22 @@ def site_foot(rel="../"):
     <a class="sf-mail" href="mailto:antonia.ilic@gmail.com">antonia.ilic@gmail.com</a>
   </footer>'''
 
+SITE_URL = "https://antoniailicb.com"
+
+def og_tags(title, desc, path, og_slug):
+    """Canonical + vista previa al compartir (LinkedIn, WhatsApp, correo). Imágenes en site/img/og (tools/build_og.py)."""
+    url = f"{SITE_URL}/{path}".rstrip("/") if path else SITE_URL + "/"
+    return f'''  <link rel="canonical" href="{url}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Antonia Ilic Bromberg">
+  <meta property="og:title" content="{title}">
+  <meta property="og:description" content="{desc}">
+  <meta property="og:url" content="{url}">
+  <meta property="og:image" content="{SITE_URL}/img/og/{og_slug}.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">'''
+
 def page(title, desc, slug, body, bg="#f6f6f6", band=None, color=None, css=""):
     root = f":root {{ --bg-case: {bg}; --band: {band or bg}; }}"
     col = f"\n    body.case {{ color: {color}; }}" if color else ""
@@ -41,6 +57,7 @@ def page(title, desc, slug, body, bg="#f6f6f6", band=None, color=None, css=""):
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{title} — Antonia Ilic Bromberg</title>
   <meta name="description" content="{desc}">
+{og_tags(f"{title} — Antonia Ilic Bromberg", desc, f"projects/{slug}", slug)}
   <link rel="stylesheet" href="../css/base.css?v=20261126">
   <link rel="stylesheet" href="../css/case.css?v=20261126">
   {FLAGS}

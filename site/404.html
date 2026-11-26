@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <base href="/">
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found — Antonia Ilic Bromberg</title>
+  <link rel="stylesheet" href="css/base.css?v=20261126">
+  <link rel="stylesheet" href="css/case.css?v=20261126">
+  <script>try{for(const [k,c] of [["fromNext","from-next"],["dropIn","drop-in"],["fromHome","from-home"]]){if(sessionStorage.getItem(k)){document.documentElement.classList.add(c);sessionStorage.removeItem(k)}}}catch(e){}</script>
+  <style>
+    .contact-page { padding-block: 160px; row-gap: 56px; } /* título a la misma altura que en About */
+    .contact-page .display { --c: 1 / 10; }
+    .contact-page > p { --c: 1 / 8; }
+    .contact-page .data { --c: 1 / -1; display: grid; grid-template-columns: subgrid; }
+    .contact-page .data > div { display: flex; flex-direction: column; gap: var(--s-text); }
+    .contact-page .data > div:nth-child(1) { grid-column: 1 / 4; } .contact-page .data > div:nth-child(2) { grid-column: 4 / 7; } .contact-page .data > div:nth-child(3) { grid-column: 7 / 10; }
+    .contact-page .data a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    @media (max-width: 768px) { .contact-page { padding-top: 96px; row-gap: 32px; } .contact-page .data > div { grid-column: 1 / -1 !important; margin-bottom: 16px; } }
+  </style>
+</head>
+<body data-page="notfound">
+  <nav class="case-nav g dark" aria-label="Main">
+    <a class="hand portfolio" href="index.html" aria-label="Portfolio"></a>
+    <a class="name" href="index.html">Antonia Ilic Bromberg</a>
+    <span class="links"><a class="hand about" href="about.html" aria-label="About"></a><a class="hand contact" href="contact.html" aria-label="Contact"></a></span>
+  </nav>
+
+  <main class="contact-page g">
+    <h1 class="display">This page doesn&rsquo;t exist.</h1>
+    <p><a href="index.html">Back to the portfolio</a></p>
+  </main>
+  <footer class="site-foot g">
+    <a class="sf-portfolio" href="index.html">Portfolio</a>
+    <span class="sf-name">Antonia Ilic Bromberg</span>
+    <a class="sf-mail" href="mailto:antonia.ilic@gmail.com">antonia.ilic@gmail.com</a>
+  </footer>
+  <script src="js/main.js?v=20261126c"></script>
+</body>
+</html>
