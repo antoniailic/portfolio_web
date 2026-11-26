@@ -180,7 +180,7 @@ body += chapter(head("06  Social media", text=["A distinctive social media voice
 body += chapter(head("07  mobile"), media(['      <video src="../img/potra/mobile.mp4" poster="../img/potra/mobile.jpg" muted loop playsinline autoplay preload="metadata" aria-label="POTRA mobile" style="--c: 3 / 11; --r: 901 / 539; object-fit: contain; background: transparent; width:100%; height:auto"></video>']))
 body += chapter(head("08  Credits"), credits(None, None, [("Editorial direction, art direction &amp;&nbsp;design", "Antonia Ilic Bromberg, Andie Puentes Fernández"), ("Research &amp; archives", "Antonia Ilic Bromberg, Andie Puentes Fernández"), ("Acknowledgements", "Camilo Roa (Réplica), Javier Pereda (Esiete), Albert Folch, Josep Román (Affaire), Laura Meseguer, Ane Guerra, Marc Panero")]))
 body += "  </main>\n"
-body += nxt("franca-projects", "", "Art direction", "Franca Projects")
+body += nxt("franca-projects", "", "Social art direction", "Franca Projects")
 write("potra", page("POTRA", "POTRA — Tools, Insights &amp; Masterclasses to Hack the Productive Sphere. Web design.", "potra", body, "#ffffff", css=css))
 
 # ============================ ABOUT / CONTACT ===============================

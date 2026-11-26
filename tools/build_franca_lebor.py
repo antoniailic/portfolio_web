@@ -91,8 +91,8 @@ feed = ["feed-1", "feed-2", "feed-3", "feed-4", "massimo-sanvalentin-1", "feed-6
 feed_imgs = [img(f"franca/{f}", f"{1 + (i % 3) * 4} / {5 + (i % 3) * 4}", None, "434 / 543", "Franca Projects feed") for i, f in enumerate(feed)]
 feed_imgs = [x.replace('style="--c:', 'style="--m: span 4; --c:') for x in feed_imgs]
 
-body = hero("franca/massimo-sanvalentin-1", "Franca Projects — Massimo Dutti San Valentín", "Art direction", "Franca Projects", "0% 43%")
-body += ficha([("Client", "Franca Projects"), ("Studio", "Wizards Only"), ("Role", "Creative Designer — Art Direction, Instagram System, Grid Design"), ("Year", "2026"), ("Channel", "Instagram")])
+body = hero("franca/massimo-sanvalentin-1", "Franca Projects — Massimo Dutti San Valentín", "Social art direction", "Franca Projects", "0% 43%")
+body += ficha([("Client", "Franca Projects"), ("Studio", "Wizards Only"), ("Role", "Creative Designer — Social Art Direction, Instagram System, Grid Design"), ("Year", "2026"), ("Channel", "Instagram"), ("Photography", "Franca Projects’ client productions")])
 body += "  <main>\n"
 body += chapter(head("01  Intro", "An ever-evolving archive"),
     pair(("Context", ["Franca Projects is a fashion production company, founded in January 2026. Their Instagram showcases the productions they work on for their clients. In October 2026 they began a monthly Social Creative Direction retainer with Wizards Only."]),
@@ -117,10 +117,10 @@ body += chapter(head("06  Carousels"), '    <div class="g carousels">\n' + "\n".
     finat]) + "\n    </div>")
 body += chapter(head("07  The Feed"), media(feed_imgs, "tight feed3"))
 body += chapter(head("08  Result &amp; Credits"), credits(None, "An ongoing monthly retainer since October 2026.",
-    [("Client", "Franca Projects"), ("Studio", "Wizards Only, Barcelona"), ("Art direction, Instagram system, grid design", "Antonia Ilic Bromberg"), ("Narrative", "Jordi Martinez")]))
+    [("Client", "Franca Projects"), ("Studio", "Wizards Only, Barcelona"), ("Social art direction, Instagram system, grid design", "Antonia Ilic Bromberg"), ("Narrative", "Jordi Martinez"), ("Photography", "Credited per production")]))
 body += "  </main>\n"
 body += nxt("lebor-gabala", "lebor/cover-noviembre", "Social &amp; content design", "Lebor Gabala", "0% 30%")
-write("franca-projects", page("Franca Projects", "Art direction, Instagram system and grid design for Franca Projects.", "franca-projects", body, "#f6f6f6", "#ececea", css=css))
+write("franca-projects", page("Franca Projects", "Social art direction, Instagram system and grid design for Franca Projects.", "franca-projects", body, "#f6f6f6", "#ececea", css=css))
 
 # ============================== LEBOR ======================================
 css = """    .story-row { row-gap: var(--gutter); }

@@ -2,7 +2,7 @@
 
 // Orden de los casos (home, índice y "next").
 const PROJECTS = [
-  { slug: "franca-projects", cat: "Art direction",  title: "Franca Projects",  img: "img/franca/massimo-sanvalentin-1.jpg", pos: "0% 43%" },
+  { slug: "franca-projects", cat: "Social art direction",  title: "Franca Projects",  img: "img/franca/massimo-sanvalentin-1.jpg", pos: "0% 43%" },
   { slug: "lebor-gabala",    cat: "Social & content design",  title: "Lebor Gabala",     img: "img/lebor/cover-noviembre.jpg",        pos: "0% 4.6%", ink: { ".portfolio": "#000" } },
   // francisc'andrea apagado (nov 2026): vuelve con mejores referentes o cuando esté la web de la clienta
   // { slug: "franciscandrea",  cat: "Brand identity", title: "francisc'andrea",  img: "img/franciscandrea/cover.jpg",          pos: "50% 40%", foot: "#fff" },
