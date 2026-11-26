@@ -364,7 +364,25 @@ document.querySelectorAll("p, h1, h3, li, dd, .display, .ttl").forEach(el => {
   const vids = document.querySelectorAll("video[data-auto]");
   if (!vids.length) return;
   // Un video pausado a mano se queda pausado aunque salga y vuelva a entrar en pantalla
-  const play = v => { if (v.dataset.held) return; if (v.preload !== "auto") { v.preload = "auto"; v.load(); } const p = v.play(); if (p) p.catch(() => {}); };
+  // videos en HLS (data-hls): Safari los reproduce directo; el resto usa hls.js, que se carga solo si hace falta
+  const base = (document.querySelector('script[src$="main.js"]') || {}).src || location.href;
+  let hlsLib = null;
+  const loadHls = () => hlsLib || (hlsLib = new Promise((ok, ko) => {
+    const sc = document.createElement("script"); sc.src = new URL("hls.light.min.js", base).href;
+    sc.onload = () => ok(window.Hls); sc.onerror = ko; document.head.appendChild(sc);
+  }));
+  const attach = v => {
+    if (v.dataset.ready) return Promise.resolve(); v.dataset.ready = "1";
+    const url = v.dataset.hls;
+    if (v.canPlayType("application/vnd.apple.mpegurl")) { v.src = url; return Promise.resolve(); }
+    return loadHls().then(Hls => { if (!Hls || !Hls.isSupported()) return;
+      const h = new Hls({ capLevelToPlayerSize: true, startLevel: -1 }); h.loadSource(url); h.attachMedia(v); });
+  };
+  const start = v => { const p = v.play(); if (p) p.catch(() => {}); };
+  const play = v => {
+    if (v.dataset.held) return;
+    if (v.dataset.hls) { attach(v).then(() => { if (!v.dataset.held) start(v); }); return; }
+    if (v.preload !== "auto") { v.preload = "auto"; v.load(); } start(v); };
   // Clic (o Enter / espacio) sobre el video: pausa o reanuda
   const toggle = v => {
     if (v.paused) { delete v.dataset.held; play(v); } else { v.dataset.held = "1"; v.pause(); }

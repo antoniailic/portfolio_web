@@ -137,13 +137,23 @@ def lists(artists, list_cols, side, side_cols, side_top):
         <p class="side" style="left: calc({(side_cols[0] + side_cols[1]) / 2} * (100% + var(--gutter)) / 12 - var(--gutter) / 2)">{side}</p>
       </div></div>
     </div>'''
+# Videos completos (hojeando la revista): se sirven en HLS para no perder calidad
+# (los archivos enteros pasan el límite de 25 MB por archivo de Cloudflare Pages)
+FULL = {"pages-exile": "exile", "pages-grief": "grief"}
+def vid(video, label, style=""):
+    st = f' style="{style}"' if style else ""
+    if video in FULL:
+        n = FULL[video]
+        return f'<video data-hls="../img/nebular/full-{n}/master.m3u8" poster="../img/nebular/full-{n}.jpg" muted loop playsinline autoplay preload="metadata" aria-label="{label}"{st}></video>'
+    return f'<video src="../img/nebular/{video}.mp4" poster="../img/nebular/{video}.jpg" muted loop playsinline autoplay preload="metadata" aria-label="{label}"{st}></video>'
+
 def issue(label, artists, lc, side, sc, st, ed, cover, back, video, name):
     return chapter(head(label), lists(artists, lc, side, sc, st),
         '    <div class="g" ><p style="--c: 1 / -1">Editorial</p></div>\n' + trio(ed).replace('<div class="trio g">', '<div class="trio g" style="margin-top:calc(var(--s-text) - var(--s-block))">'),
         f'''    <div class="covers g">
       <div class="cv"><img src="../{im("nebular/" + cover[0])}" alt="Nebular {name} — cover" style="{cover[1]}" loading="lazy"></div>
       <div class="cv"><img src="../{im("nebular/" + back[0])}" alt="Nebular {name} — back cover" style="{back[1]}" loading="lazy"></div>
-      <video src="../img/nebular/{video}.mp4" poster="../img/nebular/{video}.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Pages of Nebular {name}"></video>
+      {vid(video, f"Pages of Nebular {name}")}
     </div>''')
 spec_neb = '''    <div class="spec g neb-spec">
       <div class="rule"></div>
@@ -186,6 +196,8 @@ body += chapter(head("05  The vellum sleeve"), f'''    <div class="g" style="row
       <div class="t" style="--c: 7 / 12"><p>We designed a translucent vellum paper sleeve to separate the magazine from the artwork, as we felt that intervening directly on the piece would be too intrusive. This allows the image to remain clean once the sleeve is removed, giving the publication greater value as a collectible object.</p><p>At the same time, the sleeve reinforces the graphic concept by creating a sense of visual diffusion, echoing a nebula that gradually reveals the content underneath.</p></div>
     </div>''')
 body += chapter(head("06  Typeface", extra='      <p>Geist (Vercel) · Otto (Dinamo)</p>'), spec_neb)
+# Cierre: los tres videos completos en fila, como los gifs del inicio
+body += chapter(media(["      " + vid(v, f"Nebular {t} — full flip-through", f"--c: {1 + i * 4} / {5 + i * 4}; --m: span 4; --r: 1080 / 864") for i, (v, t) in enumerate([("pages-exile", "Nº1 Exile"), ("pages-grief", "Nº2 Grief"), ("pages-body", "Nº3 Body")])], "bleed gifs closing"))
 body += chapter(head("07  Credits"), credits(None, None, [("Editorial direction, art direction &amp;&nbsp;design", "Antonia Ilic Bromberg, Manuela García Aristizábal"), ("Research &amp; archives", "Antonia Ilic Bromberg, Manuela García Aristizábal"), ("Context", "Master's Degree in Editorial Design, Elisava, Barcelona School of Design and Engineering"), ("Typeface", "Geist (Vercel), Otto (Dinamo)"), ("Paper", "Arena Rough 90 g/m², vellum paper sleeves 90 g/m²"), ("Printing", "Tecnoart, Barcelona, 2026"), ("Acknowledgements", "Carol Monpart, Isabel Merino, Josep Román (Affaire), Laura Meseguer, Ane Guerra, María Dolores Soriano, Marc Panero")]))
 body += "  </main>\n"
 body += nxt("lebor-gabala", "lebor/cover-noviembre", "Visual strategy", "Lebor Gabala", "0% 30%")
