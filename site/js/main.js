@@ -416,18 +416,11 @@ document.querySelectorAll("p, h1, h3, li, dd, .display, .ttl").forEach(el => {
     v.addEventListener("click", () => toggle(v));
     v.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(v); } });
   });
-  // Videos largos (HLS): arrancan al cargar la página en un punto al azar (cada visita cae en otra página de la revista)
-  // y llevan debajo una línea de tiempo mínima para moverse por el video
-  vids.forEach(v => {
-    if (!v.dataset.hls) return;
-    v.addEventListener("loadedmetadata", () => {
-      if (v.dataset.seeded || !isFinite(v.duration)) return;
-      v.dataset.seeded = "1"; v.currentTime = Math.random() * v.duration * 0.92;
-    });
-    play(v);
-    timeline(v);
-  });
+  // Videos largos (HLS): todos arrancan a la vez, desde el inicio, al entrar a la landing, y siguen corriendo
+  // aunque no estén en pantalla (así, al llegar a cada uno, está en otra página de la revista).
+  // Llevan debajo una línea de tiempo mínima para moverse por el video.
+  vids.forEach(v => { if (v.dataset.hls) { play(v); timeline(v); } });
   if (!("IntersectionObserver" in window)) { vids.forEach(play); return; }
   const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? play(e.target) : e.target.pause()), { rootMargin: "1200px 0px" });
-  vids.forEach(v => io.observe(v));
+  vids.forEach(v => { if (!v.dataset.hls) io.observe(v); });
 })();
