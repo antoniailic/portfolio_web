@@ -99,6 +99,8 @@ css = """    .lists { position: relative; }
     .covers .cv:nth-of-type(1) { --c: 3 / 7; --m: 1 / 3; } .covers .cv:nth-of-type(2) { --c: 7 / 11; --m: 3 / 5; }
     .covers > video { --c: 3 / 11; width: 100%; aspect-ratio: 864 / 691; object-fit: cover; }
     .gifs { column-gap: 0; }
+    /* cierre: los tres videos dentro de los márgenes de la página, con el gutter entre ellos */
+    @media (max-width: 768px) { .closing { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; column-gap: 8px; } .closing > * { grid-column: auto !important; } }
     @media (max-width: 768px) { .gifs { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; } .gifs > * { grid-column: auto !important; } }
     .neb-spec { background: #fff; color: #000; font-family: "Geist", sans-serif; font-weight: 300; }
     .neb-license { grid-row: 20; order: 99; margin-top: 56px; opacity: .6; } /* aviso de licencia al final del specimen */
@@ -144,7 +146,7 @@ def vid(video, label, style=""):
     st = f' style="{style}"' if style else ""
     if video in FULL:
         n = FULL[video]
-        return f'<video data-hls="../img/nebular/full-{n}/master.m3u8" poster="../img/nebular/full-{n}.jpg" muted loop playsinline autoplay preload="metadata" aria-label="{label}"{st}></video>'
+        return f'<video data-hls="../img/nebular/full2-{n}/master.m3u8" poster="../img/nebular/full2-{n}.jpg" muted loop playsinline autoplay preload="metadata" aria-label="{label}"{st}></video>'
     return f'<video src="../img/nebular/{video}.mp4" poster="../img/nebular/{video}.jpg" muted loop playsinline autoplay preload="metadata" aria-label="{label}"{st}></video>'
 
 def issue(label, artists, lc, side, sc, st, ed, cover, back, video, name):
@@ -197,7 +199,7 @@ body += chapter(head("05  The vellum sleeve"), f'''    <div class="g" style="row
     </div>''')
 body += chapter(head("06  Typeface", extra='      <p>Geist (Vercel) · Otto (Dinamo)</p>'), spec_neb)
 # Cierre: los tres videos completos en fila, como los gifs del inicio
-body += chapter(media([f'      <video data-hls="../img/nebular/diag-{i + 1}/master.m3u8" poster="../img/nebular/diag-{i + 1}.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Nebular — leafing through the magazine {i + 1}" style="--c: {1 + i * 4} / {5 + i * 4}; --m: span 4; --r: 1080 / 1920"></video>' for i in range(3)], "bleed gifs closing"))
+body += chapter(media([f'      <video data-hls="../img/nebular/diag-{i + 1}/master.m3u8" poster="../img/nebular/diag-{i + 1}.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Nebular — leafing through the magazine {i + 1}" style="--c: {1 + i * 4} / {5 + i * 4}; --m: span 4; --r: 1080 / 1920"></video>' for i in range(3)], "closing"))
 body += chapter(head("07  Credits"), credits(None, None, [("Editorial direction, art direction &amp;&nbsp;design", "Antonia Ilic Bromberg, Manuela García Aristizábal"), ("Research &amp; archives", "Antonia Ilic Bromberg, Manuela García Aristizábal"), ("Context", "Master's Degree in Editorial Design, Elisava, Barcelona School of Design and Engineering"), ("Typeface", "Geist (Vercel), Otto (Dinamo)"), ("Paper", "Arena Rough 90 g/m², vellum paper sleeves 90 g/m²"), ("Printing", "Tecnoart, Barcelona, 2026"), ("Acknowledgements", "Carol Monpart, Isabel Merino, Josep Román (Affaire), Laura Meseguer, Ane Guerra, María Dolores Soriano, Marc Panero")]))
 body += "  </main>\n"
 body += nxt("lebor-gabala", "lebor/cover-noviembre", "Visual strategy", "Lebor Gabala", "0% 30%")

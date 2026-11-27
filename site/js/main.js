@@ -391,8 +391,9 @@ document.querySelectorAll("p, h1, h3, li, dd, .display, .ttl").forEach(el => {
     bar.setAttribute("role", "slider"); bar.setAttribute("aria-label", "Video timeline"); bar.tabIndex = 0;
     box.appendChild(bar);
     const fill = bar.firstChild;
-    const inset = v.closest(".closing") ? 12 : 0; // en la fila del cierre, cada línea separada de la vecina
-    const place = () => { bar.style.left = (v.offsetLeft + inset) + "px"; bar.style.width = (v.offsetWidth - inset * 2) + "px"; bar.style.top = (v.offsetTop + v.offsetHeight) + "px"; };
+    const inset = 0;
+    const place = () => { const a = v.getBoundingClientRect(), b = box.getBoundingClientRect();
+      bar.style.left = (a.left - b.left - box.clientLeft + inset) + "px"; bar.style.width = (a.width - inset * 2) + "px"; bar.style.top = (a.bottom - b.top - box.clientTop) + "px"; };
     place(); new ResizeObserver(place).observe(v); addEventListener("resize", place);
     const draw = () => { if (v.duration) fill.style.transform = `scaleX(${v.currentTime / v.duration})`; requestAnimationFrame(draw); };
     requestAnimationFrame(draw);
