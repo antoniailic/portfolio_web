@@ -383,6 +383,27 @@ document.querySelectorAll("p, h1, h3, li, dd, .display, .ttl").forEach(el => {
     if (v.dataset.held) return;
     if (v.dataset.hls) { attach(v).then(() => { if (!v.dataset.held) start(v); }); return; }
     if (v.preload !== "auto") { v.preload = "auto"; v.load(); } start(v); };
+  // Línea de tiempo: 1 px bajo el video; se arrastra o se toca para saltar
+  function timeline(v) {
+    const box = v.parentElement; if (getComputedStyle(box).position === "static") box.style.position = "relative";
+    const bar = document.createElement("div"); bar.className = "vbar";
+    bar.innerHTML = '<span class="vbar-fill"></span>';
+    bar.setAttribute("role", "slider"); bar.setAttribute("aria-label", "Video timeline"); bar.tabIndex = 0;
+    box.appendChild(bar);
+    const fill = bar.firstChild;
+    const inset = v.closest(".closing") ? 12 : 0; // en la fila del cierre, cada línea separada de la vecina
+    const place = () => { bar.style.left = (v.offsetLeft + inset) + "px"; bar.style.width = (v.offsetWidth - inset * 2) + "px"; bar.style.top = (v.offsetTop + v.offsetHeight) + "px"; };
+    place(); new ResizeObserver(place).observe(v); addEventListener("resize", place);
+    const draw = () => { if (v.duration) fill.style.transform = `scaleX(${v.currentTime / v.duration})`; requestAnimationFrame(draw); };
+    requestAnimationFrame(draw);
+    const seek = e => { const r = bar.getBoundingClientRect(); if (v.duration) v.currentTime = Math.min(.999, Math.max(0, (e.clientX - r.left) / r.width)) * v.duration; };
+    bar.addEventListener("pointerdown", e => { e.preventDefault(); bar.setPointerCapture(e.pointerId); bar.classList.add("drag"); seek(e); });
+    bar.addEventListener("pointermove", e => { if (bar.classList.contains("drag")) seek(e); });
+    bar.addEventListener("pointerup", () => bar.classList.remove("drag"));
+    bar.addEventListener("keydown", e => { if (!v.duration) return;
+      if (e.key === "ArrowRight") v.currentTime = Math.min(v.duration - .1, v.currentTime + 5);
+      if (e.key === "ArrowLeft") v.currentTime = Math.max(0, v.currentTime - 5); });
+  }
   // Clic (o Enter / espacio) sobre el video: pausa o reanuda
   const toggle = v => {
     if (v.paused) { delete v.dataset.held; play(v); } else { v.dataset.held = "1"; v.pause(); }
@@ -394,6 +415,17 @@ document.querySelectorAll("p, h1, h3, li, dd, .display, .ttl").forEach(el => {
     v.setAttribute("aria-label", (v.getAttribute("aria-label") || "Video") + " — pause / play");
     v.addEventListener("click", () => toggle(v));
     v.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(v); } });
+  });
+  // Videos largos (HLS): arrancan al cargar la página en un punto al azar (cada visita cae en otra página de la revista)
+  // y llevan debajo una línea de tiempo mínima para moverse por el video
+  vids.forEach(v => {
+    if (!v.dataset.hls) return;
+    v.addEventListener("loadedmetadata", () => {
+      if (v.dataset.seeded || !isFinite(v.duration)) return;
+      v.dataset.seeded = "1"; v.currentTime = Math.random() * v.duration * 0.92;
+    });
+    play(v);
+    timeline(v);
   });
   if (!("IntersectionObserver" in window)) { vids.forEach(play); return; }
   const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? play(e.target) : e.target.pause()), { rootMargin: "1200px 0px" });

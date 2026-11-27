@@ -139,7 +139,7 @@ def lists(artists, list_cols, side, side_cols, side_top):
     </div>'''
 # Videos completos (hojeando la revista): se sirven en HLS para no perder calidad
 # (los archivos enteros pasan el límite de 25 MB por archivo de Cloudflare Pages)
-FULL = {"pages-exile": "exile", "pages-grief": "grief"}
+FULL = {"pages-exile": "exile", "pages-grief": "grief", "pages-body": "body"}
 def vid(video, label, style=""):
     st = f' style="{style}"' if style else ""
     if video in FULL:
