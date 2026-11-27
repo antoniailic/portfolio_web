@@ -369,7 +369,7 @@ document.querySelectorAll("p, h1, h3, li, dd, .display, .ttl").forEach(el => {
   if (!vids.length) return;
   // Un video pausado a mano se queda pausado aunque salga y vuelva a entrar en pantalla
   // videos en HLS (data-hls): Safari los reproduce directo; el resto usa hls.js, que se carga solo si hace falta
-  const base = (document.querySelector('script[src$="main.js"]') || {}).src || location.href;
+  const base = (document.querySelector('script[src*="main.js"]') || {}).src || location.href;
   let hlsLib = null;
   const loadHls = () => hlsLib || (hlsLib = new Promise((ok, ko) => {
     const sc = document.createElement("script"); sc.src = new URL("hls.light.min.js", base).href;
@@ -380,11 +380,13 @@ document.querySelectorAll("p, h1, h3, li, dd, .display, .ttl").forEach(el => {
     // se pide directo la versión que corresponde (1080 en desktop, 720 en mobile), sin que el navegador cambie
     // de calidad a mitad de camino: eso bajaba la calidad y hacía que el comienzo se repitiera
     const url = v.dataset.hls.replace("master.m3u8", innerWidth > 768 ? "1080.m3u8" : "720.m3u8");
-    if (v.canPlayType("application/vnd.apple.mpegurl")) { v.src = url; return Promise.resolve(); }
+    // hls.js donde se pueda (más fluido al volver al inicio del loop); HLS nativo solo si no hay MSE (iPhone)
+    const mse = window.MediaSource || window.ManagedMediaSource;
+    if (!mse && v.canPlayType("application/vnd.apple.mpegurl")) { v.src = url; return Promise.resolve(); }
     return loadHls().then(Hls => { if (!Hls || !Hls.isSupported()) return;
       // calidad fija desde el inicio (1080 en desktop, 720 en mobile): sin cambios de calidad a mitad de camino,
       // que hacían que el comienzo se repitiera y que a veces quedara en la versión baja
-      const h = new Hls({ capLevelToPlayerSize: false, maxBufferLength: 20 });
+      const h = new Hls({ capLevelToPlayerSize: false, maxBufferLength: 20, backBufferLength: 30 });
       h.on(Hls.Events.MANIFEST_PARSED, (_, d) => {
         const hs = d.levels.map(l => l.height || 0);
         const lv = hs.indexOf(innerWidth > 768 ? Math.max(...hs) : Math.min(...hs));
@@ -408,7 +410,8 @@ document.querySelectorAll("p, h1, h3, li, dd, .display, .ttl").forEach(el => {
     const place = () => { const a = v.getBoundingClientRect(), b = box.getBoundingClientRect();
       bar.style.left = (a.left - b.left - box.clientLeft + inset) + "px"; bar.style.width = (a.width - inset * 2) + "px"; bar.style.top = (a.bottom - b.top - box.clientTop) + "px"; };
     place(); new ResizeObserver(place).observe(v); addEventListener("resize", place);
-    const draw = () => { if (v.duration) fill.style.transform = `scaleX(${v.currentTime / v.duration})`; requestAnimationFrame(draw); };
+    // se recoloca en cada cuadro: así sigue al video aunque cambie el diseño al cargar fuentes o imágenes
+    const draw = () => { place(); if (v.duration) fill.style.transform = `scaleX(${v.currentTime / v.duration})`; requestAnimationFrame(draw); };
     requestAnimationFrame(draw);
     const seek = e => { const r = bar.getBoundingClientRect(); if (v.duration) v.currentTime = Math.min(.999, Math.max(0, (e.clientX - r.left) / r.width)) * v.duration; };
     bar.addEventListener("pointerdown", e => { e.preventDefault(); bar.setPointerCapture(e.pointerId); bar.classList.add("drag"); seek(e); });
@@ -433,7 +436,10 @@ document.querySelectorAll("p, h1, h3, li, dd, .display, .ttl").forEach(el => {
   // Videos largos (HLS): todos arrancan a la vez, desde el inicio, al entrar a la landing, y siguen corriendo
   // aunque no estén en pantalla (así, al llegar a cada uno, está en otra página de la revista).
   // Llevan debajo una línea de tiempo mínima para moverse por el video.
-  vids.forEach(v => { if (v.dataset.hls) { play(v); timeline(v); } });
+  vids.forEach(v => { if (v.dataset.hls) {
+    // loop garantizado también con HLS: al terminar vuelve al inicio
+    v.addEventListener("ended", () => { v.currentTime = 0; if (!v.dataset.held) start(v); });
+    play(v); timeline(v); } });
   if (!("IntersectionObserver" in window)) { vids.forEach(play); return; }
   const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? play(e.target) : e.target.pause()), { rootMargin: "1200px 0px" });
   vids.forEach(v => { if (!v.dataset.hls) io.observe(v); });
