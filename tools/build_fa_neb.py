@@ -197,7 +197,7 @@ body += chapter(head("05  The vellum sleeve"), f'''    <div class="g" style="row
     </div>''')
 body += chapter(head("06  Typeface", extra='      <p>Geist (Vercel) · Otto (Dinamo)</p>'), spec_neb)
 # Cierre: los tres videos completos en fila, como los gifs del inicio
-body += chapter(media(["      " + vid(v, f"Nebular {t} — full flip-through", f"--c: {1 + i * 4} / {5 + i * 4}; --m: span 4; --r: 1080 / 864") for i, (v, t) in enumerate([("pages-exile", "Nº1 Exile"), ("pages-grief", "Nº2 Grief"), ("pages-body", "Nº3 Body")])], "bleed gifs closing"))
+body += chapter(media([f'      <video data-hls="../img/nebular/diag-{i + 1}/master.m3u8" poster="../img/nebular/diag-{i + 1}.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Nebular — leafing through the magazine {i + 1}" style="--c: {1 + i * 4} / {5 + i * 4}; --m: span 4; --r: 1080 / 1920"></video>' for i in range(3)], "bleed gifs closing"))
 body += chapter(head("07  Credits"), credits(None, None, [("Editorial direction, art direction &amp;&nbsp;design", "Antonia Ilic Bromberg, Manuela García Aristizábal"), ("Research &amp; archives", "Antonia Ilic Bromberg, Manuela García Aristizábal"), ("Context", "Master's Degree in Editorial Design, Elisava, Barcelona School of Design and Engineering"), ("Typeface", "Geist (Vercel), Otto (Dinamo)"), ("Paper", "Arena Rough 90 g/m², vellum paper sleeves 90 g/m²"), ("Printing", "Tecnoart, Barcelona, 2026"), ("Acknowledgements", "Carol Monpart, Isabel Merino, Josep Román (Affaire), Laura Meseguer, Ane Guerra, María Dolores Soriano, Marc Panero")]))
 body += "  </main>\n"
 body += nxt("lebor-gabala", "lebor/cover-noviembre", "Visual strategy", "Lebor Gabala", "0% 30%")
