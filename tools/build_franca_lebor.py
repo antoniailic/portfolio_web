@@ -8,7 +8,7 @@ css = """    .sprite { position: relative; overflow: hidden; aspect-ratio: 442 /
     .ab figure { display: flex; flex-direction: column; gap: var(--s-text); }
     .ab figure:nth-child(1) { --c: 3 / 7; --m: 1 / 3; }
     .ab figure:nth-child(2) { --c: 7 / 11; --m: 3 / 5; }
-    .compo { --c: 2 / 11; position: relative; aspect-ratio: 976 / 574; }
+    .compo { --c: 2 / 12; position: relative; aspect-ratio: 976 / 574; } /* centrada en la retícula */
     .compo > * { position: absolute; }
     .compo .sprite { aspect-ratio: auto; }
     .compo img.fill { width: 100%; height: 100%; object-fit: cover; }

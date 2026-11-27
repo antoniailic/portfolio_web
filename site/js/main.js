@@ -197,13 +197,16 @@ document.querySelectorAll("[data-carousel]").forEach(c => {
   upd();
 });
 
-// Landings: clic en el tercio izquierdo = proyecto anterior, tercio derecho = siguiente
+// Landings: clic en el borde izquierdo = proyecto anterior, borde derecho = siguiente (solo una franja angosta junto al borde)
 const slug = document.body.dataset.project;
 const idx = PROJECTS.findIndex(p => p.slug === slug);
 if (idx > -1 && matchMedia("(hover: hover) and (pointer: fine)").matches) {
   const go = d => { location.href = `${PROJECTS[(idx + d + PROJECTS.length) % PROJECTS.length].slug}.html`; };
-  const skip = el => el.closest("a, button, input, textarea, select, nav, [data-carousel], .site-nav, .site-foot, video[data-auto]");
-  const side = e => e.clientX < innerWidth / 3 ? -1 : e.clientX > innerWidth * 2 / 3 ? 1 : 0;
+  const skip = el => el.closest("a, button, input, textarea, select, nav, [data-carousel], .site-nav, .site-foot, video, .vbar");
+  const edge = () => Math.max(56, innerWidth * .06);
+  const side = e => e.clientX < edge() ? -1 : e.clientX > innerWidth - edge() ? 1 : 0;
+  let down = null; // un arrastre (por ejemplo en la línea de tiempo) no cuenta como clic
+  document.addEventListener("mousedown", e => { down = [e.clientX, e.clientY]; }, true);
   // Flecha propia: blanca sobre fondo oscuro, negra sobre fondo claro
   const arrow = document.createElement("div");
   arrow.className = "nav-arrow";
@@ -225,10 +228,11 @@ if (idx > -1 && matchMedia("(hover: hover) and (pointer: fine)").matches) {
   document.addEventListener("mouseleave", () => arrow.classList.remove("on"));
   document.addEventListener("click", e => {
     if (skip(e.target) || getSelection().toString()) return;
+    if (down && Math.hypot(e.clientX - down[0], e.clientY - down[1]) > 5) return;
     const s = side(e); if (s) go(s);
   });
   document.addEventListener("keydown", e => {
-    if (e.target.closest("input, textarea")) return;
+    if (e.target.closest("input, textarea, video, .vbar, [data-carousel]")) return;
     if (e.key === "ArrowRight") go(1);
     if (e.key === "ArrowLeft") go(-1);
   });
@@ -373,10 +377,19 @@ document.querySelectorAll("p, h1, h3, li, dd, .display, .ttl").forEach(el => {
   }));
   const attach = v => {
     if (v.dataset.ready) return Promise.resolve(); v.dataset.ready = "1";
-    const url = v.dataset.hls;
+    // se pide directo la versión que corresponde (1080 en desktop, 720 en mobile), sin que el navegador cambie
+    // de calidad a mitad de camino: eso bajaba la calidad y hacía que el comienzo se repitiera
+    const url = v.dataset.hls.replace("master.m3u8", innerWidth > 768 ? "1080.m3u8" : "720.m3u8");
     if (v.canPlayType("application/vnd.apple.mpegurl")) { v.src = url; return Promise.resolve(); }
     return loadHls().then(Hls => { if (!Hls || !Hls.isSupported()) return;
-      const h = new Hls({ capLevelToPlayerSize: true, startLevel: -1 }); h.loadSource(url); h.attachMedia(v); });
+      // calidad fija desde el inicio (1080 en desktop, 720 en mobile): sin cambios de calidad a mitad de camino,
+      // que hacían que el comienzo se repitiera y que a veces quedara en la versión baja
+      const h = new Hls({ capLevelToPlayerSize: false, maxBufferLength: 20 });
+      h.on(Hls.Events.MANIFEST_PARSED, (_, d) => {
+        const hs = d.levels.map(l => l.height || 0);
+        const lv = hs.indexOf(innerWidth > 768 ? Math.max(...hs) : Math.min(...hs));
+        h.startLevel = lv; h.loadLevel = lv; v._hls = h; });
+      h.loadSource(url); h.attachMedia(v); });
   };
   const start = v => { const p = v.play(); if (p) p.catch(() => {}); };
   const play = v => {
