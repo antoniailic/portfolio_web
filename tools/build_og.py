@@ -17,7 +17,7 @@ OG = {
     "franciscandrea":  ("img/franciscandrea/cover.jpg",         "50% 40%"),
     "nebular":         ("img/nebular/nebular-composicion.jpg",  "50% 50%"),
     "wild-lama":       ("img/wildlama/wl-25-q1-525.jpg",        "50% 14.7%"),
-    "sanguaza":        ("img/sanguaza/libro-centrado.jpg",      "50% 45%"),
+    "sanguaza":        ("img/sanguaza/libro-centrado-2.jpg",      "50% 45%"),
     "potra":           ("img/potra/home-crop.jpg",              "50% 50%"),
 }
 

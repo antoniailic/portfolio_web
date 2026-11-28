@@ -5,7 +5,7 @@ const PROJECTS = [
   { slug: "franca-projects", cat: "Art direction",         title: "Franca Projects",  img: "img/franca/massimo-sanvalentin-1.jpg", pos: "0% 43%", ink: { ".portfolio": "#fff", ".name": "#fff", ".about": "#fff", ".contact": "#fff", ".hand": "#fff" }, nav: "#fff" },
   { slug: "nebular",         cat: "Editorial",      title: "Nebular",          img: "img/nebular/nebular-composicion.jpg",             pos: "50% 50%" },
   { slug: "lebor-gabala",    cat: "Visual strategy",          title: "Lebor Gabala",     img: "img/lebor/cover-noviembre.jpg",        pos: "0% 4.6%", ink: { ".portfolio": "#000" } },
-  { slug: "sanguaza",        cat: "Editorial",      title: "Una pizca de sangre y un vaso de <i>sanguaza</i>", img: "img/sanguaza/libro-centrado.jpg", pos: "50% 45%" },
+  { slug: "sanguaza",        cat: "Editorial",      title: "Una pizca de sangre y un vaso de <i>sanguaza</i>", img: "img/sanguaza/libro-centrado-2.jpg", pos: "50% 45%" },
   { slug: "wild-lama",       cat: "Brand design",   title: "Wild Lama",        img: "img/wildlama/wl-25-q1-525.jpg",         pos: "50% 14.7%" },
   { slug: "potra",           cat: "Web design",     title: "POTRA",            img: "img/potra/home-crop.jpg",                    pos: "50% 50%" },
   // { slug: "franciscandrea",  cat: "Brand identity", title: "francisc'andrea",  img: "img/franciscandrea/cover.jpg",          pos: "50% 40%", foot: "#fff" },

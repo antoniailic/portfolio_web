@@ -148,7 +148,7 @@ HEROES = {
     "franciscandrea": ("franciscandrea/cover", "50% 40%"),
     "nebular": ("nebular/nebular-composicion", "50% 50%"),
     "wild-lama": ("wildlama/wl-25-q1-525", "50% 14.7%"),
-    "sanguaza": ("sanguaza/libro-centrado", "50% 45%"),
+    "sanguaza": ("sanguaza/libro-centrado-2", "50% 45%"),
     "potra": ("potra/home-crop", "50% 50%"),
 }
 

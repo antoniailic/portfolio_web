@@ -105,7 +105,7 @@ spec_sg = '''    <div class="spec g sg-spec">
       <p class="row3" style="--c: 1 / 9; font-size:26px; line-height:1.25; font-weight:300">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ<br>abcdefghijklmnñopqrstuvwxyz 0123456789</p>
       <p class="c3 row3" style="font-size:12px; line-height:1.5">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ abcdefghijklmnñopqrstuvwxyz 0123456789 &amp; ¿? ¡! —</p>
     </div>'''
-body = hero("sanguaza/libro-centrado", "A Pinch of Blood and a Glass of Sanguaza — the book", "Editorial", sg("Una pizca de sangre y un vaso de sanguaza"), "50% 45%")
+body = hero("sanguaza/libro-centrado-2", "A Pinch of Blood and a Glass of Sanguaza — the book", "Editorial", sg("Una pizca de sangre y un vaso de sanguaza"), "50% 45%")
 body += ficha([("Title", sg("A Pinch of Blood and a Glass of Sanguaza")), ("Context", "Master's Degree in Editorial Design, ELISAVA"), ("Year", "September 2025 – June 2026"), ("Editorial direction, art direction &amp;&nbsp;design", "Antonia Ilic Bromberg &amp; Francesca Garre Buscaglia")])
 body += "  <main>\n"
 body += chapter(head("01  Intro", "Across history, the one thing we have consistently maintained is the need to create rituals that bring us together as a society."),
