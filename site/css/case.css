@@ -277,9 +277,9 @@ body[data-page] > main { flex: 1 0 auto; }
   /* Nebular: encuadre en la revista roja */
   .case-hero > img[src*="nebular-composicion"], .case-next .next-img img[src*="nebular-composicion"] { object-position: 0% 50% !important; }
   /* Sanguaza y POTRA: portada más baja, la imagen entera a lo ancho y la franja debajo */
-  .case-hero:has(> img[src*="libro-centrado"]) { height: calc(100vw / 1.475 + 96px); min-height: 0; }
-  .case-hero > img[src*="libro-centrado"] { height: calc(100vw / 1.475); bottom: auto; }
-  .case-next .next-img img[src*="libro-centrado"] { height: calc(100vw / 1.475); }
+  .case-hero:has(> img[src*="libro-centrado"]) { height: calc(100vw / 1.6 + 96px); min-height: 0; }
+  .case-hero > img[src*="libro-centrado"] { height: calc(100vw / 1.6); bottom: auto; }
+  .case-next .next-img img[src*="libro-centrado"] { height: calc(100vw / 1.6); }
   .case-hero:has(> img[src*="home-crop"]) { height: calc(100vw / 2.067 + 96px); min-height: 0; }
   .case-hero > img[src*="home-crop"] { height: calc(100vw / 2.067); bottom: auto; }
   .case-next .next-img img[src*="home-crop"] { height: calc(100vw / 2.067); }
