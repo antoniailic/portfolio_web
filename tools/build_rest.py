@@ -89,7 +89,6 @@ write("wild-lama", page("Wild Lama", "Art direction, campaigns, content strategy
 css = """    .paper { position: relative; color: #fff; background: #2333c8 url("../img/sanguaza/paper-blue.jpg") center / cover; aspect-ratio: 1440 / 1149; padding-top: 40px; }
     .paper .head { row-gap: 36px; }
     .sg-spec { background: #fff; color: #2333c8; font-family: "Source Serif 4", serif; }
-    @media (max-width: 768px) { img[src*="sanguaza/doble-banner"] { --r: 5 / 4 !important; object-position: 50.5% 50%; } } /* encuadre en el libro */
     @media (max-width: 768px) { .paper { aspect-ratio: auto; min-height: 70vh; } }
     /* Intro en 3 líneas */
     @media (min-width: 769px) { .chapter:first-child .head > .display { --c: 1 / -1; } }
@@ -118,8 +117,8 @@ body += chapter(head("02  The book"),
     media(['      <video data-hls="../img/sanguaza/libro-full/master.m3u8" poster="../img/sanguaza/libro-full.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Pages of the book being turned" style="--c: 3 / 11; --m: 1 / -1; --r: 1430 / 990"></video>']), cls="tx")
 body += chapter(head("03  the ink", text=["The images of rituals are printed in silver ink. Some rituals are so intense that they are hard to remember clearly: like ritual experiences, whose memories often remain fragmented and elusive, the silver images move away from literal representation to open a less structured, almost dreamlike space, evoking what cannot be fully explained. The poems do the same at certain moments of the book."]),
     media(['      <video src="../img/sanguaza/tinta.mp4" poster="../img/sanguaza/tinta.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Silver ink catching the light" style="--c: 5 / 9; --m: 1 / -1; --r: 1080 / 1350"></video>']))
-# Doble página a todo el ancho para quebrar el ritmo
-body += chapter(media([img("sanguaza/doble-banner", "1 / -1", "1 / -1", "2400 / 1000", "Double-page spread on blue paper")], "bleed"))
+# Díptico: dos dobles páginas lado a lado, dentro de los márgenes
+body += chapter(media([img("sanguaza/tinta-libro-1", "1 / 7", "1 / 3", "1800 / 1310", "Open book: poem pages"), img("sanguaza/tinta-libro-2", "7 / 13", "3 / 5", "1800 / 1310", "Open book: essay and silver-printed image")]))
 body += f'''  <section class="paper">
 {head("04  the paper", extra='      <p style="--c: 1 / 7">Curious Matter Adiron Blue, 270 g/m² (Arjowiggins).</p>')}
   </section>
