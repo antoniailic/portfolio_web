@@ -118,7 +118,7 @@ body += chapter(head("02  The book"),
 body += chapter(head("03  the ink", text=["The images of rituals are printed in silver ink. Some rituals are so intense that they are hard to remember clearly: like ritual experiences, whose memories often remain fragmented and elusive, the silver images move away from literal representation to open a less structured, almost dreamlike space, evoking what cannot be fully explained. The poems do the same at certain moments of the book."]),
     media(['      <video src="../img/sanguaza/tinta.mp4" poster="../img/sanguaza/tinta.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Silver ink catching the light" style="--c: 5 / 9; --m: 1 / -1; --r: 1080 / 1350"></video>']))
 # Díptico: dos dobles páginas lado a lado, dentro de los márgenes
-body += chapter(media([img("sanguaza/tinta-libro-1", "1 / 7", "1 / 3", "1800 / 1310", "Open book: poem pages"), img("sanguaza/tinta-libro-2", "7 / 13", "3 / 5", "1800 / 1310", "Open book: essay and silver-printed image")]))
+body += chapter(media([img("sanguaza/tinta-libro-1", "1 / 7", "1 / -1", "1800 / 1310", "Open book: poem pages"), img("sanguaza/tinta-libro-2", "7 / 13", "1 / -1", "1800 / 1310", "Open book: essay and silver-printed image")]))
 body += f'''  <section class="paper">
 {head("04  the paper", extra='      <p style="--c: 1 / 7">Curious Matter Adiron Blue, 270 g/m² (Arjowiggins).</p>')}
   </section>
