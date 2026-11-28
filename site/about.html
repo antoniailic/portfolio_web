@@ -39,6 +39,7 @@
       .about-page .display { font-size: min(var(--fs-display), 7.4vw); }
       .about-page .portrait { grid-row: auto; }
       .cv .edu, .cv .exp { grid-column: 1 / -1; }
+      .cv .exp { order: -1; }  /* en mobile, Experience antes que Education */
     }
   </style>
   <script type="application/ld+json">
