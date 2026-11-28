@@ -58,8 +58,8 @@ def page(title, desc, slug, body, bg="#f6f6f6", band=None, color=None, css=""):
   <title>{title} — Antonia Ilic Bromberg</title>
   <meta name="description" content="{desc}">
 {og_tags(f"{title} — Antonia Ilic Bromberg", desc, f"projects/{slug}", slug)}
-  <link rel="stylesheet" href="../css/base.css?v=20261126">
-  <link rel="stylesheet" href="../css/case.css?v=20261126">
+  <link rel="stylesheet" href="../css/base.css?v=20261128">
+  <link rel="stylesheet" href="../css/case.css?v=20261128">
   {FLAGS}
   <style>
     {root}{col}

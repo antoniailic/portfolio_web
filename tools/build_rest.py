@@ -192,8 +192,8 @@ def simple(fname, title, desc, body, css, current):
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{title} — Antonia Ilic Bromberg</title>
   <meta name="description" content="{desc}">
-  <link rel="stylesheet" href="css/base.css?v=20261126">
-  <link rel="stylesheet" href="css/case.css?v=20261126">
+  <link rel="stylesheet" href="css/base.css?v=20261128">
+  <link rel="stylesheet" href="css/case.css?v=20261128">
   {FLAGS}
   <style>
 {css}

@@ -272,6 +272,7 @@ body[data-page] > main { flex: 1 0 auto; }
   /* Franca: imagen centrada */
   .case-hero > img[src*="massimo-sanvalentin-1"], .case-next .next-img img[src*="massimo-sanvalentin-1"],
   .banners img[src*="massimo-sanvalentin-1"] { width: 100%; right: 0; object-position: 50% 43% !important; }
+  .banners img[src*="massimo-sanvalentin-1"] { transform: scale(1.3); transform-origin: 50% 43%; }  /* Franca: más zoom en la home */
   /* francisc'andrea: ramo y bolsillo centrados en lo visible */
   .case-hero > img[src*="franciscandrea/cover"], .case-next .next-img img[src*="franciscandrea/cover"] { object-position: 50% 60% !important; }
   /* Nebular: encuadre en la revista roja */
@@ -302,7 +303,7 @@ body[data-page] > main { flex: 1 0 auto; }
    ========================================================================== */
 @media (max-width: 768px) {
   /* Lebor: imagen ampliada y anclada a la izquierda: el texto de la foto queda fuera */
-  .banners img[src*="cover-noviembre"] { width: 150%; height: 150%; max-width: none; right: auto; bottom: auto; left: 0; top: 0; object-position: 0% 0% !important; }
+  .banners img[src*="cover-noviembre"] { width: 175%; height: 175%; max-width: none; right: auto; bottom: auto; left: 0; top: 0; object-position: 0% 0% !important; }
   /* francisc'andrea: mismo encuadre que la portada */
   .banners img[src*="franciscandrea/cover"] { object-position: 50% 60% !important; }
   /* Nebular: la composición del Figma (tres números sobre negro) */
@@ -315,7 +316,8 @@ body[data-page] > main { flex: 1 0 auto; }
     top: 50%; bottom: auto; height: auto; transform: translateY(-50%);
     -webkit-mask-image: linear-gradient(transparent, #000 16%, #000 84%, transparent);
             mask-image: linear-gradient(transparent, #000 16%, #000 84%, transparent); }
-  .banners img[src*="libro-centrado"] { aspect-ratio: 2400 / 1627; }
+  /* Sanguaza: libro más grande (la cartulina ampliada de los bordes queda fuera) */
+  .banners img[src*="libro-centrado"] { aspect-ratio: 2400 / 1500; width: 240%; max-width: none; left: 50%; right: auto; transform: translate(-50%, -50%); }
   .banners img[src*="home-crop"] { aspect-ratio: 2400 / 1161; }
   .home-stage { transition: background-color .6s ease; }
   .home-stage:has(.banners img.on[src*="libro-centrado"]) { background-color: #3a55c6; }
