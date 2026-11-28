@@ -317,7 +317,7 @@ body[data-page] > main { flex: 1 0 auto; }
     -webkit-mask-image: linear-gradient(transparent, #000 16%, #000 84%, transparent);
             mask-image: linear-gradient(transparent, #000 16%, #000 84%, transparent); }
   /* Sanguaza: libro más grande (la cartulina ampliada de los bordes queda fuera) */
-  .banners img[src*="libro-centrado"] { aspect-ratio: 2400 / 1500; width: 240%; max-width: none; left: 50%; right: auto; transform: translate(-50%, -50%); }
+  .banners img[src*="libro-centrado"] { aspect-ratio: 2400 / 1500; width: 165%; max-width: none; left: 50%; right: auto; transform: translate(-50%, -50%); }
   .banners img[src*="home-crop"] { aspect-ratio: 2400 / 1161; }
   .home-stage { transition: background-color .6s ease; }
   .home-stage:has(.banners img.on[src*="libro-centrado"]) { background-color: #3a55c6; }
